@@ -17,6 +17,15 @@ public class Assignment {
     private boolean isComplete;
     //private boolean isFromILearn;
 
+    public Assignment() {
+        title = "New Assignment";
+        comments = "";
+        dueDate.setTime(0); //Figure out how to put in the current time plus 1 hour
+        dueTime.setTime(0);
+        isComplete = false;
+        //isFromILearn = false;
+    }
+
     public String getTitle() {
         return title;
     }
