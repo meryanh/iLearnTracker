@@ -1,8 +1,10 @@
+package cs246.ilearntracker;
+
 import java.sql.Time;
 import java.util.Date;
 
 /**
- * The Assignment class holds the title of the assignment and any comments made on it. It also
+ * The cs246.ilearntracker.Assignment class holds the title of the assignment and any comments made on it. It also
  * contains a due date and a due time as well as an indicator as to whether the assignment is
  * completed.  Lastly it has the getters and setters for all of that.
  * Created by Jbeag_000 on 2/23/2015.
