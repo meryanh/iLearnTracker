@@ -21,7 +21,7 @@
     <NumberPicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/refreshDays"
+        android:id="@+id/refreshHours"
         android:orientation="vertical"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
@@ -39,17 +39,17 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/refreshIntHours"
         android:layout_below="@+id/notifyHours"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="Refresh Interval(days)" />
+        android:text="Refresh Interval(Hours)" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText2"
-        android:layout_below="@+id/refreshDays"
+        android:id="@+id/cleanUpIntDays"
+        android:layout_below="@+id/refreshHours"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:text="Clean Up Interval(days)" />
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/cleanUpDays"
         android:orientation="vertical"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/cleanUpIntDays"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
