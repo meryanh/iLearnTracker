@@ -6,18 +6,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class iLearnTracker extends ActionBarActivity {
+public class AddClass extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_i_learn_tracker);
+        setContentView(R.layout.activity_add_class);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_i_learn_tracker, menu);
+        getMenuInflater().inflate(R.menu.menu_add_class, menu);
         return true;
     }
 
@@ -35,6 +35,4 @@ public class iLearnTracker extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
 }
