@@ -16,14 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".AddClass"
-            android:label="@string/title_activity_add_class"
-            android:parentActivityName=".iLearnTracker" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="cs246.ilearntracker.iLearnTracker" />
-        </activity>
     </application>
 
 </manifest>

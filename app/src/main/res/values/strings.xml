@@ -10,5 +10,6 @@
     <string name="class_name">Class Name:</string>
     <string name="class_color">Color:</string>
     <string name="edit_name">Enter a Class Name</string>
+    <string name="title_activity_settings">Settings</string>
 
 </resources>

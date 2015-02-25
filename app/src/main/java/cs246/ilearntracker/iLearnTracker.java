@@ -8,6 +8,8 @@ import android.view.MenuItem;
 
 public class iLearnTracker extends ActionBarActivity {
 
+    static Student student;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
