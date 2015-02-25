@@ -51,7 +51,7 @@ public class Class {
     public void toggleIsActive(){ isActive = (!isActive); }
 
     /**
-     *
+     * Removes each Assignment in the Class that is marked as complete.
      */
     public void cleanUpAssignments(){
         for(Assignment assignment : assignmentList){
@@ -63,9 +63,25 @@ public class Class {
     }
 
     /**
-     *
+     * Returns the entire content of the Class class and all of the associated Assignment classes
+     * as an XML formatted string.
      */
     public String getXMLContent(){
-        return null;
+        String XMLContent;
+        XMLContent = "<Class>\n";
+        XMLContent += "\n\t<className>" + className + "</className>";
+        XMLContent += "\n\t<classColor>" + classColor.toString() + "</classColor>";
+        XMLContent += "\n\t<isActive>" + isActive + "</isActive>";
+        for(Assignment assignment : assignmentList){
+            XMLContent += "\n\t<Assignment>";
+            XMLContent += "\n\t\t<title>" + assignment.getTitle() + "</title>";
+            XMLContent += "\n\t\t<comments>" + assignment.getComments() + "</comments>";
+            XMLContent += "\n\t\t<dueDate>" + assignment.getDueDate() + "</dueDate>";
+            XMLContent += "\n\t\t<dueTime>" + assignment.getDueTime() + "</dueTime>";
+            XMLContent += "\n\t\t<isComplete>" + assignment.getIsComplete() + "</isComplete>";
+            XMLContent += "\n\t<Assignment>";
+        }
+        XMLContent += "\n<Class>";
+        return XMLContent;
     }
 }
