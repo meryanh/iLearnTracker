@@ -67,11 +67,14 @@ public class Class {
      * as an XML formatted string.
      */
     public String getXMLContent(){
+
         String XMLContent;
+
         XMLContent = "<Class>\n";
         XMLContent += "\n\t<className>" + className + "</className>";
         XMLContent += "\n\t<classColor>" + classColor.toString() + "</classColor>";
         XMLContent += "\n\t<isActive>" + isActive + "</isActive>";
+
         for(Assignment assignment : assignmentList){
             XMLContent += "\n\t<Assignment>";
             XMLContent += "\n\t\t<title>" + assignment.getTitle() + "</title>";
@@ -81,7 +84,9 @@ public class Class {
             XMLContent += "\n\t\t<isComplete>" + assignment.getIsComplete() + "</isComplete>";
             XMLContent += "\n\t<Assignment>";
         }
+
         XMLContent += "\n<Class>";
+
         return XMLContent;
     }
 }
