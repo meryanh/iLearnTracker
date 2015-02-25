@@ -38,8 +38,27 @@ public class Class {
 
     public void addAssignment(Assignment assignment){ assignmentList.add(assignment); }
 
-    public void setClassName(String name) { className = name; }
+    public void setClassName(String name){ className = name; }
 
-    public void setClassColor(Color color) { classColor = color; }
+    public void setClassColor(Color color){ classColor = color; }
 
+    public String getClassName(){ return className; }
+
+    public Color getClassColor(){ return classColor; }
+
+    public boolean getIsActive(){ return isActive; }
+
+    public void toggleIsActive(){ isActive = (!isActive); }
+
+    /**
+     *
+     */
+    public void cleanUpAssignments(){
+        for(Assignment assignment : assignmentList){
+            if(assignment.getIsComplete()){
+                // remove assignment from assignmentList
+                assignmentList.remove(assignment);
+            }
+        }
+    }
 }
