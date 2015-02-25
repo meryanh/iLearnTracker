@@ -65,4 +65,7 @@ public class Class {
     /**
      *
      */
+    public String getXMLContent(){
+        return null;
+    }
 }
