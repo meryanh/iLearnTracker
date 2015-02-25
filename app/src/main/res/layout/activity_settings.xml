@@ -7,15 +7,4 @@
     tools:context="cs246.ilearntracker.Settings">
 
 
-    <Switch
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="white"
-        android:text="Show Notifications"
-        android:id="@+id/notify"
-        android:layout_marginTop="125dp"
-        android:checked="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 </RelativeLayout>

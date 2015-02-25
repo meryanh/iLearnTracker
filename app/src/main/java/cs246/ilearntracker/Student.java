@@ -22,50 +22,26 @@ public class Student {
         classesList = new ArrayList<Class>();
     }
 
-    /**
-     * This function sets the notification variable.
-     * @param notify
-     */
     public void setNotify(boolean notify) {
         notification = notify;
     }
 
-    /**
-     * This function sets the refreshInterval variable.
-     * @param refresh
-     */
     public void setRefresh(int refresh) {
         refreshInterval = refresh;
     }
 
-    /**
-     * This function sets the cleanUpInterval variable.
-     * @param cleanUp
-     */
     public void setCleanUp(int cleanUp) {
         cleanUpInterval = cleanUp;
     }
 
-    /**
-     * This function returns the value in the notification variable.
-     * @return
-     */
     public boolean getNotify() {
         return notification;
     }
 
-    /**
-     * This function returns the value in refreshInterval.
-     * @return
-     */
     public int getRefreshInterval() {
         return refreshInterval;
     }
 
-    /**
-     * This function returns the value in cleanUpInterval.
-     * @return
-     */
     public int getCleanUpInterval() {
         return cleanUpInterval;
     }
