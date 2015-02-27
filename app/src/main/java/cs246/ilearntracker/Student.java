@@ -1,5 +1,7 @@
 package cs246.ilearntracker;
 
+import android.graphics.Color;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -137,7 +139,13 @@ public class Student {
      * This function adds a class to the classesList
      */
     public void addClass() {
+        //get input from user through separate activity.
+        //not done yet.
+        Color newColor = null;
+        String newName = null;
 
+        //add the class
+        classesList.add(new Class(newName, newColor));
     }
 
     /**
