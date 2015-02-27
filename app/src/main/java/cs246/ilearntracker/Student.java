@@ -44,7 +44,7 @@ public class Student {
         classesList = new ArrayList<Class>();
     }
 
-    public void setNotify(String notify) { if (notify == "true") notification = true; else notification = false; }
+    public void setNotify(boolean notify) { notification = notify; }
 
     public void setRefresh(int refresh) {
         refreshInterval = refresh;
@@ -123,7 +123,10 @@ public class Student {
             NodeList setting = doc.getElementsByTagName("settings");
             Element sets = (Element) setting.item(0);
 
-            setNotify(sets.getAttribute("notification"));
+            if (sets.getAttribute("notification") == "true")
+                setNotify(true);
+            else
+                setNotify(false);
             setRefresh(Integer.parseInt(sets.getAttribute("refreshInterval")));
             setCleanUp(Integer.parseInt(sets.getAttribute("cleanUpInterval")));
         } catch (SAXException e) {

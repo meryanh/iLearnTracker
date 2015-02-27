@@ -29,4 +29,14 @@ public class StudentTest implements Test {
         me.setRefresh(604800);
         assert me.getRefreshInterval() == 86400;
     }
+
+    public void testSaveNLoadSettings(Student me) {
+        me.saveSettings();
+        me.loadSettings();
+        assert me.getCleanUpInterval() == 604800;
+        assert me.getRefreshInterval() == 604800;
+        assert me.getNotify() == false;
+
+
+    }
 }
