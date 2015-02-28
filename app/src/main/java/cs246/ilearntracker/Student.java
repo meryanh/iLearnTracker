@@ -144,7 +144,7 @@ public class Student {
     public void addClass() {
         //get input from user through separate activity.
         //not done yet.
-        Color newColor = null;
+        int newColor = 0;
         String newName = null;
 
         //add the class

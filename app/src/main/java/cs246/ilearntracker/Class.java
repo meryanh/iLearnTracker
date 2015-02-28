@@ -12,14 +12,14 @@ public class Class {
     private List<Assignment> assignmentList;
     private boolean isActive;
     private String className;
-    private Color classColor;
+    private Integer classColor;
 
     /**
      * Class default constructor.
      */
     public Class(){
         className = null;
-        classColor = null;
+        classColor = 0xffffff;
         assignmentList = new ArrayList<Assignment>();
         isActive = false;
     }
@@ -29,7 +29,7 @@ public class Class {
      * @param name
      * @param color
      */
-    public Class(String name, Color color){
+    public Class(String name, int color){
         className = name;
         classColor = color;
         assignmentList = new ArrayList<Assignment>();
@@ -40,11 +40,13 @@ public class Class {
 
     public void setClassName(String name){ className = name; }
 
-    public void setClassColor(Color color){ classColor = color; }
+    public void setClassColor(int color){ classColor = color; }
 
     public String getClassName(){ return className; }
 
-    public Color getClassColor(){ return classColor; }
+    public int getClassColor(){ return classColor; }
+
+    public List<Assignment> getAssignmentList(){ return assignmentList; }
 
     public boolean getIsActive(){ return isActive; }
 
