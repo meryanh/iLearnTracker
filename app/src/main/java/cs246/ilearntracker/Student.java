@@ -144,11 +144,18 @@ public class Student {
     public void addClass() {
         //get input from user through separate activity.
         //not done yet.
-        int newColor = 0;
-        String newName = null;
 
         //add the class
-        classesList.add(new Class(newName, newColor));
+        classesList.add(new Class());
+    }
+
+    /**
+     *
+     */
+    public void showClasses() {
+        for (Class thisClass: classesList) {
+            System.out.println(thisClass.getClassName());
+        }
     }
 
     /**
