@@ -20,7 +20,7 @@ public class Class {
     public Class(){
         className = null;
         classColor = 0xffffff;
-        assignmentList = new ArrayList<Assignment>();
+        assignmentList = new ArrayList();
         isActive = false;
     }
 
@@ -32,7 +32,7 @@ public class Class {
     public Class(String name, int color){
         className = name;
         classColor = color;
-        assignmentList = new ArrayList<Assignment>();
+        assignmentList = new ArrayList();
         isActive = true;
     }
 
