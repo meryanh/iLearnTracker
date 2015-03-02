@@ -4,6 +4,7 @@ import android.graphics.Color;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -144,9 +145,10 @@ public class Student {
     public void addClass() {
         //get input from user through separate activity.
         //not done yet.
+        Class myClass = new Class();
 
         //add the class
-        classesList.add(new Class());
+        classesList.add(myClass);
     }
 
     /**
@@ -163,7 +165,40 @@ public class Student {
      * the classesList.
      */
     public void loadClasses() {
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document doc = builder.parse(new File("mySemester.xml"));
 
+            NodeList classes = doc.getElementsByTagName("Class");
+
+            for (int i = 0; i < classes.getLength(); i++) {
+                Element thisClass = (Element) classes.item(i);
+                Class myClass = new Class(thisClass.getAttribute("className"), Integer.valueOf(thisClass.getAttribute("classColor")));
+                if (thisClass.getAttribute("isActive").equals("false"))
+                    myClass.toggleIsActive();
+
+                NodeList assignments = doc.getElementsByTagName("Assignment");
+                for (int j = 0; j < assignments.getLength(); j++) {
+                    Element thisAssignment = (Element) assignments.item(j);
+                    Assignment myAssignment = new Assignment(thisAssignment.getAttribute("title"),
+                            thisAssignment.getAttribute("comments"));
+                            //myAssignment.setDueDate(thisAssignment.getAttribute("dueDate")); //This is not finished yet.
+                            //myAssignment.setDueTime(thisAssignment.getAttribute("dueTime"));
+                            if (thisAssignment.getAttribute("isComplete").equals("true"))
+                                myAssignment.toggleIsComplete();
+                    myClass.addAssignment(myAssignment);
+                }
+
+                classesList.add(myClass);
+            }
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -171,6 +206,22 @@ public class Student {
      * the xml file.
      */
     public void saveClasses() {
+        String info = "<Student>";
+        for (Class thisClass: classesList) {
+            info += thisClass.getXMLContent();
+        }
+        info += "</Student>";
 
+        Document me = convertStringToDocument(info);
+
+        try {
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            Result output = new StreamResult(new File("mySemester.xml"));
+            Source input = new DOMSource(me);
+
+            transformer.transform(input, output);
+        } catch (TransformerException e) {
+            e.printStackTrace();
+        }
     }
 }

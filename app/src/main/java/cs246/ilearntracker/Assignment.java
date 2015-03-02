@@ -26,6 +26,12 @@ public class Assignment {
         //isFromILearn = false;
     }
 
+    public Assignment(String newTitle, String comment) {
+        title = newTitle;
+        comments = comment;
+        isComplete = false;
+    }
+
     public String getTitle() {
         return title;
     }
