@@ -1,13 +1,17 @@
 package cs246.ilearntracker;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 
 public class iLearnTracker extends ActionBarActivity {
 
+    public static final String EXTRA_MESSAGE = "com.jbjust.FavoriteScripture.MESSAGE";
     static Student student;
 
     @Override
@@ -36,6 +40,17 @@ public class iLearnTracker extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void share(View view) {
+
+        Intent intent = new Intent(this, AddClass.class);
+
+        String message = "testing";
+        intent.putExtra(EXTRA_MESSAGE, message);
+
+        startActivity(intent);
+
     }
 
 

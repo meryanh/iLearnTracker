@@ -1,16 +1,22 @@
 package cs246.ilearntracker;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class AddClass extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("Here!\n");
         super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+        //String message = intent.getStringExtra(iLearnTracker.EXTRA_MESSAGE);
         setContentView(R.layout.activity_add_class);
     }
 
