@@ -84,10 +84,10 @@ public class Class {
             XMLContent += "\n\t\t<dueDate>" + assignment.getDueDate() + "</dueDate>";
             XMLContent += "\n\t\t<dueTime>" + assignment.getDueTime() + "</dueTime>";
             XMLContent += "\n\t\t<isComplete>" + assignment.getIsComplete() + "</isComplete>";
-            XMLContent += "\n\t<Assignment>";
+            XMLContent += "\n\t</Assignment>";
         }
 
-        XMLContent += "\n<Class>";
+        XMLContent += "\n</Class>";
 
         return XMLContent;
     }
