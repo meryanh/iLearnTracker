@@ -17,6 +17,14 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".AddClass"
+            android:label="AddClass"
+            android:parentActivityName=".iLearnTracker" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cs246.ilearntracker.iLearnTracker" />
+        </activity>
+        <activity
             android:name=".Settings"
             android:label="@string/title_activity_settings" >
         </activity>
