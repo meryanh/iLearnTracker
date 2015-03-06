@@ -12,6 +12,8 @@ import org.xml.sax.SAXException;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,6 +68,8 @@ public class Student {
     public int getCleanUpInterval() {
         return cleanUpInterval;
     }
+
+    public Class getClass(Integer i) { return classesList.get(i); }
 
     /**
      * This function will save the local variables notification, refreshInterval,
@@ -147,12 +151,14 @@ public class Student {
         //not done yet.
         Class myClass = new Class();
 
+        myClass.setClassName("CS246"); //This line for testing purposes.
+
         //add the class
         classesList.add(myClass);
     }
 
     /**
-     *
+     *  This function is for testing purposes.
      */
     public void showClasses() {
         for (Class thisClass: classesList) {
@@ -183,10 +189,14 @@ public class Student {
                     Element thisAssignment = (Element) assignments.item(j);
                     Assignment myAssignment = new Assignment(thisAssignment.getAttribute("title"),
                             thisAssignment.getAttribute("comments"));
-                            //myAssignment.setDueDate(thisAssignment.getAttribute("dueDate")); //This is not finished yet.
-                            //myAssignment.setDueTime(thisAssignment.getAttribute("dueTime"));
+                            myAssignment.setDueDate(Date.valueOf(thisAssignment.getAttribute("dueDate"))); //This is not finished yet.
+                            myAssignment.setDueTime(Time.valueOf(thisAssignment.getAttribute("dueTime"))); //Same for this line.
                             if (thisAssignment.getAttribute("isComplete").equals("true"))
                                 myAssignment.toggleIsComplete();
+                            /* Uncomment this block for connection to I-Learn
+                            if (thisAssignment.getAttribute("fromILearn").equals("true"))
+                                myAssignment.setIsFromILearn();
+                             */
                     myClass.addAssignment(myAssignment);
                 }
 
@@ -212,12 +222,12 @@ public class Student {
         }
         info += "</Student>";
 
-        Document me = convertStringToDocument(info);
+        Document myClasses = convertStringToDocument(info);
 
         try {
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
             Result output = new StreamResult(new File("mySemester.xml"));
-            Source input = new DOMSource(me);
+            Source input = new DOMSource(myClasses);
 
             transformer.transform(input, output);
         } catch (TransformerException e) {

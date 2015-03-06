@@ -20,8 +20,8 @@ public class Assignment {
     public Assignment() {
         title = "New Assignment";
         comments = "";
-     //   dueDate.setTime(0); //Figure out how to put in the current time plus 1 hour
-     //   dueTime.setTime(0);
+        //dueDate.setTime(System.currentTimeMillis()); //Figure out how to put in the current time plus 1 hour
+        //dueTime.setTime(System.nanoTime());
         isComplete = false;
         //isFromILearn = false;
     }

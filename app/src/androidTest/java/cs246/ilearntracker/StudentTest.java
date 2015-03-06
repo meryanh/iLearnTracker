@@ -44,7 +44,8 @@ public class StudentTest extends InstrumentationTestCase {
     public void addAClass() {
         Student me = new Student();
         me.addClass();
-        me.addClass();
-        me.showClasses();
+        me.saveClasses();
+        me.loadClasses();
+        assertEquals(me.getClass(0).getClassName(), "CS246");
     }
 }
