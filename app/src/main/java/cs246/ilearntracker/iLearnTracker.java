@@ -51,6 +51,14 @@ public class iLearnTracker extends ActionBarActivity {
 
         startActivity(intent);
 
+
+        //Intent intent = new Intent(this, Output.class);
+        //EditText book = (EditText) findViewById(R.id.bookEnter);
+       //EditText chapter = (EditText) findViewById(R.id.chapterEnter);
+        //EditText verse = (EditText) findViewById(R.id.verseEnter);
+        //String scripture = book.getText().toString() + " " + chapter.getText().toString() + ":" + verse.getText().toString() + "\n";
+        //intent.putExtra(EXTRA_MESSAGE, scripture);
+        //startActivity(intent);
     }
 
 

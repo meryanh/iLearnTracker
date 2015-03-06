@@ -12,12 +12,18 @@ public class AddClass extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("Here!\n");
+        //System.out.println("Here!\n");
         super.onCreate(savedInstanceState);
-
         Intent intent = getIntent();
-        //String message = intent.getStringExtra(iLearnTracker.EXTRA_MESSAGE);
-        setContentView(R.layout.activity_add_class);
+        String message = intent.getStringExtra(iLearnTracker.EXTRA_MESSAGE);
+        TextView textView = new TextView(this);
+        textView.setTextSize(20);
+        textView.setText("Your favorite scripture is:\n" + message);
+        setContentView(textView);
+/*
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(iLearnTracker.EXTRA_MESSAGE);
+        setContentView(R.layout.activity_add_class);*/
     }
 
     @Override
