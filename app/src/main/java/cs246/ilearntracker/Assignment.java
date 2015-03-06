@@ -20,8 +20,8 @@ public class Assignment {
     public Assignment() {
         title = "New Assignment";
         comments = "";
-        //dueDate.setTime(System.currentTimeMillis()); //Figure out how to put in the current time plus 1 hour
-        //dueTime.setTime(System.nanoTime());
+        setDueDate(System.currentTimeMillis()); //Figure out how to put in the current time plus 1 hour
+        setDueTime(System.nanoTime());
         isComplete = false;
         //isFromILearn = false;
     }
@@ -64,12 +64,10 @@ public class Assignment {
         comments = newComments;
     }
 
-    public void setDueDate(Date newDate) {
-        dueDate = newDate;
-    }
+    public void setDueDate(Long newDate) { dueDate = new Date(newDate); }
 
-    public void setDueTime(Time newTime) {
-        dueTime = newTime;
+    public void setDueTime(Long newTime) {
+        dueTime = new Time(newTime);
     }
 
     public void toggleIsComplete() {

@@ -189,8 +189,8 @@ public class Student {
                     Element thisAssignment = (Element) assignments.item(j);
                     Assignment myAssignment = new Assignment(thisAssignment.getAttribute("title"),
                             thisAssignment.getAttribute("comments"));
-                            myAssignment.setDueDate(Date.valueOf(thisAssignment.getAttribute("dueDate"))); //This is not finished yet.
-                            myAssignment.setDueTime(Time.valueOf(thisAssignment.getAttribute("dueTime"))); //Same for this line.
+                            myAssignment.setDueDate(Long.valueOf(thisAssignment.getAttribute("dueDate"))); //This is not finished yet.
+                            myAssignment.setDueTime(Long.valueOf(thisAssignment.getAttribute("dueTime"))); //Same for this line.
                             if (thisAssignment.getAttribute("isComplete").equals("true"))
                                 myAssignment.toggleIsComplete();
                             /* Uncomment this block for connection to I-Learn
