@@ -42,6 +42,11 @@ public class iLearnTracker extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    public void clickClassButton(){
+
+    }
+
     public void share(View view) {
 
         Intent intent = new Intent(this, AddClass.class);
