@@ -78,13 +78,7 @@ public class Class {
         XMLContent += "\n\t<isActive>" + isActive + "</isActive>";
 
         for(Assignment assignment : assignmentList){
-            XMLContent += "\n\t<Assignment>";
-            XMLContent += "\n\t\t<title>" + assignment.getTitle() + "</title>";
-            XMLContent += "\n\t\t<comments>" + assignment.getComments() + "</comments>";
-            XMLContent += "\n\t\t<dueDate>" + assignment.getDueDate() + "</dueDate>";
-            XMLContent += "\n\t\t<dueTime>" + assignment.getDueTime() + "</dueTime>";
-            XMLContent += "\n\t\t<isComplete>" + assignment.getIsComplete() + "</isComplete>";
-            XMLContent += "\n\t</Assignment>";
+           assignment.getAssignXML();
         }
 
         XMLContent += "\n</Class>";
