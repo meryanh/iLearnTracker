@@ -1,5 +1,6 @@
 package cs246.ilearntracker;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +14,7 @@ public class Settings extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
         setContentView(R.layout.activity_settings);
         NumberPicker np1 = (NumberPicker) findViewById(R.id.notifyInt);
         np1.setMinValue(0);
