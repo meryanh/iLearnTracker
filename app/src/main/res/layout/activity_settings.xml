@@ -23,7 +23,8 @@
         android:layout_below="@+id/notify"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:orientation="vertical" />
+        android:orientation="vertical"
+        />
 
     <EditText
         android:layout_width="wrap_content"

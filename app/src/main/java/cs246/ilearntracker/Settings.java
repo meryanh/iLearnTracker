@@ -14,6 +14,15 @@ public class Settings extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        NumberPicker np1 = (NumberPicker) findViewById(R.id.notifyInt);
+        np1.setMinValue(0);
+        np1.setMaxValue(24);
+        NumberPicker np2 = (NumberPicker) findViewById(R.id.refreshInt);
+        np2.setMinValue(0);
+        np2.setMaxValue(24);
+        NumberPicker np3 = (NumberPicker) findViewById(R.id.cleanUpInt);
+        np3.setMinValue(0);
+        np3.setMaxValue(14);
     }
 
 
