@@ -33,8 +33,7 @@
         android:text="Refresh Interval"
         android:layout_below="@+id/notifyInt"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="32dp" />
+        android:layout_alignParentStart="true" />
 
     <NumberPicker
         android:layout_width="wrap_content"
@@ -49,11 +48,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cleanUpIntText"
+        android:text="Clean Up Interval"
         android:layout_below="@+id/refreshInt"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="34dp"
-        android:text="Clean Up Interval" />
+        android:layout_alignParentStart="true" />
 
     <NumberPicker
         android:layout_width="wrap_content"
