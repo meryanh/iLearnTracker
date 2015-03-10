@@ -24,6 +24,7 @@ public class iLearnTracker extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_i_learn_tracker, menu);
+
         return true;
     }
 
@@ -36,7 +37,7 @@ public class iLearnTracker extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            goToSettings();
         }
 
         return super.onOptionsItemSelected(item);
@@ -55,15 +56,11 @@ public class iLearnTracker extends ActionBarActivity {
         intent.putExtra(EXTRA_MESSAGE, message);
 
         startActivity(intent);
+    }
 
-
-        //Intent intent = new Intent(this, Output.class);
-        //EditText book = (EditText) findViewById(R.id.bookEnter);
-       //EditText chapter = (EditText) findViewById(R.id.chapterEnter);
-        //EditText verse = (EditText) findViewById(R.id.verseEnter);
-        //String scripture = book.getText().toString() + " " + chapter.getText().toString() + ":" + verse.getText().toString() + "\n";
-        //intent.putExtra(EXTRA_MESSAGE, scripture);
-        //startActivity(intent);
+    public void goToSettings() {
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
     }
 
 

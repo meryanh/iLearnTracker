@@ -1,17 +1,30 @@
 package cs246.ilearntracker;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.NumberPicker;
 
 
 public class Settings extends ActionBarActivity {
+    //public static final String PREFS_NAME = "myPrefsFile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
         setContentView(R.layout.activity_settings);
+        NumberPicker np1 = (NumberPicker) findViewById(R.id.notifyInt);
+        np1.setMinValue(0);
+        np1.setMaxValue(24);
+        NumberPicker np2 = (NumberPicker) findViewById(R.id.refreshInt);
+        np2.setMinValue(0);
+        np2.setMaxValue(24);
+        NumberPicker np3 = (NumberPicker) findViewById(R.id.cleanUpInt);
+        np3.setMinValue(0);
+        np3.setMaxValue(14);
     }
 
 
@@ -35,5 +48,14 @@ public class Settings extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void save(Student me) {
+        //boolean notify = (boolean) findViewById(R.id.notify);
+
+        NumberPicker notifyInteger = (NumberPicker) findViewById(R.id.notifyInt);
+        Integer seconds = notifyInteger.getValue() * 3600;
+        System.out.println(seconds);
+        me.saveSettings();
     }
 }

@@ -84,4 +84,19 @@ public class Assignment {
     }
     */
 
+    public String getAssignXML() {
+        String xml = "";
+
+        xml += "\n\t<Assignment>";
+        xml += "\n\t\t<title>" + getTitle() + "</title>";
+        xml += "\n\t\t<comments>" + getComments() + "</comments>";
+        xml += "\n\t\t<dueDate>" + getDueDate() + "</dueDate>";
+        xml += "\n\t\t<dueTime>" + getDueTime() + "</dueTime>";
+        xml += "\n\t\t<isComplete>" + getIsComplete() + "</isComplete>";
+        //xml += "\n\t\t<fromILearn>" + getIsFromILearn() + "</fromILearn>";
+        xml += "\n\t</Assignment>";
+
+        return xml;
+    }
+
 }
