@@ -5,33 +5,29 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.NumberPicker;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 
-public class Settings extends ActionBarActivity {
-    //public static final String PREFS_NAME = "myPrefsFile";
+public class AddAssignment extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-        setContentView(R.layout.activity_settings);
-      /*  NumberPicker np1 = (NumberPicker) findViewById(R.id.notifyInt);
-        np1.setMinValue(0);
-        np1.setMaxValue(24);
-        NumberPicker np2 = (NumberPicker) findViewById(R.id.refreshInt);
-        np2.setMinValue(0);
-        np2.setMaxValue(24);
-        NumberPicker np3 = (NumberPicker) findViewById(R.id.cleanUpInt);
-        np3.setMinValue(0);
-        np3.setMaxValue(14);*/
+        setContentView(R.layout.activity_add_assignment);
+        Spinner dropdown = (Spinner)findViewById(R.id.classSelect);
+        String[] items = new String[]{"CS124", "CS165", "FDSCI108", "CIT160"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
+        dropdown.setAdapter(adapter);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_settings, menu);
+        getMenuInflater().inflate(R.menu.menu_add_assignment, menu);
         return true;
     }
 
@@ -49,13 +45,8 @@ public class Settings extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-/**
-    public void save(Student me) {
-        //boolean notify = (boolean) findViewById(R.id.notify);
 
-        NumberPicker notifyInteger = (NumberPicker) findViewById(R.id.notifyInt);
-        Integer seconds = notifyInteger.getValue() * 3600;
-        System.out.println(seconds);
-        me.saveSettings();
-    }*/
+    public void add(View view) {
+
+    }
 }

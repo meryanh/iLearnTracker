@@ -39,6 +39,9 @@ public class iLearnTracker extends ActionBarActivity {
         if (id == R.id.action_settings) {
             goToSettings();
         }
+        else if (id == R.id.action_addAssignment) {
+            goToAddAssignment();
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -60,6 +63,10 @@ public class iLearnTracker extends ActionBarActivity {
 
     public void goToSettings() {
         Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
+    }
+    public void goToAddAssignment() {
+        Intent intent = new Intent(this, AddAssignment.class);
         startActivity(intent);
     }
 
