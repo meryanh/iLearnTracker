@@ -1,6 +1,7 @@
 package cs246.ilearntracker;
 
 import android.graphics.Color;
+import android.util.Log;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -33,21 +34,26 @@ import javax.xml.transform.stream.StreamResult;
  */
 public class Student {
     private boolean notification;
+    private Integer notifyInterval;
     private Integer refreshInterval;
     private Integer cleanUpInterval;
     private List<Class> classesList;
+    private static final String TAG_STUDENT = "Student Activity";
 
     /**
      * Default Constructor
      */
     public Student() {
         notification = true;
+        notifyInterval = 604800;
         refreshInterval = 86400;
         cleanUpInterval = 604800;
         classesList = new ArrayList<Class>();
     }
 
     public void setNotify(boolean notify) { notification = notify; }
+
+    public void setNotifyInt(int notifyInt) { notifyInterval = notifyInt; }
 
     public void setRefresh(int refresh) {
         refreshInterval = refresh;
@@ -60,6 +66,8 @@ public class Student {
     public boolean getNotify() {
         return notification;
     }
+
+    public int getNotifyInt() { return notifyInterval; }
 
     public int getRefreshInterval() {
         return refreshInterval;
@@ -79,6 +87,7 @@ public class Student {
         String fileName = "mySettings.xml";
         String settings = "<settings>\n";
         settings += "\t<notification>" + notification + "</notification>\n";
+        settings += "\t<notifyInterval>" + notifyInterval + "</notifyInterval>\n";
         settings += "\t<refreshInterval>" + refreshInterval + "</refreshInterval>\n";
         settings += "\t<cleanUpInterval>" + cleanUpInterval + "</cleanUpInterval>\n";
         settings += "</settings>\n";
@@ -132,10 +141,12 @@ public class Student {
                 setNotify(true);
             else
                 setNotify(false);
+            setNotifyInt(Integer.parseInt(sets.getAttribute("notifyInterval")));
             setRefresh(Integer.parseInt(sets.getAttribute("refreshInterval")));
             setCleanUp(Integer.parseInt(sets.getAttribute("cleanUpInterval")));
         } catch (SAXException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            Log.e(TAG_STUDENT, "Error parsing XML file", e);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParserConfigurationException e) {

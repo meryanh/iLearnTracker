@@ -3,13 +3,17 @@ package cs246.ilearntracker;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CheckBox;
 import android.widget.NumberPicker;
 
 
 public class Settings extends ActionBarActivity {
     //public static final String PREFS_NAME = "myPrefsFile";
+    static Student student;
+    private static final String ACTIVITY_VARS = "Settings Activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,14 +21,15 @@ public class Settings extends ActionBarActivity {
         Intent intent = getIntent();
         setContentView(R.layout.activity_settings);
         NumberPicker np1 = (NumberPicker) findViewById(R.id.notifyInt);
-        np1.setMinValue(0);
+        np1.setMinValue(1);
         np1.setMaxValue(24);
         NumberPicker np2 = (NumberPicker) findViewById(R.id.refreshInt);
-        np2.setMinValue(0);
+        np2.setMinValue(1);
         np2.setMaxValue(24);
         NumberPicker np3 = (NumberPicker) findViewById(R.id.cleanUpInt);
-        np3.setMinValue(0);
+        np3.setMinValue(1);
         np3.setMaxValue(14);
+        Log.i(ACTIVITY_VARS, "Initialized Activity settings.");
     }
 
 
@@ -50,12 +55,22 @@ public class Settings extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void save(Student me) {
-        //boolean notify = (boolean) findViewById(R.id.notify);
+    public void save() {
 
+        CheckBox notify = (CheckBox) findViewById(R.id.notify);
         NumberPicker notifyInteger = (NumberPicker) findViewById(R.id.notifyInt);
-        Integer seconds = notifyInteger.getValue() * 3600;
-        System.out.println(seconds);
-        me.saveSettings();
+        NumberPicker refreshInteger = (NumberPicker) findViewById(R.id.refreshInt);
+        NumberPicker cleanInteger = (NumberPicker) findViewById(R.id.cleanUpInt);
+        Log.i(ACTIVITY_VARS, "pulled variables from the activity");
+
+        student.setNotify(notify.equals(true));
+        student.setNotifyInt(notifyInteger.getValue() * 3600);
+        student.setRefresh(refreshInteger.getValue() * 1);
+        student.setCleanUp(cleanInteger.getValue() * 1);
+
+        student.saveSettings();
+
+        Intent intent = new Intent(this, iLearnTracker.class);
+        startActivity(intent);
     }
 }
