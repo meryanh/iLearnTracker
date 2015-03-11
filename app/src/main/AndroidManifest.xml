@@ -32,7 +32,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cs246.ilearntracker.iLearnTracker" />
         </activity>
-
+        <activity
+            android:name=".AddAssignment"
+            android:label="@string/title_activity_add_assignment"
+            android:parentActivityName=".iLearnTracker" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cs246.ilearntracker.iLearnTracker" />
+        </activity>
     </application>
 
 </manifest>
