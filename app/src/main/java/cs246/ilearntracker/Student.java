@@ -149,6 +149,9 @@ public class Student {
         }
     }
 
+    public void addToList(Class newClass) {
+        classesList.add(newClass);
+    }
     /**
      * This function adds a class to the classesList
      */

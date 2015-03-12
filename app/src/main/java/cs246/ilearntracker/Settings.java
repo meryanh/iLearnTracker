@@ -1,6 +1,9 @@
 package cs246.ilearntracker;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +18,12 @@ public class Settings extends ActionBarActivity {
     //public static final String PREFS_NAME = "myPrefsFile";
     static Student student;
     private static final String ACTIVITY_VARS = "Settings Activity";
+    public static final String PREFS_NAME = "myPrefsFile";
+    private int hoursNotBefore;
+    private int refreshTime;
+    private int cleanUp;
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +74,8 @@ public class Settings extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public void save(View view) {
         /*//boolean notify = (boolean) findViewById(R.id.notify);
 

@@ -69,6 +69,7 @@ public class Class {
         }
     }
 
+
     /**
      * Returns the entire content of the Class class and all of the associated Assignment classes
      * as an XML formatted string.
