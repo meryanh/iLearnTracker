@@ -17,6 +17,8 @@ public class iLearnTracker extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         setContentView(R.layout.activity_i_learn_tracker);
+        //student.loadSettings();
+        //student.loadClasses();
     }
 
     @Override
@@ -63,6 +65,5 @@ public class iLearnTracker extends ActionBarActivity {
         Intent intent = new Intent(this, AddClass.class);
         startActivity(intent);
     }
-
 
 }

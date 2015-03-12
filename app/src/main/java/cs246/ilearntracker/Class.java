@@ -1,6 +1,7 @@
 package cs246.ilearntracker;
 
 import android.graphics.Color;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,8 @@ public class Class {
     private String className;
     private Integer classColor;
 
+    private static final String TAG_CLASS = "Class";
+
     /**
      * Class default constructor.
      */
@@ -22,6 +25,7 @@ public class Class {
         classColor = 0xffffff;
         assignmentList = new ArrayList();
         isActive = false;
+        Log.w(TAG_CLASS,"Class successfully constructed, but values are not correctly set.");
     }
 
     /**
@@ -34,6 +38,7 @@ public class Class {
         classColor = color;
         assignmentList = new ArrayList();
         isActive = true;
+        Log.i(TAG_CLASS,"Class successfully constructed with content.");
     }
 
     public void addAssignment(Assignment assignment){ assignmentList.add(assignment); }
@@ -78,11 +83,15 @@ public class Class {
         XMLContent += "\n\t<isActive>" + isActive + "</isActive>";
 
         for(Assignment assignment : assignmentList){
-           assignment.getAssignXML();
+            if(assignment == null){
+                Log.e(TAG_CLASS,"Assignment does not exist in class.");
+            } else {
+                assignment.getAssignXML();
+            }
         }
 
         XMLContent += "\n</Class>";
-
+        Log.i(TAG_CLASS,"Class XML content successfully created.");
         return XMLContent;
     }
 }

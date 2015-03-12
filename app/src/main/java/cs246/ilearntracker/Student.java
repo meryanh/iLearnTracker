@@ -1,6 +1,7 @@
 package cs246.ilearntracker;
 
 import android.graphics.Color;
+import android.util.Log;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -32,10 +33,12 @@ import javax.xml.transform.stream.StreamResult;
  * Created by Braden on 2/23/2015.
  */
 public class Student {
-    private static boolean notification;
-    private static Integer refreshInterval;
-    private static Integer cleanUpInterval;
-    private static List<Class> classesList;
+    private boolean notification;
+    private Integer notifyInterval;
+    private Integer refreshInterval;
+    private Integer cleanUpInterval;
+    private List<Class> classesList;
+    private static final String TAG_STUDENT = "Student Activity";
 
     /**
      * Default Constructor
@@ -53,10 +56,6 @@ public class Student {
         refreshInterval = refresh;
     }
 
-    public void addToList(Class newClass) {
-        classesList.add(newClass);
-    }
-
     public void setCleanUp(int cleanUp) {
         cleanUpInterval = cleanUp;
     }
@@ -64,6 +63,8 @@ public class Student {
     public boolean getNotify() {
         return notification;
     }
+
+    public int getNotifyInt() { return notifyInterval; }
 
     public int getRefreshInterval() {
         return refreshInterval;
@@ -83,6 +84,7 @@ public class Student {
         String fileName = "mySettings.xml";
         String settings = "<settings>\n";
         settings += "\t<notification>" + notification + "</notification>\n";
+        settings += "\t<notifyInterval>" + notifyInterval + "</notifyInterval>\n";
         settings += "\t<refreshInterval>" + refreshInterval + "</refreshInterval>\n";
         settings += "\t<cleanUpInterval>" + cleanUpInterval + "</cleanUpInterval>\n";
         settings += "</settings>\n";

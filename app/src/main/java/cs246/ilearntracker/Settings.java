@@ -1,21 +1,20 @@
 package cs246.ilearntracker;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.NumberPicker;
-import android.widget.TextView;
 
 
 public class Settings extends ActionBarActivity {
-    public static final String PREFS_NAME = "myPrefsFile";
-    public static int hoursNotBefore;
-    public static int refreshTime;
-    public static int cleanUp;
+    //public static final String PREFS_NAME = "myPrefsFile";
+    static Student student;
+    private static final String ACTIVITY_VARS = "Settings Activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +38,9 @@ public class Settings extends ActionBarActivity {
         cleanUp = pref.getInt("cleanUp", 1);
         np3.setValue(cleanUp);
 
+        np3.setMinValue(1);
+        np3.setMaxValue(14);
+        Log.i(ACTIVITY_VARS, "Initialized Activity settings.");
     }
 
 
