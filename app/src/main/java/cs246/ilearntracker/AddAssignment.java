@@ -7,7 +7,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TimePicker;
+
+import java.util.Date;
 
 
 public class AddAssignment extends ActionBarActivity {
@@ -47,6 +52,34 @@ public class AddAssignment extends ActionBarActivity {
     }
 
     public void add(View view) {
+        Assignment assignment = new Assignment();
+        EditText titleGetter = (EditText) findViewById(R.id.titleEdit);
+        String titleStr = titleGetter.getText().toString();
+        assignment.setTitle(titleStr);
+        EditText commentGetter = (EditText) findViewById(R.id.commentsEdit);
+        String commentStr = commentGetter.getText().toString();
+        assignment.setComments(commentStr);
+        Date due;
+        DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
+        int day = datePicker.getDayOfMonth();
+        int month = datePicker.getMonth();
+        int year =  datePicker.getYear();
+        due = new Date(year, month, day);
+        assignment.setDueDate(due);
+        TimePicker notifyTime = ((TimePicker) findViewById(R.id.timePicker));
+        long time = convertTime(notifyTime.getCurrentHour(), notifyTime.getCurrentMinute());
+        assignment.setDueTime(time);
+        Spinner classGetter = (Spinner) findViewById(R.id.classSelect);
+        String assignClassName = classGetter.getSelectedItem().toString();
+        /*Something to add this to the list of assignments in the class*/
+        Intent intent = new Intent(this, iLearnTracker.class);
+        startActivity(intent);
 
+    }
+
+    public long convertTime(long hour, long minute) {
+        long time = (minute + (hour * 60)) * 60 * 1000;
+
+        return time;
     }
 }

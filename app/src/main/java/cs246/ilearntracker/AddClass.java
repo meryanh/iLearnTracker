@@ -3,6 +3,7 @@ package cs246.ilearntracker;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,9 +14,11 @@ import android.widget.TextView;
 
 
 public class AddClass extends ActionBarActivity {
+    private static final String ADD_CLASS = "Add a Class Activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(ADD_CLASS, "You have entered the class interface");
 
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
@@ -49,6 +52,8 @@ public class AddClass extends ActionBarActivity {
     }
 
     public void add(View view) {
+        Log.i(ADD_CLASS, "You are adding a class!");
+        Student student = new Student();
         Class newClass;
         Integer col = 0x000000;
         EditText titleGetter = (EditText) findViewById(R.id.nameEnter);
@@ -80,6 +85,12 @@ public class AddClass extends ActionBarActivity {
         else if (color == "Brown") {
             col = 0x663300;
         }
-            newClass = new Class(titleStr, col);
+        else {
+            Log.e(ADD_CLASS, "You are adding a color that is not an option!");
+        }
+        newClass = new Class(titleStr, col);
+        student.addToList(newClass);
+        Intent intent = new Intent(this, iLearnTracker.class);
+        startActivity(intent);
     }
 }

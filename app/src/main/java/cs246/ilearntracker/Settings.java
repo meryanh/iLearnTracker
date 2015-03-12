@@ -1,30 +1,44 @@
 package cs246.ilearntracker;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 
 
 public class Settings extends ActionBarActivity {
-    //public static final String PREFS_NAME = "myPrefsFile";
+    public static final String PREFS_NAME = "myPrefsFile";
+    public static int hoursNotBefore;
+    public static int refreshTime;
+    public static int cleanUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         setContentView(R.layout.activity_settings);
-      /*  NumberPicker np1 = (NumberPicker) findViewById(R.id.notifyInt);
-        np1.setMinValue(0);
+        NumberPicker np1 = (NumberPicker) findViewById(R.id.notifyInt);
+        np1.setMinValue(1);
         np1.setMaxValue(24);
         NumberPicker np2 = (NumberPicker) findViewById(R.id.refreshInt);
-        np2.setMinValue(0);
+        np2.setMinValue(1);
         np2.setMaxValue(24);
         NumberPicker np3 = (NumberPicker) findViewById(R.id.cleanUpInt);
-        np3.setMinValue(0);
-        np3.setMaxValue(14);*/
+        np3.setMinValue(1);
+        np3.setMaxValue(14);
+        SharedPreferences pref = getSharedPreferences(PREFS_NAME, 0);
+        hoursNotBefore = pref.getInt("beforeDue", 1);
+        np1.setValue(hoursNotBefore);
+        refreshTime = pref.getInt("refresh", 1);
+        np2.setValue(refreshTime);
+        cleanUp = pref.getInt("cleanUp", 1);
+        np3.setValue(cleanUp);
+
     }
 
 
@@ -49,13 +63,38 @@ public class Settings extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-/**
-    public void save(Student me) {
-        //boolean notify = (boolean) findViewById(R.id.notify);
+
+    public void save(View view) {
+        /*//boolean notify = (boolean) findViewById(R.id.notify);
 
         NumberPicker notifyInteger = (NumberPicker) findViewById(R.id.notifyInt);
         Integer seconds = notifyInteger.getValue() * 3600;
         System.out.println(seconds);
-        me.saveSettings();
-    }*/
+        me.saveSettings();*/
+
+
+
+        SharedPreferences pref = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = pref.edit();
+
+        /* Save how many hours before to notify */
+        NumberPicker notifyInteger = (NumberPicker) findViewById(R.id.notifyInt);
+        hoursNotBefore = notifyInteger.getValue();
+        editor.putInt("beforeDue", hoursNotBefore);
+
+        /* Save how often to refresh the homework */
+        NumberPicker refreshInteger = (NumberPicker) findViewById(R.id.refreshInt);
+        refreshTime = notifyInteger.getValue();
+        editor.putInt("refresh", refreshTime);
+
+        /* Save how often to erase finished assignments */
+        NumberPicker cleanInteger = (NumberPicker) findViewById(R.id.cleanUpInt);
+        cleanUp = notifyInteger.getValue();
+        editor.putInt("cleanUp", cleanUp);
+
+        editor.commit();
+
+        Intent intent = new Intent(this, iLearnTracker.class);
+        startActivity(intent);
+    }
 }

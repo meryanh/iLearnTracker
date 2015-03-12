@@ -10,13 +10,12 @@ import android.widget.EditText;
 
 
 public class iLearnTracker extends ActionBarActivity {
-
-    public static final String EXTRA_MESSAGE = "com.jbjust.FavoriteScripture.MESSAGE";
     static Student student;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
         setContentView(R.layout.activity_i_learn_tracker);
     }
 
@@ -39,8 +38,8 @@ public class iLearnTracker extends ActionBarActivity {
         if (id == R.id.action_settings) {
             goToSettings();
         }
-        else if (id == R.id.action_addAssignment) {
-            goToAddAssignment();
+        else if (id == R.id.action_addClass) {
+            goToAddClass();
         }
 
         return super.onOptionsItemSelected(item);
@@ -52,12 +51,7 @@ public class iLearnTracker extends ActionBarActivity {
     }
 
     public void share(View view) {
-
-        Intent intent = new Intent(this, AddClass.class);
-
-        String message = "testing";
-        intent.putExtra(EXTRA_MESSAGE, message);
-
+        Intent intent = new Intent(this, AddAssignment.class);
         startActivity(intent);
     }
 
@@ -65,8 +59,8 @@ public class iLearnTracker extends ActionBarActivity {
         Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
     }
-    public void goToAddAssignment() {
-        Intent intent = new Intent(this, AddAssignment.class);
+    public void goToAddClass() {
+        Intent intent = new Intent(this, AddClass.class);
         startActivity(intent);
     }
 

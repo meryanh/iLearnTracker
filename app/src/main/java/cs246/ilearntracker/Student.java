@@ -32,10 +32,10 @@ import javax.xml.transform.stream.StreamResult;
  * Created by Braden on 2/23/2015.
  */
 public class Student {
-    private boolean notification;
-    private Integer refreshInterval;
-    private Integer cleanUpInterval;
-    private List<Class> classesList;
+    private static boolean notification;
+    private static Integer refreshInterval;
+    private static Integer cleanUpInterval;
+    private static List<Class> classesList;
 
     /**
      * Default Constructor
@@ -51,6 +51,10 @@ public class Student {
 
     public void setRefresh(int refresh) {
         refreshInterval = refresh;
+    }
+
+    public void addToList(Class newClass) {
+        classesList.add(newClass);
     }
 
     public void setCleanUp(int cleanUp) {
@@ -189,7 +193,7 @@ public class Student {
                     Element thisAssignment = (Element) assignments.item(j);
                     Assignment myAssignment = new Assignment(thisAssignment.getAttribute("title"),
                             thisAssignment.getAttribute("comments"));
-                            myAssignment.setDueDate(Long.valueOf(thisAssignment.getAttribute("dueDate"))); //This is not finished yet.
+                            //myAssignment.setDueDate(Long.valueOf(thisAssignment.getAttribute("dueDate"))); //This is not finished yet.
                             myAssignment.setDueTime(Long.valueOf(thisAssignment.getAttribute("dueTime"))); //Same for this line.
                             if (thisAssignment.getAttribute("isComplete").equals("true"))
                                 myAssignment.toggleIsComplete();
