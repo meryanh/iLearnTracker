@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Ryan Hildreth on 2/25/2015.
  */
 public class Class {
-    private List<Assignment> assignmentList;
+    public List<Assignment> assignmentList;
     private boolean isActive;
     private String className;
     private Integer classColor;

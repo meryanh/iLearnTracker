@@ -96,12 +96,12 @@ public class Settings extends ActionBarActivity {
 
         /* Save how often to refresh the homework */
         NumberPicker refreshInteger = (NumberPicker) findViewById(R.id.refreshInt);
-        refreshTime = notifyInteger.getValue();
+        refreshTime = refreshInteger.getValue();
         editor.putInt("refresh", refreshTime);
 
         /* Save how often to erase finished assignments */
         NumberPicker cleanInteger = (NumberPicker) findViewById(R.id.cleanUpInt);
-        cleanUp = notifyInteger.getValue();
+        cleanUp = cleanInteger.getValue();
         editor.putInt("cleanUp", cleanUp);
 
         editor.commit();

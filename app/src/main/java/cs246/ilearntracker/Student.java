@@ -33,11 +33,11 @@ import javax.xml.transform.stream.StreamResult;
  * Created by Braden on 2/23/2015.
  */
 public class Student {
-    private boolean notification;
-    private Integer notifyInterval;
-    private Integer refreshInterval;
-    private Integer cleanUpInterval;
-    private List<Class> classesList;
+    private static boolean notification;
+    private static Integer notifyInterval;
+    private static Integer refreshInterval;
+    private static Integer cleanUpInterval;
+    public static List<Class> classesList;
     private static final String TAG_STUDENT = "Student Activity";
 
     /**
@@ -149,7 +149,7 @@ public class Student {
         }
     }
 
-    public void addToList(Class newClass) {
+    public static void addToList(Class newClass) {
         classesList.add(newClass);
     }
     /**

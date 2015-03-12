@@ -10,7 +10,8 @@ import android.widget.EditText;
 
 
 public class iLearnTracker extends ActionBarActivity {
-    static Student student;
+    private Student student;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,7 @@ public class iLearnTracker extends ActionBarActivity {
         setContentView(R.layout.activity_i_learn_tracker);
         //student.loadSettings();
         //student.loadClasses();
+
     }
 
     @Override
@@ -64,6 +66,14 @@ public class iLearnTracker extends ActionBarActivity {
     public void goToAddClass() {
         Intent intent = new Intent(this, AddClass.class);
         startActivity(intent);
+    }
+    public void refresh(View view) {
+
+        int sizeList = student.classesList.size();
+        for (int i = 0; i < sizeList; i++) {
+            Class testClass = student.classesList.get(i);
+            System.out.println(testClass.getClassName());
+        }
     }
 
 }

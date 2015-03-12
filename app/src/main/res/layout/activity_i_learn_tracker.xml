@@ -26,7 +26,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="26sp"
                 android:text="@string/refresh"
-                android:id="@+id/refresh" />
+                android:id="@+id/refresh"
+                android:onClick="refresh"/>
 
             <Button
                 android:layout_width="wrap_content"

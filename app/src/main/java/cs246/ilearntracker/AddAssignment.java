@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -22,8 +23,15 @@ public class AddAssignment extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         setContentView(R.layout.activity_add_assignment);
+        Student nStudent = new Student();
+        ArrayList<String> items = new ArrayList<String>();
+        int sizeList = Student.classesList.size();
+        items.add("Select a Class...");
+        for (int i = 0; i < sizeList; i++) {
+            Class testClass = Student.classesList.get(i);
+            items.add(testClass.getClassName());
+        }
         Spinner dropdown = (Spinner)findViewById(R.id.classSelect);
-        String[] items = new String[]{"CS124", "CS165", "FDSCI108", "CIT160"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
         dropdown.setAdapter(adapter);
     }

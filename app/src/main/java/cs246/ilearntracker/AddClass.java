@@ -89,7 +89,7 @@ public class AddClass extends ActionBarActivity {
             Log.e(ADD_CLASS, "You are adding a color that is not an option!");
         }
         newClass = new Class(titleStr, col);
-        student.addToList(newClass);
+        Student.addToList(newClass);
         Intent intent = new Intent(this, iLearnTracker.class);
         startActivity(intent);
     }
