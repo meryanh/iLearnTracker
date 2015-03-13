@@ -17,22 +17,24 @@ import java.util.Date;
 
 
 public class AddAssignment extends ActionBarActivity {
-
+    private Student student = Student.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         setContentView(R.layout.activity_add_assignment);
-        Student nStudent = new Student();
+        //Student nStudent = new Student();
         ArrayList<String> items = new ArrayList<String>();
-        int sizeList = Student.classesList.size();
+        int sizeList = student.classesList.size();
         items.add("Select a Class...");
         for (int i = 0; i < sizeList; i++) {
-            Class testClass = Student.classesList.get(i);
-            items.add(testClass.getClassName());
+            Class testClass = student.classesList.get(i);
+            String name = testClass.getClassName();
+            System.out.println(name);
+            items.add(name);
         }
         Spinner dropdown = (Spinner)findViewById(R.id.classSelect);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
         dropdown.setAdapter(adapter);
     }
 
@@ -79,7 +81,12 @@ public class AddAssignment extends ActionBarActivity {
         assignment.setDueTime(time);
         Spinner classGetter = (Spinner) findViewById(R.id.classSelect);
         String assignClassName = classGetter.getSelectedItem().toString();
-        /*Something to add this to the list of assignments in the class*/
+        for (int i = 0; i < student.classesList.size(); i++) {
+            Class checkClass = student.classesList.get(i);
+            if (checkClass.getClassName().equals(assignClassName)){
+                
+            }
+        }
         Intent intent = new Intent(this, iLearnTracker.class);
         startActivity(intent);
 

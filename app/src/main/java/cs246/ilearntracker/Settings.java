@@ -15,8 +15,7 @@ import android.widget.NumberPicker;
 
 
 public class Settings extends ActionBarActivity {
-    //public static final String PREFS_NAME = "myPrefsFile";
-    static Student student;
+    //private static Student student;
     private static final String ACTIVITY_VARS = "Settings Activity";
     public static final String PREFS_NAME = "myPrefsFile";
     private int hoursNotBefore;
@@ -45,9 +44,6 @@ public class Settings extends ActionBarActivity {
         np2.setValue(refreshTime);
         cleanUp = pref.getInt("cleanUp", 1);
         np3.setValue(cleanUp);
-
-        np3.setMinValue(1);
-        np3.setMaxValue(14);
         Log.i(ACTIVITY_VARS, "Initialized Activity settings.");
     }
 
@@ -77,13 +73,13 @@ public class Settings extends ActionBarActivity {
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public void save(View view) {
-        /*//boolean notify = (boolean) findViewById(R.id.notify);
-
+        //boolean notify = (boolean) findViewById(R.id.notify);
+/*
         NumberPicker notifyInteger = (NumberPicker) findViewById(R.id.notifyInt);
         Integer seconds = notifyInteger.getValue() * 3600;
         System.out.println(seconds);
-        me.saveSettings();*/
-
+        me.saveSettings();
+*/
 
 
         SharedPreferences pref = getSharedPreferences(PREFS_NAME, 0);
@@ -103,7 +99,7 @@ public class Settings extends ActionBarActivity {
         NumberPicker cleanInteger = (NumberPicker) findViewById(R.id.cleanUpInt);
         cleanUp = cleanInteger.getValue();
         editor.putInt("cleanUp", cleanUp);
-
+        System.out.println("Here!");
         editor.commit();
 
         Intent intent = new Intent(this, iLearnTracker.class);

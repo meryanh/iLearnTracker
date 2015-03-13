@@ -1,6 +1,9 @@
 package cs246.ilearntracker;
 
+
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 
 import org.w3c.dom.Document;
@@ -32,24 +35,30 @@ import javax.xml.transform.stream.StreamResult;
 /**
  * Created by Braden on 2/23/2015.
  */
-public class Student {
-    private static boolean notification;
-    private static Integer notifyInterval;
-    private static Integer refreshInterval;
-    private static Integer cleanUpInterval;
-    public static List<Class> classesList;
+public class Student extends ActionBarActivity {
+    private static Student instance = new Student();
+    public static final String PREFS_NAME = "myPrefsFile";
+
+    private boolean notification;
+    private Integer notifyInterval;
+    private Integer refreshInterval;
+    private Integer cleanUpInterval;
+    public List<Class> classesList;
     private static final String TAG_STUDENT = "Student Activity";
 
     /**
      * Default Constructor
      */
-    public Student() {
+
+    private Student() {
         notification = true;
         refreshInterval = 86400;
         cleanUpInterval = 604800;
         classesList = new ArrayList<Class>();
     }
-
+    public static Student getInstance() {
+        return instance;
+    }
     public void setNotify(boolean notify) { notification = notify; }
 
     public void setRefresh(int refresh) {
@@ -125,8 +134,15 @@ public class Student {
      * This function will load the previous saved variable values from the xml file.
      */
     public void loadSettings() {
+        SharedPreferences pref = getSharedPreferences(PREFS_NAME, 0);
+        notifyInterval = pref.getInt("beforeDue", 1);
+        refreshInterval = pref.getInt("refresh", 1);
+        cleanUpInterval = pref.getInt("cleanUp", 1);
 
+/*
         try {
+
+
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(new File("mySettings.xml"));
@@ -146,10 +162,10 @@ public class Student {
             e.printStackTrace();
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
-    public static void addToList(Class newClass) {
+    public void addToList(Class newClass) {
         classesList.add(newClass);
     }
     /**
@@ -198,10 +214,10 @@ public class Student {
                     Element thisAssignment = (Element) assignments.item(j);
                     Assignment myAssignment = new Assignment(thisAssignment.getAttribute("title"),
                             thisAssignment.getAttribute("comments"));
-                            //myAssignment.setDueDate(Long.valueOf(thisAssignment.getAttribute("dueDate"))); //This is not finished yet.
-                            myAssignment.setDueTime(Long.valueOf(thisAssignment.getAttribute("dueTime"))); //Same for this line.
-                            if (thisAssignment.getAttribute("isComplete").equals("true"))
-                                myAssignment.toggleIsComplete();
+                    //myAssignment.setDueDate(Long.valueOf(thisAssignment.getAttribute("dueDate"))); //This is not finished yet.
+                    myAssignment.setDueTime(Long.valueOf(thisAssignment.getAttribute("dueTime"))); //Same for this line.
+                    if (thisAssignment.getAttribute("isComplete").equals("true"))
+                        myAssignment.toggleIsComplete();
                             /* Uncomment this block for connection to I-Learn
                             if (thisAssignment.getAttribute("fromILearn").equals("true"))
                                 myAssignment.setIsFromILearn();

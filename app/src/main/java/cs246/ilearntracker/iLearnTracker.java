@@ -8,10 +8,32 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
 
 public class iLearnTracker extends ActionBarActivity {
-    private Student student;
-
+    private Student student = Student.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +90,11 @@ public class iLearnTracker extends ActionBarActivity {
         startActivity(intent);
     }
     public void refresh(View view) {
-
+        //Student stu = new Student();
+        //int siz = stu.classesList.size();
+        //System.out.println(siz);
         int sizeList = student.classesList.size();
+        System.out.println("Here!");
         for (int i = 0; i < sizeList; i++) {
             Class testClass = student.classesList.get(i);
             System.out.println(testClass.getClassName());
