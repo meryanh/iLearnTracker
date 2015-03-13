@@ -81,12 +81,14 @@ public class AddAssignment extends ActionBarActivity {
         assignment.setDueTime(time);
         Spinner classGetter = (Spinner) findViewById(R.id.classSelect);
         String assignClassName = classGetter.getSelectedItem().toString();
+        Class addToClass = new Class();
         for (int i = 0; i < student.classesList.size(); i++) {
             Class checkClass = student.classesList.get(i);
             if (checkClass.getClassName().equals(assignClassName)){
-                
+                addToClass = checkClass;
             }
         }
+        addToClass.assignmentList.add(assignment);
         Intent intent = new Intent(this, iLearnTracker.class);
         startActivity(intent);
 
