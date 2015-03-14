@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -71,9 +72,37 @@ public class iLearnTracker extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    // Sets the visibility, text, and color tag for all class buttons.
+    // Sets all unused buttons to hidden.
+    public void setupClassButtons(){
+        int resID;
+        Integer i = 0;
+        TextView buttonView;
+        TextView tagView;
+        for(Class theClass : student.getClassList()){
+            resID = getResources().getIdentifier("classButton0" + i.toString(), "id", "cs246.ilearntracker");
+            buttonView = (TextView)findViewById(resID);
+            buttonView.setText(theClass.getClassName());
+            buttonView.setVisibility(View.VISIBLE);
+            resID = getResources().getIdentifier("classTag0" + i.toString(), "id", "cs246.ilearntracker");
+            tagView = (TextView)findViewById(resID);
+            tagView.setBackgroundColor(theClass.getClassColor());
+            buttonView.setVisibility(View.VISIBLE);
+            i++;
+        }
+        for(; i < 10; i++){
+            resID = getResources().getIdentifier("classButton0" + i.toString(), "id", "cs246.ilearntracker");
+            buttonView = (TextView)findViewById(resID);
+            buttonView.setVisibility(View.INVISIBLE);
+            resID = getResources().getIdentifier("classTag0" + i.toString(), "id", "cs246.ilearntracker");
+            tagView = (TextView)findViewById(resID);
+            buttonView.setVisibility(View.INVISIBLE);
+        }
+    }
 
-    public void clickClassButton(){
-
+    public void classButtonClick(){
+        // Toggle isActive of clicked class
+        // Reload assignment list
     }
 
     public void share(View view) {

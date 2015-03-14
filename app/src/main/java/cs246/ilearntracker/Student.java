@@ -85,6 +85,8 @@ public class Student extends ActionBarActivity {
 
     public Class getClass(Integer i) { return classesList.get(i); }
 
+    public List<Class> getClassList() { return classesList; }
+
     /**
      * This function will save the local variables notification, refreshInterval,
      * and cleanUpInterval into its own xml file.
