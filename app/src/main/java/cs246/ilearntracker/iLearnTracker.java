@@ -1,8 +1,10 @@
 package cs246.ilearntracker;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,9 +45,14 @@ public class iLearnTracker extends ActionBarActivity {
         setContentView(R.layout.activity_i_learn_tracker);
         //student.loadSettings();
         //student.loadClasses();
-
+        setupClassButtons();
     }
-
+/*
+    @Override
+    public void onResume(){
+        setupClassButtons();
+    }
+*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -63,10 +70,10 @@ public class iLearnTracker extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            goToSettings();
+            goToSettings(null);
         }
         else if (id == R.id.action_addClass) {
-            goToAddClass();
+            goToAddClass(null);
         }
 
         return super.onOptionsItemSelected(item);
@@ -86,35 +93,42 @@ public class iLearnTracker extends ActionBarActivity {
             buttonView.setVisibility(View.VISIBLE);
             resID = getResources().getIdentifier("classTag0" + i.toString(), "id", "cs246.ilearntracker");
             tagView = (TextView)findViewById(resID);
+            tagView.setVisibility(View.VISIBLE);
             tagView.setBackgroundColor(theClass.getClassColor());
-            buttonView.setVisibility(View.VISIBLE);
             i++;
         }
         for(; i < 10; i++){
             resID = getResources().getIdentifier("classButton0" + i.toString(), "id", "cs246.ilearntracker");
             buttonView = (TextView)findViewById(resID);
-            buttonView.setVisibility(View.INVISIBLE);
+            buttonView.setVisibility(View.GONE);
             resID = getResources().getIdentifier("classTag0" + i.toString(), "id", "cs246.ilearntracker");
             tagView = (TextView)findViewById(resID);
-            buttonView.setVisibility(View.INVISIBLE);
+            tagView.setVisibility(View.GONE);
         }
     }
 
-    public void classButtonClick(){
-        // Toggle isActive of clicked class
-        // Reload assignment list
+    public void classButtonClick(View view){
+        if(view.getVisibility() != View.VISIBLE){
+            return; // Do nothing if hidden button was clicked
+        }
+        String tag = view.getTag().toString();
+        Integer i = Integer.parseInt(tag.substring(tag.length() - 1));
+
+        student.getClass(i).toggleIsActive();
+
+        // RELOAD ASSIGNMENT LIST NOW
     }
 
-    public void share(View view) {
+    public void addAssignment(View view) {
         Intent intent = new Intent(this, AddAssignment.class);
         startActivity(intent);
     }
 
-    public void goToSettings() {
+    public void goToSettings(View view) {
         Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
     }
-    public void goToAddClass() {
+    public void goToAddClass(View view) {
         Intent intent = new Intent(this, AddClass.class);
         startActivity(intent);
     }
@@ -122,12 +136,15 @@ public class iLearnTracker extends ActionBarActivity {
         //Student stu = new Student();
         //int siz = stu.classesList.size();
         //System.out.println(siz);
+        setupClassButtons();
+        return;
+        /*
         int sizeList = student.classesList.size();
         System.out.println("Here!");
         for (int i = 0; i < sizeList; i++) {
             Class testClass = student.classesList.get(i);
             System.out.println(testClass.getClassName());
         }
+        */
     }
-
 }

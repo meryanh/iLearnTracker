@@ -1,12 +1,8 @@
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
@@ -15,56 +11,30 @@
         android:orientation="vertical"
         android:weightSum="1">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:layout_weight="1">
+
+        <ListView
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_weight="2"
+            android:id="@+id/assignmentList">
+        </ListView>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="500"/>
-
-            <Button
-                android:layout_width="158dp"
-                android:layout_height="wrap_content"
-                android:textSize="26sp"
-                android:text="@string/refresh"
-                android:id="@+id/refresh"
-                android:onClick="refresh"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:textSize="26sp"
-                android:layout_weight="3"
-                android:text="@string/add"
-                android:onClick="share"
-                android:id="@+id/addAssignment" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:baselineAligned="false"
-            android:layout_weight="12.59">
-
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/assignmentList">
-            </ListView>
+        <ScrollView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView" >
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:gravity="right"
-                android:layout_weight="1">
+                android:gravity="right">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -76,19 +46,21 @@
                         android:layout_height="match_parent"
                         android:id="@+id/classTag00"
                         android:text="  "
-                        android:background="#ff696969" />
+                        android:background="#ff696969"
+                        android:tag="classColor00"
+                        android:visibility="visible" />
                     <TextView
                         android:layout_width="160dp"
                         android:layout_height="50dp"
                         android:layout_gravity="right"
                         android:textSize="16sp"
                         android:layout_weight="3"
-                        android:text="       "
                         android:onClick="classButtonClick"
                         android:clickable="true"
+                        android:tag="classButton00"
                         android:id="@+id/classButton00"
                         android:background="#ffe8e8e8"
-                        android:singleLine="true" />
+                        android:visibility="visible" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -101,7 +73,9 @@
                         android:layout_height="match_parent"
                         android:id="@+id/classTag01"
                         android:text="  "
-                        android:background="#ff696969" />
+                        android:background="#ff696969"
+                        android:tag="classColor01"
+                        android:visibility="visible" />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="50dp"
@@ -111,9 +85,10 @@
                         android:text="       "
                         android:onClick="classButtonClick"
                         android:clickable="true"
+                        android:tag="classButton01"
                         android:id="@+id/classButton01"
                         android:background="#ffe8e8e8"
-                        android:singleLine="true" />
+                        android:visibility="visible" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -126,7 +101,9 @@
                         android:layout_height="match_parent"
                         android:id="@+id/classTag02"
                         android:text="  "
-                        android:background="#ff696969" />
+                        android:background="#ff696969"
+                        android:tag="classColor02"
+                        android:visibility="visible" />
                     <TextView
                         android:layout_width="160dp"
                         android:layout_height="50dp"
@@ -136,9 +113,10 @@
                         android:text="       "
                         android:onClick="classButtonClick"
                         android:clickable="true"
+                        android:tag="classButton02"
                         android:id="@+id/classButton02"
                         android:background="#ffe8e8e8"
-                        android:singleLine="true" />
+                        android:visibility="visible" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -151,7 +129,9 @@
                         android:layout_height="match_parent"
                         android:id="@+id/classTag03"
                         android:text="  "
-                        android:background="#ff696969" />
+                        android:background="#ff696969"
+                        android:tag="classColor03"
+                        android:visibility="visible" />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="50dp"
@@ -161,9 +141,10 @@
                         android:text="       "
                         android:onClick="classButtonClick"
                         android:clickable="true"
+                        android:tag="classButton03"
                         android:id="@+id/classButton03"
                         android:background="#ffe8e8e8"
-                        android:singleLine="true" />
+                        android:visibility="visible" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -176,7 +157,9 @@
                         android:layout_height="match_parent"
                         android:id="@+id/classTag04"
                         android:text="  "
-                        android:background="#ff696969" />
+                        android:background="#ff696969"
+                        android:tag="classColor04"
+                        android:visibility="visible" />
                     <TextView
                         android:layout_width="160dp"
                         android:layout_height="50dp"
@@ -186,9 +169,10 @@
                         android:text="       "
                         android:onClick="classButtonClick"
                         android:clickable="true"
+                        android:tag="classButton04"
                         android:id="@+id/classButton04"
                         android:background="#ffe8e8e8"
-                        android:singleLine="true" />
+                        android:visibility="visible" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -201,7 +185,9 @@
                         android:layout_height="match_parent"
                         android:id="@+id/classTag05"
                         android:text="  "
-                        android:background="#ff696969" />
+                        android:background="#ff696969"
+                        android:tag="classColor05"
+                        android:visibility="visible" />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="50dp"
@@ -211,9 +197,10 @@
                         android:text="       "
                         android:onClick="classButtonClick"
                         android:clickable="true"
+                        android:tag="classButton05"
                         android:id="@+id/classButton05"
                         android:background="#ffe8e8e8"
-                        android:singleLine="true" />
+                        android:visibility="visible" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -226,7 +213,9 @@
                         android:layout_height="match_parent"
                         android:id="@+id/classTag06"
                         android:text="  "
-                        android:background="#ff696969" />
+                        android:background="#ff696969"
+                        android:tag="classColor06"
+                        android:visibility="visible" />
                     <TextView
                         android:layout_width="160dp"
                         android:layout_height="50dp"
@@ -236,9 +225,10 @@
                         android:text="       "
                         android:onClick="classButtonClick"
                         android:clickable="true"
+                        android:tag="classButton06"
                         android:id="@+id/classButton06"
                         android:background="#ffe8e8e8"
-                        android:singleLine="true" />
+                        android:visibility="visible" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -251,7 +241,9 @@
                         android:layout_height="match_parent"
                         android:id="@+id/classTag07"
                         android:text="  "
-                        android:background="#ff696969" />
+                        android:background="#ff696969"
+                        android:tag="classColor07"
+                        android:visibility="visible" />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="50dp"
@@ -261,9 +253,10 @@
                         android:text="       "
                         android:onClick="classButtonClick"
                         android:clickable="true"
+                        android:tag="classButton07"
                         android:id="@+id/classButton07"
                         android:background="#ffe8e8e8"
-                        android:singleLine="true" />
+                        android:visibility="visible" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -276,7 +269,9 @@
                         android:layout_height="match_parent"
                         android:id="@+id/classTag08"
                         android:text="  "
-                        android:background="#ff696969" />
+                        android:background="#ff696969"
+                        android:tag="classColor08"
+                        android:visibility="visible" />
                     <TextView
                         android:layout_width="160dp"
                         android:layout_height="50dp"
@@ -286,9 +281,10 @@
                         android:text="       "
                         android:onClick="classButtonClick"
                         android:clickable="true"
+                        android:tag="classButton08"
                         android:id="@+id/classButton08"
                         android:background="#ffe8e8e8"
-                        android:singleLine="true" />
+                        android:visibility="visible" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -301,7 +297,9 @@
                         android:layout_height="match_parent"
                         android:id="@+id/classTag09"
                         android:text="  "
-                        android:background="#ff696969" />
+                        android:background="#ff696969"
+                        android:tag="classColor09"
+                        android:visibility="visible" />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="50dp"
@@ -311,15 +309,68 @@
                         android:text="       "
                         android:onClick="classButtonClick"
                         android:clickable="true"
+                        android:tag="classButton09"
                         android:id="@+id/classButton09"
                         android:background="#ffe8e8e8"
-                        android:singleLine="true" />
+                        android:visibility="visible" />
+
                 </LinearLayout>
 
             </LinearLayout>
-
-        </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 
-</ScrollView>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="2"
+            android:background="@android:color/darker_gray">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="26sp"
+                android:text="@string/refresh"
+                android:id="@+id/refresh"
+                android:onClick="refresh"
+                android:src="@drawable/refresh" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="26sp"
+                android:layout_weight="3"
+                android:text="@string/add"
+                android:onClick="addAssignment"
+                android:id="@+id/addAssignment"
+                android:src="@drawable/newassignment"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="500"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="26sp"
+                android:layout_weight="3"
+                android:text="@string/add"
+                android:onClick="goToAddClass"
+                android:id="@+id/addClassButton"
+                android:src="@drawable/newclass2" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>
+

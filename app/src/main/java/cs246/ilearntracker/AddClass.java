@@ -1,6 +1,7 @@
 package cs246.ilearntracker;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -62,28 +63,28 @@ public class AddClass extends ActionBarActivity {
         String color = colorGetter.getSelectedItem().toString();
 
         if (color == "Red") {
-            col = 0xff0000;
+            col = Color.RED;//0xff0000;
         }
         else if (color == "Yellow") {
-            col = 0xffff00;
+            col = Color.YELLOW;//0xffff00;
         }
         else if (color == "Blue") {
-            col = 0x0000ff;
+            col = Color.BLUE;//0x0000ff;
         }
         else if (color == "Orange") {
-            col = 0xff8000;
+            col = Color.YELLOW;//0xff8000;
         }
         else if (color == "Purple") {
-            col = 0x660066;
+            col = Color.CYAN;//0x660066;
         }
         else if (color == "Green") {
-            col = 0x00ff00;
+            col = Color.GREEN;//0x00ff00;
         }
         else if (color == "Pink") {
-            col = 0xff33ff;
+            col = Color.MAGENTA;//0xff33ff;
         }
         else if (color == "Brown") {
-            col = 0x663300;
+            col = Color.DKGRAY;//0x663300;
         }
         else {
             Log.e(ADD_CLASS, "You are adding a color that is not an option!");
