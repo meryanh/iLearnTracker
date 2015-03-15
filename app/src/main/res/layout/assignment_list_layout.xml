@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="4dp">
+
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/textView" />
+        android:id="@+id/lblListHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:paddingLeft="4dp"
+        android:textSize="18dp"
+        android:textColor="@android:color/black"
+        android:background="@android:color/darker_gray" />
 
-    <ListView
+    <Space
         android:layout_width="match_parent"
-        android:layout_marginLeft="20sp"
-        android:layout_height="wrap_content"
-        android:id="@+id/listView" />
+        android:layout_height="6dp"
+        android:layout_gravity="center_horizontal" />
+
 </LinearLayout>

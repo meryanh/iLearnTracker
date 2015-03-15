@@ -1,42 +1,27 @@
 package cs246.ilearntracker;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Result;
-import javax.xml.transform.Source;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
 
 public class iLearnTracker extends ActionBarActivity {
     private Student student = Student.getInstance();
+
+    ExpandableListAdapter listAdapter;
+    ExpandableListView expListView;
+    List<String> listDataHeader;
+    HashMap<String, List<String>> listDataChild;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +31,74 @@ public class iLearnTracker extends ActionBarActivity {
         //student.loadSettings();
         //student.loadClasses();
         setupClassButtons();
+
+        // get the listview
+        expListView = (ExpandableListView) findViewById(R.id.lvExp);
+
+        // preparing list data
+        prepareListData();
+
+        listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
+
+        // setting list adapter
+        expListView.setAdapter(listAdapter);
+
+        // Listview on child click listener
+        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v,
+                                        int groupPosition, int childPosition, long id) {
+                // TODO Auto-generated method stub
+                // Do whatever is needed with the clicked info.
+                Toast.makeText(
+                        getApplicationContext(),
+                        listDataHeader.get(groupPosition)
+                                + " : "
+                                + listDataChild.get(
+                                listDataHeader.get(groupPosition)).get(
+                                childPosition), Toast.LENGTH_SHORT)
+                        .show();
+                return false;
+            }
+        });
     }
-/*
-    @Override
-    public void onResume(){
-        setupClassButtons();
+
+    /*
+     * Preparing the list data for assignment data
+     */
+    private void prepareListData() {
+        listDataHeader = new ArrayList<String>();
+        listDataChild = new HashMap<String, List<String>>();
+
+        // Change this to use assignments within the student's class objects
+        //
+        // First sort by date,
+        // then make a new header for each date,
+        // then add each assignment along with due dates.
+
+        listDataHeader.add("Today");
+        listDataHeader.add("Tomorrow");
+        listDataHeader.add("Even later...");
+
+        List<String> Today = new ArrayList<String>();
+        Today.add("Assignment 1");
+        Today.add("Assignment 2");
+        Today.add("Exam #1");
+
+        List<String> Tomorrow = new ArrayList<String>();
+        Tomorrow.add("Assignment 3");
+        Tomorrow.add("Reading 1");
+        Tomorrow.add("Study guide");
+
+        List<String> later = new ArrayList<String>();
+        later.add("More stuff");
+
+        listDataChild.put(listDataHeader.get(0), Today); // Header, Child data
+        listDataChild.put(listDataHeader.get(1), Tomorrow);
+        listDataChild.put(listDataHeader.get(2), later);
     }
-*/
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

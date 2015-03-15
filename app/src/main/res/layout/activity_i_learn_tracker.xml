@@ -18,12 +18,11 @@
         android:baselineAligned="false"
         android:layout_weight="1">
 
-        <ListView
-            android:layout_width="fill_parent"
+        <ExpandableListView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:id="@+id/assignmentList">
-        </ListView>
+            android:id="@+id/lvExp"
+            android:layout_weight="1" />
 
         <ScrollView
             android:layout_width="100dp"
@@ -63,7 +62,7 @@
                         android:background="#ffe8e8e8"
                         android:visibility="visible"
                         android:layout_marginBottom="8dp"
-                        android:text=" "
+                        android:text="       "
                         android:textAlignment="center"
                         android:paddingLeft="10dp"
                         android:paddingTop="8dp" />
@@ -89,7 +88,7 @@
                         android:layout_gravity="right"
                         android:textSize="16sp"
                         android:layout_weight="3"
-                        android:text=" "
+                        android:text="       "
                         android:onClick="classButtonClick"
                         android:clickable="true"
                         android:tag="classButton01"
@@ -122,7 +121,7 @@
                         android:layout_gravity="right"
                         android:textSize="16sp"
                         android:layout_weight="3"
-                        android:text=" "
+                        android:text="       "
                         android:onClick="classButtonClick"
                         android:clickable="true"
                         android:tag="classButton02"
@@ -155,7 +154,7 @@
                         android:layout_gravity="right"
                         android:textSize="16sp"
                         android:layout_weight="3"
-                        android:text=" "
+                        android:text="       "
                         android:onClick="classButtonClick"
                         android:clickable="true"
                         android:tag="classButton03"
@@ -188,7 +187,7 @@
                         android:layout_gravity="right"
                         android:textSize="16sp"
                         android:layout_weight="3"
-                        android:text=" "
+                        android:text="       "
                         android:onClick="classButtonClick"
                         android:clickable="true"
                         android:tag="classButton04"
@@ -221,7 +220,7 @@
                         android:layout_gravity="right"
                         android:textSize="16sp"
                         android:layout_weight="3"
-                        android:text=" "
+                        android:text="       "
                         android:onClick="classButtonClick"
                         android:clickable="true"
                         android:tag="classButton05"
@@ -254,7 +253,7 @@
                         android:layout_gravity="right"
                         android:textSize="16sp"
                         android:layout_weight="3"
-                        android:text=" "
+                        android:text="       "
                         android:onClick="classButtonClick"
                         android:clickable="true"
                         android:tag="classButton06"
@@ -287,7 +286,7 @@
                         android:layout_gravity="right"
                         android:textSize="16sp"
                         android:layout_weight="3"
-                        android:text=" "
+                        android:text="       "
                         android:onClick="classButtonClick"
                         android:clickable="true"
                         android:tag="classButton07"
@@ -320,7 +319,7 @@
                         android:layout_gravity="right"
                         android:textSize="16sp"
                         android:layout_weight="3"
-                        android:text=" "
+                        android:text="       "
                         android:onClick="classButtonClick"
                         android:clickable="true"
                         android:tag="classButton08"
@@ -353,7 +352,7 @@
                         android:layout_gravity="right"
                         android:textSize="16sp"
                         android:layout_weight="3"
-                        android:text=" "
+                        android:text="       "
                         android:onClick="classButtonClick"
                         android:clickable="true"
                         android:tag="classButton09"
