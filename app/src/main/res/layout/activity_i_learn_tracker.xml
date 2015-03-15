@@ -43,15 +43,16 @@
 
                     <TextView
                         android:layout_width="10dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="40dp"
                         android:id="@+id/classTag00"
                         android:text="  "
                         android:background="#ff696969"
                         android:tag="classColor00"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:layout_marginBottom="8dp" />
                     <TextView
                         android:layout_width="160dp"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="right"
                         android:textSize="16sp"
                         android:layout_weight="3"
@@ -60,7 +61,12 @@
                         android:tag="classButton00"
                         android:id="@+id/classButton00"
                         android:background="#ffe8e8e8"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:layout_marginBottom="8dp"
+                        android:text=" "
+                        android:textAlignment="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="8dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -70,25 +76,30 @@
 
                     <TextView
                         android:layout_width="10dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="40dp"
                         android:id="@+id/classTag01"
                         android:text="  "
                         android:background="#ff696969"
                         android:tag="classColor01"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:layout_marginBottom="8dp" />
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="right"
                         android:textSize="16sp"
                         android:layout_weight="3"
-                        android:text="       "
+                        android:text=" "
                         android:onClick="classButtonClick"
                         android:clickable="true"
                         android:tag="classButton01"
                         android:id="@+id/classButton01"
                         android:background="#ffe8e8e8"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:layout_marginBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingLeft="10dp"
+                        android:textAlignment="center" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -98,25 +109,30 @@
 
                     <TextView
                         android:layout_width="10dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="40dp"
                         android:id="@+id/classTag02"
                         android:text="  "
                         android:background="#ff696969"
                         android:tag="classColor02"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:layout_marginBottom="8dp" />
                     <TextView
                         android:layout_width="160dp"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="right"
                         android:textSize="16sp"
                         android:layout_weight="3"
-                        android:text="       "
+                        android:text=" "
                         android:onClick="classButtonClick"
                         android:clickable="true"
                         android:tag="classButton02"
                         android:id="@+id/classButton02"
                         android:background="#ffe8e8e8"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:layout_marginBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingLeft="10dp"
+                        android:textAlignment="center" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -126,25 +142,30 @@
 
                     <TextView
                         android:layout_width="10dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="40dp"
                         android:id="@+id/classTag03"
                         android:text="  "
                         android:background="#ff696969"
                         android:tag="classColor03"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:layout_marginBottom="8dp" />
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="right"
                         android:textSize="16sp"
                         android:layout_weight="3"
-                        android:text="       "
+                        android:text=" "
                         android:onClick="classButtonClick"
                         android:clickable="true"
                         android:tag="classButton03"
                         android:id="@+id/classButton03"
                         android:background="#ffe8e8e8"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:layout_marginBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingLeft="10dp"
+                        android:textAlignment="center" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -154,25 +175,30 @@
 
                     <TextView
                         android:layout_width="10dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="40dp"
                         android:id="@+id/classTag04"
                         android:text="  "
                         android:background="#ff696969"
                         android:tag="classColor04"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:layout_marginBottom="8dp" />
                     <TextView
                         android:layout_width="160dp"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="right"
                         android:textSize="16sp"
                         android:layout_weight="3"
-                        android:text="       "
+                        android:text=" "
                         android:onClick="classButtonClick"
                         android:clickable="true"
                         android:tag="classButton04"
                         android:id="@+id/classButton04"
                         android:background="#ffe8e8e8"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:layout_marginBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingLeft="10dp"
+                        android:textAlignment="center" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -182,25 +208,30 @@
 
                     <TextView
                         android:layout_width="10dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="40dp"
                         android:id="@+id/classTag05"
                         android:text="  "
                         android:background="#ff696969"
                         android:tag="classColor05"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:layout_marginBottom="8dp" />
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="right"
                         android:textSize="16sp"
                         android:layout_weight="3"
-                        android:text="       "
+                        android:text=" "
                         android:onClick="classButtonClick"
                         android:clickable="true"
                         android:tag="classButton05"
                         android:id="@+id/classButton05"
                         android:background="#ffe8e8e8"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:layout_marginBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingLeft="10dp"
+                        android:textAlignment="center" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -210,25 +241,30 @@
 
                     <TextView
                         android:layout_width="10dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="40dp"
                         android:id="@+id/classTag06"
                         android:text="  "
                         android:background="#ff696969"
                         android:tag="classColor06"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:layout_marginBottom="8dp" />
                     <TextView
                         android:layout_width="160dp"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="right"
                         android:textSize="16sp"
                         android:layout_weight="3"
-                        android:text="       "
+                        android:text=" "
                         android:onClick="classButtonClick"
                         android:clickable="true"
                         android:tag="classButton06"
                         android:id="@+id/classButton06"
                         android:background="#ffe8e8e8"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:layout_marginBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingLeft="10dp"
+                        android:textAlignment="center" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -238,25 +274,30 @@
 
                     <TextView
                         android:layout_width="10dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="40dp"
                         android:id="@+id/classTag07"
                         android:text="  "
                         android:background="#ff696969"
                         android:tag="classColor07"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:layout_marginBottom="8dp" />
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="right"
                         android:textSize="16sp"
                         android:layout_weight="3"
-                        android:text="       "
+                        android:text=" "
                         android:onClick="classButtonClick"
                         android:clickable="true"
                         android:tag="classButton07"
                         android:id="@+id/classButton07"
                         android:background="#ffe8e8e8"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:layout_marginBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingLeft="10dp"
+                        android:textAlignment="center" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -266,25 +307,30 @@
 
                     <TextView
                         android:layout_width="10dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="40dp"
                         android:id="@+id/classTag08"
                         android:text="  "
                         android:background="#ff696969"
                         android:tag="classColor08"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:layout_marginBottom="8dp" />
                     <TextView
                         android:layout_width="160dp"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="right"
                         android:textSize="16sp"
                         android:layout_weight="3"
-                        android:text="       "
+                        android:text=" "
                         android:onClick="classButtonClick"
                         android:clickable="true"
                         android:tag="classButton08"
                         android:id="@+id/classButton08"
                         android:background="#ffe8e8e8"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:layout_marginBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingLeft="10dp"
+                        android:textAlignment="center" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -294,25 +340,30 @@
 
                     <TextView
                         android:layout_width="10dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="40dp"
                         android:id="@+id/classTag09"
                         android:text="  "
                         android:background="#ff696969"
                         android:tag="classColor09"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:layout_marginBottom="8dp" />
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="right"
                         android:textSize="16sp"
                         android:layout_weight="3"
-                        android:text="       "
+                        android:text=" "
                         android:onClick="classButtonClick"
                         android:clickable="true"
                         android:tag="classButton09"
                         android:id="@+id/classButton09"
                         android:background="#ffe8e8e8"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:layout_marginBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingLeft="10dp"
+                        android:textAlignment="center" />
 
                 </LinearLayout>
 
