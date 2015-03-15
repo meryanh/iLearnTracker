@@ -417,7 +417,7 @@
                 android:text="@string/add"
                 android:onClick="goToAddClass"
                 android:id="@+id/addClassButton"
-                android:src="@drawable/newclass2" />
+                android:src="@drawable/add_class_2" />
 
         </LinearLayout>
     </RelativeLayout>
