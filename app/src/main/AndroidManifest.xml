@@ -40,5 +40,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cs246.ilearntracker.iLearnTracker" />
         </activity>
+        <activity
+            android:name=".WebActivity"
+            android:label="web_activity"
+            android:parentActivityName=".iLearnTracker" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cs246.ilearntracker.WebActivity" />
+        </activity>
     </application>
 <uses-permission android:name="android.permission.INTERNET" /></manifest>
