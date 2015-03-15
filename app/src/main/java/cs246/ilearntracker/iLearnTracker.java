@@ -18,6 +18,7 @@ import java.util.List;
 public class iLearnTracker extends ActionBarActivity {
     private Student student = Student.getInstance();
 
+    public static String HTMLData = null;
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
@@ -178,6 +179,13 @@ public class iLearnTracker extends ActionBarActivity {
         Intent intent = new Intent(this, AddClass.class);
         startActivity(intent);
     }
+
+    public void loadWebActivity(View view){
+        System.out.println("///////////////////////////////////////////");
+        Intent intent = new Intent(this, WebActivity.class);
+        startActivity(intent);
+    }
+
     public void refresh(View view) {
         //Student stu = new Student();
         //int siz = stu.classesList.size();

@@ -41,5 +41,4 @@
                 android:value="cs246.ilearntracker.iLearnTracker" />
         </activity>
     </application>
-
-</manifest>
+<uses-permission android:name="android.permission.INTERNET" /></manifest>

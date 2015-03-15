@@ -380,29 +380,31 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30sp"
             android:orientation="horizontal"
             android:layout_weight="2"
             android:background="@android:color/darker_gray">
 
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40sp"
+                android:layout_height="fill_parent"
                 android:textSize="26sp"
                 android:text="@string/refresh"
                 android:id="@+id/refresh"
-                android:onClick="refresh"
-                android:src="@drawable/refresh" />
+                android:onClick="loadWebActivity"
+                android:src="@drawable/refresh"
+                android:background="@android:color/transparent" />
 
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40sp"
+                android:layout_height="fill_parent"
                 android:textSize="26sp"
                 android:layout_weight="3"
                 android:text="@string/add"
                 android:onClick="addAssignment"
                 android:id="@+id/addAssignment"
-                android:src="@drawable/newassignment"/>
+                android:src="@drawable/newassignment"
+                android:background="@android:color/transparent" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -410,14 +412,15 @@
                 android:layout_weight="500"/>
 
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40sp"
+                android:layout_height="fill_parent"
                 android:textSize="26sp"
                 android:layout_weight="3"
                 android:text="@string/add"
                 android:onClick="goToAddClass"
                 android:id="@+id/addClassButton"
-                android:src="@drawable/add_class_2" />
+                android:src="@drawable/add_class_2"
+                android:background="@android:color/transparent" />
 
         </LinearLayout>
     </RelativeLayout>

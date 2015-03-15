@@ -39,6 +39,7 @@ public class Student extends ActionBarActivity {
     private static Student instance = new Student();
     public static final String PREFS_NAME = "myPrefsFile";
 
+    private String HTMLData = null;
     private boolean notification;
     private Integer notifyInterval;
     private Integer refreshInterval;
@@ -86,6 +87,10 @@ public class Student extends ActionBarActivity {
     public Class getClass(Integer i) { return classesList.get(i); }
 
     public List<Class> getClassList() { return classesList; }
+
+    public String getHTMLData(){ return HTMLData; }
+
+    public void setHTMLData(String html) {HTMLData = html; }
 
     /**
      * This function will save the local variables notification, refreshInterval,

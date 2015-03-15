@@ -11,9 +11,10 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:paddingLeft="4dp"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:textColor="@android:color/black"
-        android:background="@android:color/darker_gray" />
+        android:background="@android:color/darker_gray"
+        android:textStyle="normal" />
 
     <Space
         android:layout_width="match_parent"
