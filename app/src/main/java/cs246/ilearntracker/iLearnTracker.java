@@ -191,19 +191,9 @@ public class iLearnTracker extends ActionBarActivity {
     }
 
     public void refresh(View view) {
-        //Student stu = new Student();
-        //int siz = stu.classesList.size();
-        //System.out.println(siz);
         loadClassButtons();
         return;
-        /*
-        int sizeList = student.classesList.size();
-        System.out.println("Here!");
-        for (int i = 0; i < sizeList; i++) {
-            Class testClass = student.classesList.get(i);
-            System.out.println(testClass.getClassName());
-        }
-        */
+
     }
 
     public void loadClassButtons() {
