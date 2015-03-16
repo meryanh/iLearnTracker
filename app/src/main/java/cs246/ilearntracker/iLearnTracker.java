@@ -186,7 +186,6 @@ public class iLearnTracker extends ActionBarActivity {
     }
 
     public void loadWebActivity(View view){
-        System.out.println("///////////////////////////////////////////");
         Intent intent = new Intent(this, WebActivity.class);
         startActivity(intent);
     }

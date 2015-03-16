@@ -22,9 +22,10 @@
 
         <ListView
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:layout_weight="10"
-            android:id="@+id/classList">
+            android:id="@+id/classList"
+            android:background="#ff969696">
         </ListView>
 
 
@@ -50,7 +51,7 @@
                 android:textSize="26sp"
                 android:text="@string/refresh"
                 android:id="@+id/refresh"
-                android:onClick="refresh"
+                android:onClick="loadWebActivity"
                 android:src="@drawable/refresh"
                 android:background="@android:color/transparent" />
 
