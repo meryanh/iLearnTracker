@@ -42,7 +42,7 @@
         </activity>
         <activity
             android:name=".WebActivity"
-            android:label="web_activity"
+            android:label=""
             android:parentActivityName=".iLearnTracker" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

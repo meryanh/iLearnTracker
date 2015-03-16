@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class AddClass extends ActionBarActivity {
@@ -28,10 +29,10 @@ public class AddClass extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         setContentView(R.layout.activity_add_class);
-        Spinner dropdown = (Spinner)findViewById(R.id.colorSelect);
-        String[] items = new String[]{"Red", "Yellow", "Blue", "Orange", "Purple", "Green", "Pink", "Brown"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
-        dropdown.setAdapter(adapter);
+        //Spinner dropdown = (Spinner)findViewById(R.id.colorSelect);
+        //String[] items = new String[]{"Red", "Yellow", "Blue", "Orange", "Purple", "Green", "Pink", "Brown"};
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
+        //dropdown.setAdapter(adapter);
 
         // Set up color picker:
         Button colorPickerItem = (Button)findViewById(R.id.color1);
@@ -57,6 +58,7 @@ public class AddClass extends ActionBarActivity {
     public void getColor(View view){
         ColorDrawable theColor = (ColorDrawable)view.getBackground();
         color = theColor.getColor();
+        add(view);
     }
 
     @Override
@@ -90,6 +92,13 @@ public class AddClass extends ActionBarActivity {
         //Integer col = 0x000000;
         EditText titleGetter = (EditText) findViewById(R.id.nameEnter);
         String titleStr = titleGetter.getText().toString();
+
+        if(titleStr.equals("")){
+            Toast.makeText(getApplicationContext(), "Enter a class name first.",
+                    Toast.LENGTH_SHORT).show();
+            Log.i(ADD_CLASS, "Attempted to create a class without adding a name.");
+            return;
+        }
 
         /*
         Spinner colorGetter = (Spinner) findViewById(R.id.colorSelect);

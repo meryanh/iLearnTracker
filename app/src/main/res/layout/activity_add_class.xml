@@ -1,191 +1,183 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     tools:context="cs246.ilearntracker.AddClass">
 
-    <TextView
-        android:text="@string/new_class"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:id="@+id/newClass"/>
-
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/edit_name"
-        android:id="@+id/nameEnter"
-        android:layout_below="@+id/newClass"/>
-
-    <TextView
-        android:id="@+id/colorTitle"
-        android:text="@string/class_color"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_below="@+id/nameEnter"/>
-
-    <Spinner
-        android:id="@+id/colorSelect"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/colorTitle"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="26sp"
-        android:text="@string/addClass"
-        android:onClick="add"
-        android:id="@+id/addClass"
-        android:layout_below="@+id/colorSelect"/>
-
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="225dp"
-        android:layout_height="225dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:layout_below="@+id/addClass"
-        android:baselineAligned="false"
-        android:layout_margin="50dp"
-        android:background="#ffe5e5e5">
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <TextView
+            android:text="@string/new_class"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:id="@+id/newClass"
+            android:textColor="@android:color/black"
+            android:background="@android:color/darker_gray" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edit_name"
+            android:id="@+id/nameEnter"
+            android:layout_below="@+id/newClass"
+            android:textColor="@android:color/black"
+            android:paddingLeft="8sp" />
+
+        <TextView
+            android:id="@+id/colorTitle"
+            android:text="@string/class_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_below="@+id/nameEnter"
+            android:textColor="@android:color/black"
+            android:paddingLeft="8sp" />
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1">
+            android:orientation="horizontal"
+            android:layout_width="225dp"
+            android:layout_height="225dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:baselineAligned="false"
+            android:background="#ffe5e5e5"
+            android:layout_below="@+id/colorTitle"
+            android:layout_marginLeft="20sp">
 
-            <Button
-                style="?android:attr/buttonStyleSmall"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/color1"
-                android:background="#ffffffff"
-                android:singleLine="true"
-                android:layout_weight="1"
-                android:paddingBottom="0dp"
-                android:onClick="getColor"
-                android:layout_margin="4dp" />
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1">
 
-            <Button
-                style="?android:attr/buttonStyleSmall"
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/color1"
+                    android:background="#ffffffff"
+                    android:singleLine="true"
+                    android:layout_weight="1"
+                    android:paddingBottom="0dp"
+                    android:onClick="getColor"
+                    android:layout_margin="4dp" />
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/color2"
+                    android:background="#ffffffff"
+                    android:singleLine="true"
+                    android:layout_weight="1"
+                    android:paddingBottom="0dp"
+                    android:onClick="getColor"
+                    android:layout_margin="4dp" />
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/color3"
+                    android:background="#ffffffff"
+                    android:singleLine="true"
+                    android:layout_weight="1"
+                    android:paddingBottom="0dp"
+                    android:onClick="getColor"
+                    android:layout_margin="4dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/color2"
-                android:background="#ffffffff"
-                android:singleLine="true"
-                android:layout_weight="1"
-                android:paddingBottom="0dp"
-                android:onClick="getColor"
-                android:layout_margin="4dp" />
+                android:layout_weight="1">
 
-            <Button
-                style="?android:attr/buttonStyleSmall"
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/color4"
+                    android:background="#ffffffff"
+                    android:singleLine="true"
+                    android:layout_weight="1"
+                    android:paddingBottom="0dp"
+                    android:onClick="getColor"
+                    android:layout_margin="4dp" />
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/color5"
+                    android:background="#ffffffff"
+                    android:singleLine="true"
+                    android:layout_weight="1"
+                    android:paddingBottom="0dp"
+                    android:onClick="getColor"
+                    android:layout_margin="4dp" />
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/color6"
+                    android:background="#ffffffff"
+                    android:singleLine="true"
+                    android:layout_weight="1"
+                    android:paddingBottom="0dp"
+                    android:onClick="getColor"
+                    android:layout_margin="4dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/color3"
-                android:background="#ffffffff"
-                android:singleLine="true"
-                android:layout_weight="1"
-                android:paddingBottom="0dp"
-                android:onClick="getColor"
-                android:layout_margin="4dp" />
-        </LinearLayout>
+                android:layout_weight="1">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/color7"
+                    android:background="#ffffffff"
+                    android:singleLine="true"
+                    android:layout_weight="1"
+                    android:paddingBottom="0dp"
+                    android:onClick="getColor"
+                    android:layout_margin="4dp" />
 
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/color4"
-                android:background="#ffffffff"
-                android:singleLine="true"
-                android:layout_weight="1"
-                android:paddingBottom="0dp"
-                android:onClick="getColor"
-                android:layout_margin="4dp" />
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/color8"
+                    android:background="#ffffffff"
+                    android:singleLine="true"
+                    android:layout_weight="1"
+                    android:paddingBottom="0dp"
+                    android:onClick="getColor"
+                    android:layout_margin="4dp" />
 
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/color5"
-                android:background="#ffffffff"
-                android:singleLine="true"
-                android:layout_weight="1"
-                android:paddingBottom="0dp"
-                android:onClick="getColor"
-                android:layout_margin="4dp" />
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/color6"
-                android:background="#ffffffff"
-                android:singleLine="true"
-                android:layout_weight="1"
-                android:paddingBottom="0dp"
-                android:onClick="getColor"
-                android:layout_margin="4dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/color7"
-                android:background="#ffffffff"
-                android:singleLine="true"
-                android:layout_weight="1"
-                android:paddingBottom="0dp"
-                android:onClick="getColor"
-                android:layout_margin="4dp" />
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/color8"
-                android:background="#ffffffff"
-                android:singleLine="true"
-                android:layout_weight="1"
-                android:paddingBottom="0dp"
-                android:onClick="getColor"
-                android:layout_margin="4dp" />
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/color9"
-                android:background="#ffffffff"
-                android:singleLine="true"
-                android:layout_weight="1"
-                android:paddingBottom="0dp"
-                android:onClick="getColor"
-                android:layout_margin="4dp" />
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/color9"
+                    android:background="#ffffffff"
+                    android:singleLine="true"
+                    android:layout_weight="1"
+                    android:paddingBottom="0dp"
+                    android:onClick="getColor"
+                    android:layout_margin="4dp" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
-</RelativeLayout>
+</FrameLayout>
