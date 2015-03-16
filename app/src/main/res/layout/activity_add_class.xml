@@ -69,10 +69,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/color1"
-                android:background="#ff001cff"
+                android:background="#ffffffff"
                 android:singleLine="true"
                 android:layout_weight="1"
                 android:paddingBottom="0dp"
+                android:onClick="getColor"
                 android:layout_margin="4dp" />
 
             <Button
@@ -80,10 +81,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/color2"
-                android:background="#ff00ff97"
+                android:background="#ffffffff"
                 android:singleLine="true"
                 android:layout_weight="1"
                 android:paddingBottom="0dp"
+                android:onClick="getColor"
                 android:layout_margin="4dp" />
 
             <Button
@@ -91,10 +93,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/color3"
-                android:background="#ff00c100"
+                android:background="#ffffffff"
                 android:singleLine="true"
                 android:layout_weight="1"
                 android:paddingBottom="0dp"
+                android:onClick="getColor"
                 android:layout_margin="4dp" />
         </LinearLayout>
 
@@ -109,10 +112,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/color4"
-                android:background="@android:color/darker_gray"
+                android:background="#ffffffff"
                 android:singleLine="true"
                 android:layout_weight="1"
                 android:paddingBottom="0dp"
+                android:onClick="getColor"
                 android:layout_margin="4dp" />
 
             <Button
@@ -120,10 +124,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/color5"
-                android:background="#ffa900ff"
+                android:background="#ffffffff"
                 android:singleLine="true"
                 android:layout_weight="1"
                 android:paddingBottom="0dp"
+                android:onClick="getColor"
                 android:layout_margin="4dp" />
 
             <Button
@@ -131,10 +136,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/color6"
-                android:background="@android:color/holo_red_dark"
+                android:background="#ffffffff"
                 android:singleLine="true"
                 android:layout_weight="1"
                 android:paddingBottom="0dp"
+                android:onClick="getColor"
                 android:layout_margin="4dp" />
         </LinearLayout>
 
@@ -149,10 +155,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/color7"
-                android:background="#fffff700"
+                android:background="#ffffffff"
                 android:singleLine="true"
                 android:layout_weight="1"
                 android:paddingBottom="0dp"
+                android:onClick="getColor"
                 android:layout_margin="4dp" />
 
             <Button
@@ -160,10 +167,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/color8"
-                android:background="#ffff8100"
+                android:background="#ffffffff"
                 android:singleLine="true"
                 android:layout_weight="1"
                 android:paddingBottom="0dp"
+                android:onClick="getColor"
                 android:layout_margin="4dp" />
 
             <Button
@@ -171,10 +179,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/color9"
-                android:background="#ffff008d"
+                android:background="#ffffffff"
                 android:singleLine="true"
                 android:layout_weight="1"
                 android:paddingBottom="0dp"
+                android:onClick="getColor"
                 android:layout_margin="4dp" />
         </LinearLayout>
     </LinearLayout>
