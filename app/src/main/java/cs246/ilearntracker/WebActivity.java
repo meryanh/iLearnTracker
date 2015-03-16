@@ -55,19 +55,10 @@ public class WebActivity extends ActionBarActivity {
 
     public void saveHTML(View view){
         Student.getInstance().setHTMLData(HTMLData);
-        //System.out.println(Student.getInstance().getHTMLData());
+        System.out.println(Student.getInstance().getHTMLData());
         Intent intent = new Intent(this, iLearnTracker.class);
         startActivity(intent);
     }
-
-    /*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-    */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
