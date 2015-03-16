@@ -1,5 +1,6 @@
 package cs246.ilearntracker;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -101,6 +102,17 @@ public class AddClass extends ActionBarActivity {
         }
 
         /*
+        for (int i = 0; i < student.classesList.size(); i++) {
+            if (titleStr.equals(student.classesList.get(i).getClassName())) {
+                Context context = getApplicationContext();
+                CharSequence text = "There is another class with this name. \n Please input another name for this class...";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                return;
+            }
+        }
         Spinner colorGetter = (Spinner) findViewById(R.id.colorSelect);
         String color = colorGetter.getSelectedItem().toString();
 

@@ -1,5 +1,6 @@
 package cs246.ilearntracker;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -82,11 +84,21 @@ public class AddAssignment extends ActionBarActivity {
         Spinner classGetter = (Spinner) findViewById(R.id.classSelect);
         String assignClassName = classGetter.getSelectedItem().toString();
         Class addToClass = new Class();
+        boolean classFound = false;
         for (int i = 0; i < student.classesList.size(); i++) {
             Class checkClass = student.classesList.get(i);
             if (checkClass.getClassName().equals(assignClassName)){
                 addToClass = checkClass;
+                classFound = true;
             }
+        } if (!classFound) {
+            Context context = getApplicationContext();
+            CharSequence text = "Please select a valid class...";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            return;
         }
         addToClass.assignmentList.add(assignment);
         Intent intent = new Intent(this, iLearnTracker.class);

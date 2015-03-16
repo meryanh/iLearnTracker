@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,7 +33,7 @@ public class iLearnTracker extends ActionBarActivity {
         setContentView(R.layout.activity_i_learn_tracker);
         //student.loadSettings();
         //student.loadClasses();
-        setupClassButtons();
+        //setupClassButtons();
 
         // get the listview
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
@@ -63,6 +65,8 @@ public class iLearnTracker extends ActionBarActivity {
                 return false;
             }
         });
+        //setupClassButtons();
+        loadClassButtons();
     }
 
     /*
@@ -190,7 +194,7 @@ public class iLearnTracker extends ActionBarActivity {
         //Student stu = new Student();
         //int siz = stu.classesList.size();
         //System.out.println(siz);
-        setupClassButtons();
+        loadClassButtons();
         return;
         /*
         int sizeList = student.classesList.size();
@@ -200,5 +204,11 @@ public class iLearnTracker extends ActionBarActivity {
             System.out.println(testClass.getClassName());
         }
         */
+    }
+
+    public void loadClassButtons() {
+        ClassListAdapter2 adapter = new ClassListAdapter2(student.classesList, this);
+        ListView lView = (ListView) findViewById(R.id.classList);
+        lView.setAdapter(adapter);
     }
 }
