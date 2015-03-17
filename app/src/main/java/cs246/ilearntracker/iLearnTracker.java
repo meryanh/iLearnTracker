@@ -1,6 +1,8 @@
 package cs246.ilearntracker;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -31,6 +33,10 @@ public class iLearnTracker extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         setContentView(R.layout.activity_i_learn_tracker);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.drawable.byui);
+        actionBar.setBackgroundDrawable(new ColorDrawable(0xff326ba9));
         //student.loadSettings();
         //student.loadClasses();
         //setupClassButtons();

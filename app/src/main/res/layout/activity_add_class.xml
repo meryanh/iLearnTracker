@@ -8,22 +8,11 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
-        <TextView
-            android:text="@string/new_class"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="30sp"
-            android:id="@+id/newClass"
-            android:textColor="@android:color/black"
-            android:background="@android:color/darker_gray" />
-
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edit_name"
             android:id="@+id/nameEnter"
-            android:layout_below="@+id/newClass"
             android:textColor="@android:color/black"
             android:paddingLeft="8sp" />
 

@@ -2,6 +2,8 @@ package cs246.ilearntracker;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -25,6 +27,10 @@ public class AddAssignment extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         setContentView(R.layout.activity_add_assignment);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.drawable.byui);
+        actionBar.setBackgroundDrawable(new ColorDrawable(0xff326ba9));
         //Student nStudent = new Student();
         ArrayList<String> items = new ArrayList<String>();
         int sizeList = student.classesList.size();

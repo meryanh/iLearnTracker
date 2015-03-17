@@ -2,7 +2,9 @@ package cs246.ilearntracker;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,6 +30,10 @@ public class WebActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.drawable.byui);
+        actionBar.setBackgroundDrawable(new ColorDrawable(0xff326ba9));
         mWebView = (WebView) findViewById(R.id.activity_main_webview);
         // Enable Javascript
         WebSettings webSettings = mWebView.getSettings();
