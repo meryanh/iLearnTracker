@@ -18,7 +18,7 @@
         </activity>
         <activity
             android:name=".AddClass"
-            android:label="AddClass"
+            android:label="  New Class"
             android:parentActivityName=".iLearnTracker" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -26,7 +26,7 @@
         </activity>
         <activity
             android:name=".Settings"
-            android:label="@string/title_activity_settings"
+            android:label="  Settings"
             android:parentActivityName=".iLearnTracker" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -34,7 +34,7 @@
         </activity>
         <activity
             android:name=".AddAssignment"
-            android:label="@string/title_activity_add_assignment"
+            android:label="  New Assignment"
             android:parentActivityName=".iLearnTracker" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
