@@ -13,7 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 
 
 public class Settings extends ActionBarActivity {
@@ -34,6 +36,8 @@ public class Settings extends ActionBarActivity {
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.drawable.byui);
         actionBar.setBackgroundDrawable(new ColorDrawable(0xff326ba9));
+
+
         NumberPicker np1 = (NumberPicker) findViewById(R.id.notifyInt);
         np1.setMinValue(1);
         np1.setMaxValue(24);
@@ -50,6 +54,7 @@ public class Settings extends ActionBarActivity {
         np2.setValue(refreshTime);
         cleanUp = pref.getInt("cleanUp", 1);
         np3.setValue(cleanUp);
+
         Log.i(ACTIVITY_VARS, "Initialized Activity settings.");
     }
 
@@ -108,7 +113,8 @@ public class Settings extends ActionBarActivity {
         System.out.println("Here!");
         editor.commit();
 
-        Intent intent = new Intent(this, iLearnTracker.class);
-        startActivity(intent);
+        super.onBackPressed();
+        //Intent intent = new Intent(this, iLearnTracker.class);
+        //startActivity(intent);
     }
 }

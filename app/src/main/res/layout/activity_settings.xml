@@ -1,90 +1,111 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="cs246.ilearntracker.Settings">
+
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="cs246.ilearntracker.Settings">
-
+    android:layout_height="fill_parent"
+    android:paddingLeft="10sp"
+    android:paddingTop="10sp"
+    android:layout_marginBottom="40sp">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <CheckBox
             android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Notify (Hours)"
+            android:text="Enable Notifications"
             android:id="@+id/notify"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:checked="true"
             android:textStyle="bold"
             android:textColor="@android:color/black" />
 
+        <TextView
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
+            android:text="Notify ____ hours before due date."
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:paddingTop="10sp" />
+
         <NumberPicker
             android:layout_width="wrap_content"
-            android:layout_height="125dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:id="@+id/notifyInt"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:orientation="vertical" />
+            android:layout_marginTop="10sp" />
 
         <TextView
-        android:textSize="18sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/refreshIntText"
-        android:text="\nRefresh Interval"
-        android:layout_alignParentLeft="true"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6"
+            android:text="Refresh every ____  hours."
             android:textStyle="bold"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:paddingTop="10sp" />
 
-    <NumberPicker
-        android:layout_width="wrap_content"
-        android:layout_height="125dp"
-        android:id="@+id/refreshInt"
-        android:orientation="vertical"
-        android:layout_alignParentLeft="true"
-         />
+        <NumberPicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/refreshInt"
+            android:layout_marginTop="10sp" />
 
-    <TextView
-        android:textSize="18sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cleanUpIntText"
-        android:text="\nClean Up Interval"
-        android:layout_alignParentLeft="true"
-        android:textStyle="bold"
-        android:textColor="@android:color/black" />
+        <TextView
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView8"
+            android:text="Do cleanup every ____ days."
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:paddingTop="10sp" />
 
-    <NumberPicker
-        android:layout_width="wrap_content"
-        android:layout_height="125dp"
-        android:id="@+id/cleanUpInt"
-        android:layout_alignParentLeft="true"
-        android:orientation="vertical"
-        />
+        <NumberPicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/cleanUpInt"
+            android:layout_marginTop="10sp" />
 
     </LinearLayout>
+</ScrollView>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Update"
-        android:id="@+id/update"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="save"/>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_gravity="bottom|center_horizontal">
 
-</RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:orientation="horizontal"
+            android:background="#326ba9" >
 
-    </ScrollView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:layout_width="40sp"
+                android:layout_height="fill_parent"
+                android:textSize="26sp"
+                android:layout_weight="0"
+                android:text="@string/add"
+                android:onClick="save"
+                android:id="@+id/imageButton5"
+                android:src="@drawable/floppy"
+                android:background="@android:color/transparent" />
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

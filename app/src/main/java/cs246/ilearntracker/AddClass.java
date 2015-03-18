@@ -151,6 +151,7 @@ public class AddClass extends ActionBarActivity {
         */
         newClass = new Class(titleStr, color);
         student.addToList(newClass);
+
         Intent intent = new Intent(this, iLearnTracker.class);
         startActivity(intent);
     }

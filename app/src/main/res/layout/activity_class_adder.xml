@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="56sp"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:paddingLeft="6sp"
     android:paddingTop="3sp"
@@ -18,7 +18,7 @@
         <TextView
             android:id="@+id/colorBox"
             android:layout_width="12sp"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:background="#ff0000"
             android:textSize="18sp"
             android:gravity="center"
@@ -30,7 +30,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:minHeight="48sp"
-            android:background="@android:color/transparent" />
+            android:background="@android:color/transparent"
+            android:layout_gravity="center_vertical" />
     </LinearLayout>
 
 </FrameLayout>

@@ -107,8 +107,11 @@ public class AddAssignment extends ActionBarActivity {
             return;
         }
         addToClass.assignmentList.add(assignment);
-        Intent intent = new Intent(this, iLearnTracker.class);
-        startActivity(intent);
+
+        super.onBackPressed();
+
+        //Intent intent = new Intent(this, iLearnTracker.class);
+        //startActivity(intent);
 
     }
 
