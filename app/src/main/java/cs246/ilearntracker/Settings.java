@@ -76,23 +76,15 @@ public class Settings extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        } return super.onOptionsItemSelected(item);
     }
 
-
+    /**
+     * To save the settings specified by the user
+     * @param view the button pressed to save the settings
+     */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public void save(View view) {
-        //boolean notify = (boolean) findViewById(R.id.notify);
-/*
-        NumberPicker notifyInteger = (NumberPicker) findViewById(R.id.notifyInt);
-        Integer seconds = notifyInteger.getValue() * 3600;
-        System.out.println(seconds);
-        me.saveSettings();
-*/
-
-
         SharedPreferences pref = getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = pref.edit();
 
@@ -113,8 +105,7 @@ public class Settings extends ActionBarActivity {
         System.out.println("Here!");
         editor.commit();
 
-        super.onBackPressed();
-        //Intent intent = new Intent(this, iLearnTracker.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, iLearnTracker.class);
+        startActivity(intent);
     }
 }

@@ -11,14 +11,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-
+/**
+ * The user interface for when they are adding a class to there tracker
+ */
 public class AddClass extends ActionBarActivity {
     private static final String ADD_CLASS = "Add a Class Activity";
     private Student student = Student.getInstance();
@@ -93,6 +92,10 @@ public class AddClass extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * This occurs when the user selects to add a new class and saves this class to the list
+     * @param view The area you have clicked on
+     */
     public void add(View view) {
         Log.i(ADD_CLASS, "You are adding a class!");
         if(color == 0){
@@ -112,7 +115,6 @@ public class AddClass extends ActionBarActivity {
 
         newClass = new Class(titleStr, color);
         student.addToList(newClass);
-
 
         Intent intent = new Intent(this, iLearnTracker.class);
         startActivity(intent);

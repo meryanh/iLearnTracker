@@ -59,6 +59,10 @@ public class WebActivity extends ActionBarActivity {
             super.onBackPressed();
     }
 
+    /**
+     * Saves the HTML from the specified page
+     * @param view The place pressed to save the HTML
+     */
     public void saveHTML(View view){
         Student.getInstance().setHTMLData(HTMLData);
         //super.onBackPressed();

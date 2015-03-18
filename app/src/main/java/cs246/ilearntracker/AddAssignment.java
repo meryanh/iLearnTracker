@@ -19,8 +19,11 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Date;
 
-
+/**
+ * The user interface for the user when they are manually adding an assignment to there homework
+ */
 public class AddAssignment extends ActionBarActivity {
+
     private Student student = Student.getInstance();
 
     @Override
@@ -70,8 +73,9 @@ public class AddAssignment extends ActionBarActivity {
     }
 
     /**
-     * Adds a new assignment to the student object.
-     * @param view the clicked button.
+     * Adds the new assignment to the list of assignments for the specified class and sends you back
+     * to the home page
+     * @param view The add button that is clicked
      */
     public void add(View view) {
         Assignment assignment = new Assignment();
@@ -112,22 +116,18 @@ public class AddAssignment extends ActionBarActivity {
         }
         addToClass.assignmentList.add(assignment);
 
-        //super.onBackPressed();
-
         Intent intent = new Intent(this, iLearnTracker.class);
         startActivity(intent);
-
     }
 
     /**
-     * Convert hour/minute time to milliseconds.
-     * @param hour
-     * @param minute
-     * @return milliseconds
+     * Converts the time to miliseconds
+     * @param hour The hour used of the time
+     * @param minute The minute used of the time
+     * @return The time in miliseconds
      */
     public long convertTime(long hour, long minute) {
         long time = (minute + (hour * 60)) * 60 * 1000;
-
         return time;
     }
 }
