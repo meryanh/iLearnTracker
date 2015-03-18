@@ -17,11 +17,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 class ClassListAdapter2 extends BaseAdapter implements ListAdapter {
+
     private List<Class> list = new ArrayList<Class>();
     private Context context;
 
-
-
+    /**
+     * The constructor for the list adapter
+     * @param list The list of items to be shown
+     * @param context The context associated with the class
+     */
     public ClassListAdapter2(List<Class> list, Context context) {
         this.list = list;
         this.context = context;
@@ -57,15 +61,6 @@ class ClassListAdapter2 extends BaseAdapter implements ListAdapter {
 
         TextView classSelect = (TextView)view.findViewById(R.id.classButton);
         classSelect.setText(list.get(position).getClassName());
-
-        /*
-        classSelect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //do something
-            }
-        });*/
-
 
         return view;
     }

@@ -30,8 +30,8 @@ public class Class {
 
     /**
      * Complete constructor for the Class class.
-     * @param name
-     * @param color
+     * @param name The name of the class
+     * @param color The color associated with the class
      */
     public Class(String name, int color){
         className = name;

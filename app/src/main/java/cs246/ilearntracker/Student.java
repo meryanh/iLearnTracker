@@ -146,48 +146,15 @@ public class Student extends ActionBarActivity {
         refreshInterval = pref.getInt("refresh", 1);
         cleanUpInterval = pref.getInt("cleanUp", 1);
 
-/*
-        try {
-
-
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            Document doc = builder.parse(new File("mySettings.xml"));
-
-            NodeList setting = doc.getElementsByTagName("settings");
-            Element sets = (Element) setting.item(0);
-
-            if (sets.getAttribute("notification") == "true")
-                setNotify(true);
-            else
-                setNotify(false);
-            setRefresh(Integer.parseInt(sets.getAttribute("refreshInterval")));
-            setCleanUp(Integer.parseInt(sets.getAttribute("cleanUpInterval")));
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        }*/
     }
 
-    public void addToList(Class newClass) {
-        classesList.add(newClass);
-    }
     /**
      * This function adds a class to the classesList
      */
-    public void addClass() {
-        //get input from user through separate activity.
-        //not done yet.
-        Class myClass = new Class();
-
-        myClass.setClassName("CS246"); //This line for testing purposes.
-
-        //add the class
-        classesList.add(myClass);
+    public void addToList(Class newClass) {
+        classesList.add(newClass);
     }
+
 
     /**
      *  This function is for testing purposes.

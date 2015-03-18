@@ -18,6 +18,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     // child data in format of header title, child title
     private HashMap<String, List<String>> _listDataChild;
 
+    /**
+     * The constructor for the Expandable list view
+     * @param context The context associated with the class
+     * @param listDataHeader The header for the section
+     * @param listChildData The data under the header
+     */
     public ExpandableListAdapter(Context context, List<String> listDataHeader,
                                  HashMap<String, List<String>> listChildData) {
         this._context = context;

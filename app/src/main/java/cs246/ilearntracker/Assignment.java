@@ -17,6 +17,9 @@ public class Assignment {
     private boolean isComplete;
     //private boolean isFromILearn;
 
+    /**
+     * The default constructor for a new Assignment
+     */
     public Assignment() {
         title = "New Assignment";
         comments = "";
@@ -26,6 +29,11 @@ public class Assignment {
         //isFromILearn = false;
     }
 
+    /**
+     * A constructor for a new Assignment
+     * @param newTitle The name of the assignment
+     * @param comment The comments made to give more detail of the assignment
+     */
     public Assignment(String newTitle, String comment) {
         title = newTitle;
         comments = comment;
@@ -51,11 +59,13 @@ public class Assignment {
     public boolean getIsComplete() {
         return isComplete;
     }
+
     /*
     public boolean getIsFromILearn() {
         return isFromILearn;
     }
     */
+
     public void setTitle(String newTitle) {
         title = newTitle;
     }
@@ -78,12 +88,17 @@ public class Assignment {
             isComplete = true;
         }
     }
+
     /*
     public void setIsFromILearn(){
         isFromILearn = true;
     }
     */
 
+    /**
+     * Makes an XML format for the assignment to be added information
+     * @return
+     */
     public String getAssignXML() {
         String xml = "";
 

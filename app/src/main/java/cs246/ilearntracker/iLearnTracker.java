@@ -138,8 +138,10 @@ public class iLearnTracker extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // Sets the visibility, text, and color tag for all class buttons.
-    // Sets all unused buttons to hidden.
+    /**
+     * Sets the visibility, text, and color tag for all class buttons.
+     * Sets all unused buttons to hidden.
+     */
     public void setupClassButtons(){
         int resID;
         Integer i = 0;
@@ -166,42 +168,45 @@ public class iLearnTracker extends ActionBarActivity {
         }
     }
 
-    public void classButtonClick(View view){
-        if(view.getVisibility() != View.VISIBLE){
-            return; // Do nothing if hidden button was clicked
-        }
-        String tag = view.getTag().toString();
-        Integer i = Integer.parseInt(tag.substring(tag.length() - 1));
-
-        student.getClass(i).toggleIsActive();
-
-        // RELOAD ASSIGNMENT LIST NOW
-    }
-
+    /**
+     * Sends the user to add an Assignment
+     * @param view The button pushed
+     */
     public void addAssignment(View view) {
         Intent intent = new Intent(this, AddAssignment.class);
         startActivity(intent);
     }
 
+    /**
+     * Send the user to the settings activity
+     * @param view The button pushed
+     */
     public void goToSettings(View view) {
         Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
     }
+
+    /**
+     * Sends the user to add a class
+     * @param view The button pushed
+     */
     public void goToAddClass(View view) {
         Intent intent = new Intent(this, AddClass.class);
         startActivity(intent);
     }
 
+    /**
+     * Sends the user to log in to ILearn
+     * @param view The button pushed
+     */
     public void loadWebActivity(View view){
         Intent intent = new Intent(this, WebActivity.class);
         startActivity(intent);
     }
 
-    public void refresh(View view) {
-        loadClassButtons();
-        return;
-    }
-
+    /**
+     * Updates the list of classes displayed
+     */
     public void loadClassButtons() {
         ClassListAdapter2 adapter = new ClassListAdapter2(student.classesList, this);
         ListView lView = (ListView) findViewById(R.id.classList);
