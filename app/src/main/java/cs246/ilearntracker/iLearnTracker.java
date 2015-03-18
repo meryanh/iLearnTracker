@@ -15,9 +15,14 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 
 public class iLearnTracker extends ActionBarActivity {
@@ -73,22 +78,96 @@ public class iLearnTracker extends ActionBarActivity {
                 return false;
             }
         });
-        //setupClassButtons();
+
         loadClassButtons();
     }
 
-    /*
-     * Preparing the list data for assignment data
-     */
+    /**
+     * Prepare data list for printing.
+     */
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
 
-        // Change this to use assignments within the student's class objects
-        //
-        // First sort by date,
-        // then make a new header for each date,
-        // then add each assignment along with due dates.
+        /**
+         *
+         */
+        class Node implements Comparable<Node>{
+            public Assignment assignment;
+            public int color;
+            public Node(Assignment newAssignment, int newColor){
+                assignment = newAssignment;
+                color = newColor;
+            }
+
+
+            @Override
+            public int compareTo(Node another) {
+                if (((this.assignment.getDueDate().getTime() +
+                        this.assignment.getDueTime().getTime()) <
+                        ((another).assignment.getDueDate().getTime() +
+                                (another).assignment.getDueTime().getTime()))){
+                    return -1;
+                }else{
+                    return 1;
+                }            }
+        }
+
+        List<Node> nodeList = new ArrayList<>();
+
+        System.out.println("HELLO?");
+
+        /* Get all assignments and tag colors from the student */
+        for(Class theClass : Student.getInstance().getClassList()){
+            if(theClass.getIsActive()) {
+                for (Assignment theAssignment : theClass.getAssignmentList()) {
+                    nodeList.add(new Node(theAssignment, theClass.getClassColor()));
+                }
+            }
+        }
+/*
+        for(Class aClass : Student.getInstance().getClassList()){
+            for(Assignment anAssignment : aClass.getAssignmentList()) {
+                System.out.println(anAssignment.getTitle() + "?");
+            }
+        }
+*/
+
+        Collections.sort(nodeList);
+
+        class ListHolder{
+            public String dataHeader = null;
+            public List<String> subList = new ArrayList<>();
+
+            public ListHolder(String data, String subData){
+                dataHeader = data;
+                subList.add(subData);
+            }
+        }
+
+        List<ListHolder> listHolderList = new ArrayList<>();
+        boolean isAdded;
+
+        for(Node node : nodeList){
+            isAdded = false;
+            for(ListHolder theItem : listHolderList) {
+                if (theItem.dataHeader.equals(DateFormat.getDateInstance().format(node.assignment.getDueDate()))) {
+                    theItem.subList.add(node.assignment.getTitle() + " " +
+                            DateFormat.getTimeInstance(3).format(node.assignment.getDueDate()));
+                    isAdded = true;
+                    break;
+                }
+            }
+                if(!isAdded) {
+                    listHolderList.add(new ListHolder(DateFormat.getDateInstance().format(node.assignment.getDueDate()),
+                            node.assignment.getTitle() + " " +
+                                    DateFormat.getTimeInstance(3).format(node.assignment.getDueTime())));
+                }
+        }
+
+
+
+ /*
 
         listDataHeader.add("Today");
         listDataHeader.add("Tomorrow");
@@ -106,10 +185,18 @@ public class iLearnTracker extends ActionBarActivity {
 
         List<String> later = new ArrayList<String>();
         later.add("More stuff");
+   */
 
+        for(int i = 0; i < listHolderList.size(); i++){
+            listDataHeader.add(listHolderList.get(i).dataHeader);
+            listDataChild.put(listHolderList.get(i).dataHeader,listHolderList.get(i).subList);
+        }
+
+/*
         listDataChild.put(listDataHeader.get(0), Today); // Header, Child data
         listDataChild.put(listDataHeader.get(1), Tomorrow);
         listDataChild.put(listDataHeader.get(2), later);
+        */
     }
 
     @Override
@@ -175,7 +262,36 @@ public class iLearnTracker extends ActionBarActivity {
 
         student.getClass(i).toggleIsActive();
 
-        // RELOAD ASSIGNMENT LIST NOW
+        expListView = (ExpandableListView) findViewById(R.id.lvExp);
+
+        // preparing list data
+        prepareListData();
+
+        listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
+
+        // setting list adapter
+        expListView.setAdapter(listAdapter);
+
+        // Listview on child click listener
+        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v,
+                                        int groupPosition, int childPosition, long id) {
+                // TODO Auto-generated method stub
+                // Do whatever is needed with the clicked info.
+                Toast.makeText(
+                        getApplicationContext(),
+                        listDataHeader.get(groupPosition)
+                                + " : "
+                                + listDataChild.get(
+                                listDataHeader.get(groupPosition)).get(
+                                childPosition), Toast.LENGTH_SHORT)
+                        .show();
+                return false;
+            }
+        });
+
     }
 
     public void addAssignment(View view) {

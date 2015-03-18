@@ -1,6 +1,7 @@
 package cs246.ilearntracker;
 
 import java.sql.Time;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Date;
  * completed.  Lastly it has the getters and setters for all of that.
  * Created by Jbeag_000 on 2/23/2015.
  */
-public class Assignment {
+public class Assignment implements Comparable<Assignment>{
     private String title;
     private String comments;
     private Date dueDate;
@@ -99,4 +100,14 @@ public class Assignment {
         return xml;
     }
 
+    @Override
+    public int compareTo(Assignment another) {
+        if (((this.dueDate.getTime() +this.dueTime.getTime()) <
+                (((Assignment)another).getDueDate().getTime() +
+                        ((Assignment)another).getDueTime().getTime()))){
+            return -1;
+        }else{
+            return 1;
+        }
+    }
 }

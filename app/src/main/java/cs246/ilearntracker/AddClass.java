@@ -61,6 +61,10 @@ public class AddClass extends ActionBarActivity {
         colorPickerItem.setBackgroundColor(Color.rgb(255,100,0));      //Orange
     }
 
+    /**
+     * set the "color" variable of this to calling view.
+     * @param view the clicked colorpicker item
+     */
     public void getColor(View view){
         ColorDrawable theColor = (ColorDrawable)view.getBackground();
         color = theColor.getColor();
@@ -95,7 +99,7 @@ public class AddClass extends ActionBarActivity {
             Log.w(ADD_CLASS, "Attempted to create a class without selecting a color.");
         }
         Class newClass;
-        //Integer col = 0x000000;
+
         EditText titleGetter = (EditText) findViewById(R.id.nameEnter);
         String titleStr = titleGetter.getText().toString();
 
@@ -106,51 +110,9 @@ public class AddClass extends ActionBarActivity {
             return;
         }
 
-        /*
-        for (int i = 0; i < student.classesList.size(); i++) {
-            if (titleStr.equals(student.classesList.get(i).getClassName())) {
-                Context context = getApplicationContext();
-                CharSequence text = "There is another class with this name. \n Please input another name for this class...";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-                return;
-            }
-        }
-        Spinner colorGetter = (Spinner) findViewById(R.id.colorSelect);
-        String color = colorGetter.getSelectedItem().toString();
-
-        if (color == "Red") {
-            col = Color.RED;//0xff0000;
-        }
-        else if (color == "Yellow") {
-            col = Color.YELLOW;//0xffff00;
-        }
-        else if (color == "Blue") {
-            col = Color.BLUE;//0x0000ff;
-        }
-        else if (color == "Orange") {
-            col = Color.YELLOW;//0xff8000;
-        }
-        else if (color == "Purple") {
-            col = Color.CYAN;//0x660066;
-        }
-        else if (color == "Green") {
-            col = Color.GREEN;//0x00ff00;
-        }
-        else if (color == "Pink") {
-            col = Color.MAGENTA;//0xff33ff;
-        }
-        else if (color == "Brown") {
-            col = Color.DKGRAY;//0x663300;
-        }
-        else {
-            Log.e(ADD_CLASS, "You are adding a color that is not an option!");
-        }
-        */
         newClass = new Class(titleStr, color);
         student.addToList(newClass);
+
 
         Intent intent = new Intent(this, iLearnTracker.class);
         startActivity(intent);

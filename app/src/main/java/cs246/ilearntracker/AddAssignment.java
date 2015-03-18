@@ -22,6 +22,7 @@ import java.util.Date;
 
 public class AddAssignment extends ActionBarActivity {
     private Student student = Student.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +47,6 @@ public class AddAssignment extends ActionBarActivity {
         dropdown.setAdapter(adapter);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -69,6 +69,10 @@ public class AddAssignment extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Adds a new assignment to the student object.
+     * @param view the clicked button.
+     */
     public void add(View view) {
         Assignment assignment = new Assignment();
         EditText titleGetter = (EditText) findViewById(R.id.titleEdit);
@@ -108,13 +112,19 @@ public class AddAssignment extends ActionBarActivity {
         }
         addToClass.assignmentList.add(assignment);
 
-        super.onBackPressed();
+        //super.onBackPressed();
 
-        //Intent intent = new Intent(this, iLearnTracker.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, iLearnTracker.class);
+        startActivity(intent);
 
     }
 
+    /**
+     * Convert hour/minute time to milliseconds.
+     * @param hour
+     * @param minute
+     * @return milliseconds
+     */
     public long convertTime(long hour, long minute) {
         long time = (minute + (hour * 60)) * 60 * 1000;
 
