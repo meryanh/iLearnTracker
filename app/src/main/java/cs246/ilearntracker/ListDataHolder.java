@@ -7,6 +7,7 @@ import java.util.List;
  */
 public class ListDataHolder {
     public String title;
+    public String subTitle;
     public int color;
 
     /**
@@ -14,8 +15,9 @@ public class ListDataHolder {
      * @param title
      * @param color
      */
-    public ListDataHolder(String title, int color){
+    public ListDataHolder(String title, String subTitle, int color){
         this.title = title;
+        this.subTitle = subTitle;
         this.color = color;
     }
 

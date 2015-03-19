@@ -139,9 +139,9 @@ public class iLearnTracker extends ActionBarActivity {
             public String dataHeader = null;
             public List<ListDataHolder> subList = new ArrayList<>();
 
-            public ListHolder(String data, String subData, int color){
+            public ListHolder(String data, String subData, String subExtra, int color){
                 dataHeader = data;
-                subList.add(new ListDataHolder(subData, color));
+                subList.add(new ListDataHolder(subData, subExtra, color));
             }
         }
 
@@ -153,9 +153,9 @@ public class iLearnTracker extends ActionBarActivity {
             isAdded = false;
             for(ListHolder theItem : listHolderList) {
                 if (theItem.dataHeader.equals(DateFormat.getDateInstance().format(node.assignment.getDueDate()))) {
-                    tmp = node.assignment.getTitle() + " "
-                            + DateFormat.getTimeInstance(3).format(node.assignment.getDueDate());
-                    theItem.subList.add(new ListDataHolder(tmp,node.color));
+                    theItem.subList.add(new ListDataHolder(node.assignment.getTitle(),
+                            DateFormat.getTimeInstance(3).format(node.assignment.getDueDate()),
+                            node.color));
                     isAdded = true;
                     break;
                 }
@@ -163,9 +163,8 @@ public class iLearnTracker extends ActionBarActivity {
                 if(!isAdded) {
                     listHolderList.add(new ListHolder(DateFormat.getDateInstance().
                             format(node.assignment.getDueDate()),
-                            node.assignment.getTitle() + " " +
-                                    DateFormat.getTimeInstance(3).
-                                    format(node.assignment.getDueTime()),
+                            node.assignment.getTitle(),
+                            DateFormat.getTimeInstance(3).format(node.assignment.getDueTime()),
                             node.color));
                 }
         }

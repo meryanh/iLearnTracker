@@ -48,6 +48,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         ListDataHolder dataHolder = (ListDataHolder)getChild(groupPosition, childPosition);
         final String childText = dataHolder.title;
+        final String childSubText = dataHolder.subTitle;
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
@@ -59,9 +60,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                 .findViewById(R.id.lblListItem);
         TextView tagListChild = (TextView) convertView
                 .findViewById(R.id.colorTag);
+        TextView subListChild = (TextView) convertView
+                .findViewById(R.id.lblListSubItem);
 
         tagListChild.setBackgroundColor(dataHolder.color);
         txtListChild.setText(childText);
+        subListChild.setText(childSubText);
+
+        System.out.println(childText + " " + childSubText);
         return convertView;
     }
 
