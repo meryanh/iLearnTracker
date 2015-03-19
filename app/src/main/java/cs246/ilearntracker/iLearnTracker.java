@@ -32,7 +32,7 @@ public class iLearnTracker extends ActionBarActivity {
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
+    HashMap<String, List<ListDataHolder>> listDataChild;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +87,7 @@ public class iLearnTracker extends ActionBarActivity {
      */
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<String>>();
+        listDataChild = new HashMap<String, List<ListDataHolder>>();
 
         /**
          *
@@ -137,31 +137,36 @@ public class iLearnTracker extends ActionBarActivity {
 
         class ListHolder{
             public String dataHeader = null;
-            public List<String> subList = new ArrayList<>();
+            public List<ListDataHolder> subList = new ArrayList<>();
 
-            public ListHolder(String data, String subData){
+            public ListHolder(String data, String subData, int color){
                 dataHeader = data;
-                subList.add(subData);
+                subList.add(new ListDataHolder(subData, color));
             }
         }
 
         List<ListHolder> listHolderList = new ArrayList<>();
         boolean isAdded;
 
+        String tmp;
         for(Node node : nodeList){
             isAdded = false;
             for(ListHolder theItem : listHolderList) {
                 if (theItem.dataHeader.equals(DateFormat.getDateInstance().format(node.assignment.getDueDate()))) {
-                    theItem.subList.add(node.assignment.getTitle() + " " +
-                            DateFormat.getTimeInstance(3).format(node.assignment.getDueDate()));
+                    tmp = node.assignment.getTitle() + " "
+                            + DateFormat.getTimeInstance(3).format(node.assignment.getDueDate());
+                    theItem.subList.add(new ListDataHolder(tmp,node.color));
                     isAdded = true;
                     break;
                 }
             }
                 if(!isAdded) {
-                    listHolderList.add(new ListHolder(DateFormat.getDateInstance().format(node.assignment.getDueDate()),
+                    listHolderList.add(new ListHolder(DateFormat.getDateInstance().
+                            format(node.assignment.getDueDate()),
                             node.assignment.getTitle() + " " +
-                                    DateFormat.getTimeInstance(3).format(node.assignment.getDueTime())));
+                                    DateFormat.getTimeInstance(3).
+                                    format(node.assignment.getDueTime()),
+                            node.color));
                 }
         }
 
@@ -189,7 +194,7 @@ public class iLearnTracker extends ActionBarActivity {
 
         for(int i = 0; i < listHolderList.size(); i++){
             listDataHeader.add(listHolderList.get(i).dataHeader);
-            listDataChild.put(listHolderList.get(i).dataHeader,listHolderList.get(i).subList);
+            listDataChild.put(listHolderList.get(i).dataHeader, listHolderList.get(i).subList);
         }
 
 /*

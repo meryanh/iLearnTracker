@@ -16,7 +16,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context _context;
     private List<String> _listDataHeader; // header titles
     // child data in format of header title, child title
-    private HashMap<String, List<String>> _listDataChild;
+    private HashMap<String, List<ListDataHolder>> _listDataChild;
 
     /**
      * The constructor for the Expandable list view
@@ -25,7 +25,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
      * @param listChildData The data under the header
      */
     public ExpandableListAdapter(Context context, List<String> listDataHeader,
-                                 HashMap<String, List<String>> listChildData) {
+                                 HashMap<String, List<ListDataHolder>> listChildData) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
@@ -46,7 +46,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
-        final String childText = (String) getChild(groupPosition, childPosition);
+        ListDataHolder dataHolder = (ListDataHolder)getChild(groupPosition, childPosition);
+        final String childText = dataHolder.title;
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
@@ -56,7 +57,10 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         TextView txtListChild = (TextView) convertView
                 .findViewById(R.id.lblListItem);
+        TextView tagListChild = (TextView) convertView
+                .findViewById(R.id.colorTag);
 
+        tagListChild.setBackgroundColor(dataHolder.color);
         txtListChild.setText(childText);
         return convertView;
     }
