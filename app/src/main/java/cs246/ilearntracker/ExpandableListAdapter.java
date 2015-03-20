@@ -66,8 +66,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         tagListChild.setBackgroundColor(dataHolder.color);
         txtListChild.setText(childText);
         subListChild.setText(childSubText);
-
-        System.out.println(childText + " " + childSubText);
         return convertView;
     }
 

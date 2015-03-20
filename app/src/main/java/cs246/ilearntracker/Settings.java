@@ -112,7 +112,6 @@ public class Settings extends ActionBarActivity {
         NumberPicker cleanInteger = (NumberPicker) findViewById(R.id.cleanUpInt);
         cleanUp = cleanInteger.getValue();
         editor.putInt("cleanUp", cleanUp);
-        System.out.println("Here!");
         editor.commit();
 
         Intent intent = new Intent(this, iLearnTracker.class);

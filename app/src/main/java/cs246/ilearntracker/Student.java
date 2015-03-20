@@ -155,16 +155,6 @@ public class Student extends ActionBarActivity {
         classesList.add(newClass);
     }
 
-
-    /**
-     *  This function is for testing purposes.
-     */
-    public void showClasses() {
-        for (Class thisClass: classesList) {
-            System.out.println(thisClass.getClassName());
-        }
-    }
-
     /**
      * This will read in the classes from the xml file and put them into
      * the classesList.

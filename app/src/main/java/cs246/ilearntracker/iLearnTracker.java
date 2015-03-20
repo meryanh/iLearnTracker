@@ -115,8 +115,6 @@ public class iLearnTracker extends ActionBarActivity {
 
         List<Node> nodeList = new ArrayList<>();
 
-        System.out.println("HELLO?");
-
         /* Get all assignments and tag colors from the student */
         for(Class theClass : Student.getInstance().getClassList()){
             if(theClass.getIsActive()) {
@@ -125,13 +123,6 @@ public class iLearnTracker extends ActionBarActivity {
                 }
             }
         }
-/*
-        for(Class aClass : Student.getInstance().getClassList()){
-            for(Assignment anAssignment : aClass.getAssignmentList()) {
-                System.out.println(anAssignment.getTitle() + "?");
-            }
-        }
-*/
 
         Collections.sort(nodeList);
 
@@ -166,20 +157,15 @@ public class iLearnTracker extends ActionBarActivity {
                     if (hour > 12) {
                         hour -= 12;
                         ampm = "PM";
-                    }
-                    listHolderList.add(new ListHolder(DateFormat.getDateInstance().
+                    } listHolderList.add(new ListHolder(DateFormat.getDateInstance().
                             format(node.assignment.getDueDate()),
                             node.assignment.getTitle(),
                             node.assignment.getDueTime().format(hour + ":%M " + ampm),
                             node.color));
-                }//DateFormat.getTimeInstance(3).format(node.assignment.getDueTime())
+                }
         }
 
-
-
- /*
-
-        listDataHeader.add("Today");
+ /*     listDataHeader.add("Today");
         listDataHeader.add("Tomorrow");
         listDataHeader.add("Even later...");
 

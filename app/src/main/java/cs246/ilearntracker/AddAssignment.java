@@ -42,7 +42,6 @@ public class AddAssignment extends ActionBarActivity {
         for (int i = 0; i < sizeList; i++) {
             Class testClass = student.classesList.get(i);
             String name = testClass.getClassName();
-            System.out.println(name);
             items.add(name);
         }
         Spinner dropdown = (Spinner)findViewById(R.id.classSelect);
@@ -105,8 +104,6 @@ public class AddAssignment extends ActionBarActivity {
 
         long time = convertTime(notifyTime.getCurrentHour(), notifyTime.getCurrentMinute());
 
-        System.out.println(notifyTime.getCurrentHour());
-        System.out.println(notifyTime.getCurrentMinute());
         assignment.setDueTime(time);
 
         Spinner classGetter = (Spinner) findViewById(R.id.classSelect);
@@ -129,8 +126,6 @@ public class AddAssignment extends ActionBarActivity {
             return;
         }
         addToClass.assignmentList.add(assignment);
-        System.out.println(assignment.getDueDate());
-        System.out.println(assignment.getDueTime());
         Intent intent = new Intent(this, iLearnTracker.class);
         startActivity(intent);
 
@@ -143,11 +138,7 @@ public class AddAssignment extends ActionBarActivity {
      * @return The time in miliseconds
      */
     public long convertTime(long hour, long minute) {
-        System.out.println(hour + " " + minute);
-
         long time = (minute + ((hour + 7) * 60)) * 60 * 1000;
-        System.out.println(time);
-
         return time;
     }
 
