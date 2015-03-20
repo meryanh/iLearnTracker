@@ -104,9 +104,9 @@ public class iLearnTracker extends ActionBarActivity {
             @Override
             public int compareTo(Node another) {
                 if (((this.assignment.getDueDate().getTime() +
-                        this.assignment.getDueTime().getTime()) <
+                        this.assignment.getDueTime().toMillis(false)) <
                         ((another).assignment.getDueDate().getTime() +
-                                (another).assignment.getDueTime().getTime()))){
+                                (another).assignment.getDueTime().toMillis(false)))){
                     return -1;
                 }else{
                     return 1;
@@ -161,12 +161,18 @@ public class iLearnTracker extends ActionBarActivity {
                 }
             }
                 if(!isAdded) {
+                    int hour = node.assignment.getDueTime().hour;
+                    String ampm = "AM";
+                    if (hour > 12) {
+                        hour -= 12;
+                        ampm = "PM";
+                    }
                     listHolderList.add(new ListHolder(DateFormat.getDateInstance().
                             format(node.assignment.getDueDate()),
                             node.assignment.getTitle(),
-                            DateFormat.getTimeInstance(3).format(node.assignment.getDueTime()),
+                            node.assignment.getDueTime().format(hour + ":%M " + ampm),
                             node.color));
-                }
+                }//DateFormat.getTimeInstance(3).format(node.assignment.getDueTime())
         }
 
 
@@ -222,41 +228,17 @@ public class iLearnTracker extends ActionBarActivity {
         if (id == R.id.action_settings) {
             goToSettings(null);
         }
+        else if (id == R.id.action_addAssign) {
+            addAssignment(null);
+        }
         else if (id == R.id.action_addClass) {
             goToAddClass(null);
         }
+        else if (id == R.id.action_goToILearn) {
+            loadWebActivity(null);
+        }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * Sets the visibility, text, and color tag for all class buttons.
-     * Sets all unused buttons to hidden.
-     */
-    public void setupClassButtons(){
-        int resID;
-        Integer i = 0;
-        TextView buttonView;
-        TextView tagView;
-        for(Class theClass : student.getClassList()){
-            resID = getResources().getIdentifier("classButton0" + i.toString(), "id", "cs246.ilearntracker");
-            buttonView = (TextView)findViewById(resID);
-            buttonView.setText(theClass.getClassName());
-            buttonView.setVisibility(View.VISIBLE);
-            resID = getResources().getIdentifier("classTag0" + i.toString(), "id", "cs246.ilearntracker");
-            tagView = (TextView)findViewById(resID);
-            tagView.setVisibility(View.VISIBLE);
-            tagView.setBackgroundColor(theClass.getClassColor());
-            i++;
-        }
-        for(; i < 10; i++){
-            resID = getResources().getIdentifier("classButton0" + i.toString(), "id", "cs246.ilearntracker");
-            buttonView = (TextView)findViewById(resID);
-            buttonView.setVisibility(View.GONE);
-            resID = getResources().getIdentifier("classTag0" + i.toString(), "id", "cs246.ilearntracker");
-            tagView = (TextView)findViewById(resID);
-            tagView.setVisibility(View.GONE);
-        }
     }
 
     public void classButtonClick(View view){

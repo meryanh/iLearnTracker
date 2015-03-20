@@ -75,8 +75,18 @@ public class Settings extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
-        } return super.onOptionsItemSelected(item);
+            goToSettings(null);
+        }
+        else if (id == R.id.action_addAssign) {
+            addAssignment(null);
+        }
+        else if (id == R.id.action_addClass) {
+            goToAddClass(null);
+        }
+        else if (id == R.id.action_goToILearn) {
+            loadWebActivity(null);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -106,6 +116,38 @@ public class Settings extends ActionBarActivity {
         editor.commit();
 
         Intent intent = new Intent(this, iLearnTracker.class);
+        startActivity(intent);
+    }
+
+    public void addAssignment(View view) {
+        Intent intent = new Intent(this, AddAssignment.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Send the user to the settings activity
+     * @param view The button pushed
+     */
+    public void goToSettings(View view) {
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Sends the user to add a class
+     * @param view The button pushed
+     */
+    public void goToAddClass(View view) {
+        Intent intent = new Intent(this, AddClass.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Sends the user to log in to ILearn
+     * @param view The button pushed
+     */
+    public void loadWebActivity(View view){
+        Intent intent = new Intent(this, WebActivity.class);
         startActivity(intent);
     }
 }

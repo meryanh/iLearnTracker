@@ -1,6 +1,9 @@
 package cs246.ilearntracker;
 
-import java.sql.Time;
+//import java.sql.Time;
+import android.text.format.Time;
+
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -78,7 +81,9 @@ public class Assignment implements Comparable<Assignment>{
     public void setDueDate(Date newDate) { dueDate = newDate; }
 
     public void setDueTime(Long newTime) {
-        dueTime = new Time(newTime);
+        dueTime = new Time();
+        dueTime.set(newTime);
+        dueTime.switchTimezone(dueTime.getCurrentTimezone());
     }
 
     public void toggleIsComplete() {
@@ -117,9 +122,9 @@ public class Assignment implements Comparable<Assignment>{
 
     @Override
     public int compareTo(Assignment another) {
-        if (((this.dueDate.getTime() +this.dueTime.getTime()) <
+        if (((this.dueDate.getTime() + this.dueTime.toMillis(false)) <
                 (((Assignment)another).getDueDate().getTime() +
-                        ((Assignment)another).getDueTime().getTime()))){
+                        ((Assignment)another).getDueTime().toMillis(false)))){
             return -1;
         }else{
             return 1;

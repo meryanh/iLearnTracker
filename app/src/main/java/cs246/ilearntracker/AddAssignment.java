@@ -66,7 +66,16 @@ public class AddAssignment extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            goToSettings(null);
+        }
+        else if (id == R.id.action_addAssign) {
+            addAssignment(null);
+        }
+        else if (id == R.id.action_addClass) {
+            goToAddClass(null);
+        }
+        else if (id == R.id.action_goToILearn) {
+            loadWebActivity(null);
         }
 
         return super.onOptionsItemSelected(item);
@@ -93,8 +102,13 @@ public class AddAssignment extends ActionBarActivity {
         due = new Date(year, month, day);
         assignment.setDueDate(due);
         TimePicker notifyTime = ((TimePicker) findViewById(R.id.timePicker));
+
         long time = convertTime(notifyTime.getCurrentHour(), notifyTime.getCurrentMinute());
+
+        System.out.println(notifyTime.getCurrentHour());
+        System.out.println(notifyTime.getCurrentMinute());
         assignment.setDueTime(time);
+
         Spinner classGetter = (Spinner) findViewById(R.id.classSelect);
         String assignClassName = classGetter.getSelectedItem().toString();
         Class addToClass = new Class();
@@ -115,9 +129,11 @@ public class AddAssignment extends ActionBarActivity {
             return;
         }
         addToClass.assignmentList.add(assignment);
-
+        System.out.println(assignment.getDueDate());
+        System.out.println(assignment.getDueTime());
         Intent intent = new Intent(this, iLearnTracker.class);
         startActivity(intent);
+
     }
 
     /**
@@ -127,7 +143,43 @@ public class AddAssignment extends ActionBarActivity {
      * @return The time in miliseconds
      */
     public long convertTime(long hour, long minute) {
-        long time = (minute + (hour * 60)) * 60 * 1000;
+        System.out.println(hour + " " + minute);
+
+        long time = (minute + ((hour + 7) * 60)) * 60 * 1000;
+        System.out.println(time);
+
         return time;
+    }
+
+    public void addAssignment(View view) {
+        Intent intent = new Intent(this, AddAssignment.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Send the user to the settings activity
+     * @param view The button pushed
+     */
+    public void goToSettings(View view) {
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Sends the user to add a class
+     * @param view The button pushed
+     */
+    public void goToAddClass(View view) {
+        Intent intent = new Intent(this, AddClass.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Sends the user to log in to ILearn
+     * @param view The button pushed
+     */
+    public void loadWebActivity(View view){
+        Intent intent = new Intent(this, WebActivity.class);
+        startActivity(intent);
     }
 }
