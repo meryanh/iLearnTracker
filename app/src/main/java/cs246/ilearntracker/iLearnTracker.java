@@ -103,16 +103,16 @@ public class iLearnTracker extends ActionBarActivity {
 
             @Override
             public int compareTo(Node another) {
-                if (((this.assignment.getDueDate().getTime() +
-                        this.assignment.getDueTime().toMillis(false)) <
-                        ((another).assignment.getDueDate().getTime() +
-                                (another).assignment.getDueTime().toMillis(false)))){
+                if ((( this.assignment.getDueTime().toMillis(false)) <
+                                (another).assignment.getDueTime().toMillis(false))){
                     return -1;
+
                 }else{
                     return 1;
                 }            }
         }
 
+        List<Node> sortedNodes = new ArrayList<>();
         List<Node> nodeList = new ArrayList<>();
 
         /* Get all assignments and tag colors from the student */
@@ -125,6 +125,13 @@ public class iLearnTracker extends ActionBarActivity {
         }
 
         Collections.sort(nodeList);
+        /*Node least;
+        while (nodeList.size() > 0) {
+            least = nodeList.get(0);
+            for (int j = 1; j < nodeList.size(); j++ ) {
+                if ()
+            }
+        }*/
 
         class ListHolder{
             public String dataHeader = null;
@@ -138,6 +145,10 @@ public class iLearnTracker extends ActionBarActivity {
 
         List<ListHolder> listHolderList = new ArrayList<>();
         boolean isAdded;
+
+        for (Node node : nodeList){
+            System.out.println(node.assignment.getDueTime());
+        }
 
         String tmp;
         for(Node node : nodeList){
