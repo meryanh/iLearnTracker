@@ -146,17 +146,20 @@ public class iLearnTracker extends ActionBarActivity {
         List<ListHolder> listHolderList = new ArrayList<>();
         boolean isAdded;
 
-        for (Node node : nodeList){
-            System.out.println(node.assignment.getDueTime());
-        }
 
         String tmp;
         for(Node node : nodeList){
             isAdded = false;
             for(ListHolder theItem : listHolderList) {
                 if (theItem.dataHeader.equals(DateFormat.getDateInstance().format(node.assignment.getDueDate()))) {
+                    int hour = node.assignment.getDueTime().hour;
+                    String ampm = "AM";
+                    if (hour > 12) {
+                        hour -= 12;
+                        ampm = "PM";
+                    }
                     theItem.subList.add(new ListDataHolder(node.assignment.getTitle(),
-                            DateFormat.getTimeInstance(3).format(node.assignment.getDueDate()),
+                            node.assignment.getDueTime().format(hour + ":%M " + ampm),
                             node.color));
                     isAdded = true;
                     break;
@@ -175,6 +178,12 @@ public class iLearnTracker extends ActionBarActivity {
                             node.color));
                 }
         }
+
+        for (ListHolder node : listHolderList){
+            for(ListDataHolder theItem : node.subList)
+                System.out.println(theItem.subTitle);
+        }
+
 
  /*     listDataHeader.add("Today");
         listDataHeader.add("Tomorrow");
