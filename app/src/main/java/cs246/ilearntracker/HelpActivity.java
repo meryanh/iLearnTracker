@@ -4,6 +4,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 
 public class HelpActivity extends ActionBarActivity {
@@ -35,5 +37,32 @@ public class HelpActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     *
+     * @param view The clicked button.
+     */
+    public void overviewClicked(View view)
+    {
+        RelativeLayout lView = (RelativeLayout) findViewById(R.id.overviewLayout);
+        lView.setVisibility(View.VISIBLE);
+        lView = (RelativeLayout) findViewById(R.id.toolbarLayout);
+        lView.setVisibility(View.GONE);
+
+        return;
+    }
+
+    /**
+     *
+     * @param view The clicked button.
+     */
+    public void toolbarsClicked(View view)
+    {
+        RelativeLayout lView = (RelativeLayout) findViewById(R.id.toolbarLayout);
+        lView.setVisibility(View.VISIBLE);
+        lView = (RelativeLayout) findViewById(R.id.overviewLayout);
+        lView.setVisibility(View.GONE);
+        return;
     }
 }

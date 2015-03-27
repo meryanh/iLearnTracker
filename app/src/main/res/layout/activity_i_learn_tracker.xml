@@ -54,7 +54,7 @@
                 android:textSize="26sp"
                 android:layout_weight="0"
                 android:text="@string/add"
-                android:onClick="addAssignment"
+                android:onClick="loadHelp"
                 android:id="@+id/helpButton"
                 android:src="@drawable/help"
                 android:background="@android:color/transparent" />

@@ -325,6 +325,15 @@ public class iLearnTracker extends ActionBarActivity {
     }
 
     /**
+     * Sends the user to the help activity
+     * @param view The button pushed
+     */
+    public void loadHelp(View view){
+        Intent intent = new Intent(this, HelpActivity.class);
+        startActivity(intent);
+    }
+
+    /**
      * Updates the list of classes displayed
      */
     public void loadClassButtons() {
