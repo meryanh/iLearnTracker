@@ -98,7 +98,9 @@ public class AddAssignment extends ActionBarActivity {
         int day = datePicker.getDayOfMonth();
         int month = datePicker.getMonth();
         int year =  datePicker.getYear();
-        due = new Date(year, month, day);
+        System.out.println(year);
+        due = new Date(year - 1900, month, day);
+        System.out.println(due);
         assignment.setDueDate(due);
         TimePicker notifyTime = ((TimePicker) findViewById(R.id.timePicker));
 
@@ -139,6 +141,11 @@ public class AddAssignment extends ActionBarActivity {
      */
     public long convertTime(long hour, long minute) {
         long time = (minute + ((hour + 7) * 60)) * 60 * 1000;
+        return time;
+    }
+
+    public long convertDate(long day, long month, long year) {
+        long time = (day * 24 * 60 * 60);
         return time;
     }
 
