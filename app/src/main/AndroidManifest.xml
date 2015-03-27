@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cs246.ilearntracker" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -48,5 +50,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cs246.ilearntracker.WebActivity" />
         </activity>
+        <activity
+            android:name=".HelpActivity"
+            android:label="@string/title_activity_help" >
+        </activity>
     </application>
-<uses-permission android:name="android.permission.INTERNET" /></manifest>
+
+</manifest>

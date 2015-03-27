@@ -22,4 +22,5 @@
     <string name="description">Enter a description...</string>
     <string name="add_assign">Add this Assignment</string>
     <string name="addClass">Add this Class</string>
+    <string name="title_activity_help">HelpActivity</string>
 </resources>

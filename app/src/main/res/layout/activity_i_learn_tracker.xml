@@ -49,7 +49,18 @@
             >
 
             <ImageButton
-                android:layout_width="40sp"
+                android:layout_width="40dp"
+                android:layout_height="fill_parent"
+                android:textSize="26sp"
+                android:layout_weight="0"
+                android:text="@string/add"
+                android:onClick="addAssignment"
+                android:id="@+id/helpButton"
+                android:src="@drawable/help"
+                android:background="@android:color/transparent" />
+
+            <ImageButton
+                android:layout_width="40dp"
                 android:layout_height="fill_parent"
                 android:textSize="26sp"
                 android:layout_weight="0"
@@ -58,17 +69,6 @@
                 android:id="@+id/settingsButton"
                 android:src="@drawable/settings"
                 android:background="@android:color/transparent" />
-
-            <ImageButton
-                android:layout_width="40sp"
-                android:layout_height="fill_parent"
-                android:textSize="26sp"
-                android:text="@string/refresh"
-                android:id="@+id/refresh"
-                android:onClick="loadWebActivity"
-                android:src="@drawable/refresh"
-                android:background="@android:color/transparent"
-                android:layout_weight="0" />
 
             <TextView
                 android:layout_width="4sp"
@@ -79,7 +79,23 @@
                 android:background="#ff7c7c7c" />
 
             <ImageButton
-                android:layout_width="40sp"
+                android:layout_width="40dp"
+                android:layout_height="fill_parent"
+                android:textSize="26sp"
+                android:text="@string/refresh"
+                android:id="@+id/refresh"
+                android:onClick="loadWebActivity"
+                android:src="@drawable/refresh"
+                android:background="@android:color/transparent"
+                android:layout_weight="0" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:layout_width="40dp"
                 android:layout_height="fill_parent"
                 android:textSize="26sp"
                 android:layout_weight="0"
@@ -89,13 +105,8 @@
                 android:src="@drawable/newassignment"
                 android:background="@android:color/transparent" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-
             <ImageButton
-                android:layout_width="40sp"
+                android:layout_width="40dp"
                 android:layout_height="fill_parent"
                 android:textSize="26sp"
                 android:layout_weight="0"
