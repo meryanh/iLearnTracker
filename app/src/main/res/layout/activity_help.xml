@@ -143,6 +143,12 @@
                     android:layout_marginLeft="4dp"
                     android:layout_marginRight="4dp" />
 
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="3dp"
+                    android:layout_below="@+id/textView19"
+                    android:background="@android:color/darker_gray" />
+
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="fill_parent"
@@ -150,7 +156,8 @@
                     android:layout_alignParentBottom="false"
                     android:layout_alignParentLeft="false"
                     android:layout_alignParentStart="false"
-                    android:layout_below="@+id/textView19">
+                    android:layout_below="@+id/textView19"
+                    android:layout_marginTop="3dp">
 
                     <LinearLayout
                         android:orientation="horizontal"
