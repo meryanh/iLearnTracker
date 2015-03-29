@@ -24,7 +24,7 @@
                 android:id="@+id/overviewLayout"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -120,7 +120,7 @@
                 android:id="@+id/toolbarLayout"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="fill_parent"
