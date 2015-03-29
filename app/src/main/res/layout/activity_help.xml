@@ -23,7 +23,8 @@
             <RelativeLayout
                 android:id="@+id/overviewLayout"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+                android:layout_height="fill_parent"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -119,7 +120,7 @@
                 android:id="@+id/toolbarLayout"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -130,6 +131,230 @@
                     android:textColor="@android:color/white"
                     android:textSize="24sp"
                     android:gravity="center|center_horizontal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="The content of the toolbar varies depending on the context in which it is displayed.\nThe following list details the action that is taken upon pressing the designated icon. "
+                    android:id="@+id/textView19"
+                    android:layout_below="@+id/textView9"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="false"
+                    android:layout_alignParentLeft="false"
+                    android:layout_alignParentStart="false"
+                    android:layout_below="@+id/textView19">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/imageView2"
+                            android:src="@drawable/help"
+                            android:background="#ff336ca9"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Open this help screen."
+                            android:id="@+id/textView16"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:paddingTop="8dp"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"
+                            android:paddingBottom="4dp"
+                            android:layout_marginLeft="4dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/imageView3"
+                            android:src="@drawable/settings"
+                            android:background="#ff336ca9"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Open the settings screen."
+                            android:id="@+id/textView17"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:paddingTop="8dp"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"
+                            android:paddingBottom="4dp"
+                            android:layout_marginLeft="4dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/imageView4"
+                            android:src="@drawable/refresh"
+                            android:background="#ff336ca9"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Launch a web browser to connect to the iLearn login page."
+                            android:id="@+id/textView18"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:paddingTop="8dp"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"
+                            android:paddingBottom="4dp"
+                            android:layout_marginLeft="4dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/imageView5"
+                            android:src="@drawable/save"
+                            android:background="#ff336ca9"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Save assignments from the web page to this app after logging in to iLearn."
+                            android:id="@+id/textView20"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:paddingTop="8dp"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"
+                            android:paddingBottom="4dp"
+                            android:layout_marginLeft="4dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/imageView6"
+                            android:src="@drawable/floppy"
+                            android:background="#ff336ca9"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Save settings to file. "
+                            android:id="@+id/textView21"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:paddingTop="8dp"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"
+                            android:paddingBottom="4dp"
+                            android:layout_marginLeft="4dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/imageView7"
+                            android:src="@drawable/add_class"
+                            android:background="#ff336ca9"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Manually add a new class to this app."
+                            android:id="@+id/textView22"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:paddingTop="8dp"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"
+                            android:paddingBottom="4dp"
+                            android:layout_marginLeft="4dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/imageView8"
+                            android:src="@drawable/newassignment"
+                            android:background="#ff336ca9"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Manually add a new assignment to an existing class."
+                            android:id="@+id/textView23"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:paddingTop="8dp"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"
+                            android:paddingBottom="4dp"
+                            android:layout_marginLeft="4dp" />
+                    </LinearLayout>
+                </LinearLayout>
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
