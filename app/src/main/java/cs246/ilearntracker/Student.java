@@ -223,4 +223,37 @@ public class Student extends ActionBarActivity {
             e.printStackTrace();
         }
     }
+
+    /**
+     *
+     */
+    public void parseHTML(){
+       String[] lines = HTMLData.split("\n");
+        short i = 0;
+        Class newClass = new Class();
+        String tmp = null;
+       for(String line : lines){
+           if(line.contains("<div due-soon-list=")){
+               System.out.println(line);
+               for(String part : line.split("<span")){
+                   if(part.split(">").length > 1) {
+                       if (i == 0) {
+                           tmp = part.split(">")[1];
+                           tmp = tmp.substring(0, tmp.length() - 6);
+                           i++;
+                       } else if (i == 1) {
+                           tmp = part.split(">")[1];
+                           tmp = tmp.substring(0, tmp.length() - 6);
+                           i++;
+                       } else if (i == 2) {
+                           tmp = part.split(">")[1];
+                           tmp = tmp.substring(0, tmp.length() - 6);
+                           i = 0;
+                       }
+                       System.out.println(tmp);
+                   }
+               }
+           }
+       }
+    }
 }

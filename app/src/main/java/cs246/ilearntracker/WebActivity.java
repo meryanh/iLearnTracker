@@ -65,6 +65,7 @@ public class WebActivity extends ActionBarActivity {
      */
     public void saveHTML(View view){
         Student.getInstance().setHTMLData(HTMLData);
+        Student.getInstance().parseHTML();
         //super.onBackPressed();
         Intent intent = new Intent(this, iLearnTracker.class);
         startActivity(intent);

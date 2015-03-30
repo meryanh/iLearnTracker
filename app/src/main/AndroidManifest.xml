@@ -52,7 +52,7 @@
         </activity>
         <activity
             android:name=".HelpActivity"
-            android:label="Help" >
+            android:label="  Help" >
         </activity>
     </application>
 
