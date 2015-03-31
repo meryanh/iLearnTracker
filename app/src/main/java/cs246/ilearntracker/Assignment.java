@@ -19,7 +19,7 @@ public class Assignment implements Comparable<Assignment>{
     private Date dueDate;
     private Time dueTime;
     private boolean isComplete;
-    //private boolean isFromILearn;
+    private boolean isFromILearn;
 
     /**
      * The default constructor for a new Assignment
@@ -64,11 +64,11 @@ public class Assignment implements Comparable<Assignment>{
         return isComplete;
     }
 
-    /*
+
     public boolean getIsFromILearn() {
         return isFromILearn;
     }
-    */
+
 
     public void setTitle(String newTitle) {
         title = newTitle;
@@ -95,11 +95,11 @@ public class Assignment implements Comparable<Assignment>{
         }
     }
 
-    /*
+
     public void setIsFromILearn(){
         isFromILearn = true;
     }
-    */
+
 
     /**
      * Makes an XML format for the assignment to be added information

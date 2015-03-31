@@ -179,12 +179,6 @@ public class iLearnTracker extends ActionBarActivity {
                 }
         }
 
-        for (ListHolder node : listHolderList){
-            for(ListDataHolder theItem : node.subList)
-                System.out.println(theItem.subTitle);
-        }
-
-
  /*     listDataHeader.add("Today");
         listDataHeader.add("Tomorrow");
         listDataHeader.add("Even later...");

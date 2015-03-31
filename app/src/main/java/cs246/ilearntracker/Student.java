@@ -16,9 +16,12 @@ import org.xml.sax.SAXException;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
-import java.sql.Date;
-import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -230,27 +233,93 @@ public class Student extends ActionBarActivity {
     public void parseHTML(){
        String[] lines = HTMLData.split("\n");
         short i = 0;
-        Class newClass = new Class();
+        Class newClass;
+        Assignment newAssignment = new Assignment();
         String tmp = null;
-       for(String line : lines){
+        java.util.Date date = null;
+        boolean first = true;
+        for(String line : lines){
            if(line.contains("<div due-soon-list=")){
-               System.out.println(line);
                for(String part : line.split("<span")){
-                   if(part.split(">").length > 1) {
-                       if (i == 0) {
-                           tmp = part.split(">")[1];
-                           tmp = tmp.substring(0, tmp.length() - 6);
-                           i++;
-                       } else if (i == 1) {
-                           tmp = part.split(">")[1];
-                           tmp = tmp.substring(0, tmp.length() - 6);
-                           i++;
-                       } else if (i == 2) {
-                           tmp = part.split(">")[1];
-                           tmp = tmp.substring(0, tmp.length() - 6);
-                           i = 0;
+                   if(first){
+                       first = false;
+                   }else{
+                   if (i == 0) {
+                       // Assignment title:
+                       newAssignment = new Assignment();
+                       newAssignment.setIsFromILearn();
+                       tmp = part.split(">")[1];
+                       tmp = tmp.substring(0, tmp.length() - 6);
+                       newAssignment.setTitle(tmp);
+                       System.out.println("Assignment title: "+tmp);
+                       i++;
+                   } else if (i == 1) {
+                       // Time and date:
+
+                       tmp = part.split(">")[1];
+                       tmp = tmp.substring(0, tmp.length() - 6);
+                       if(tmp.contains("Today")){
+                           newAssignment.setDueDate(Calendar.getInstance().getTime());
+                           DateFormat formatter = new SimpleDateFormat("hh:mm a");
+                           try {
+                               date = (Date)formatter.parse(tmp.split(" ")[1] + " " +
+                                       tmp.split(" ")[2]);
+                               newAssignment.setDueTime(date.getTime());
+                           } catch (ParseException e) {
+                               e.printStackTrace();
+                           }
+                       }else if(tmp.contains("Tomorrow")){
+                           Calendar calendar = Calendar.getInstance();
+                           calendar.add(Calendar.DATE, 1);
+                           newAssignment.setDueDate(calendar.getTime());
+                           DateFormat formatter = new SimpleDateFormat("hh:mm a");
+                           try {
+                               date = (Date)formatter.parse(tmp.split(" ")[1] + " " +
+                                       tmp.split(" ")[2]);
+                               newAssignment.setDueTime(date.getTime());
+                           } catch (ParseException e) {
+                               e.printStackTrace();
+                           }
+                       }else{
+                           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                           tmp = tmp.replace("/","-");
+                           try {
+                               Integer year = Calendar.getInstance().get(Calendar.YEAR);
+                               newAssignment.setDueDate((Date)sdf.parse(year.toString() + "-" +
+                                       tmp.split(" ")[1]));
+                           } catch (ParseException e) {
+                               e.printStackTrace();
+                           }
+                           DateFormat formatter = new SimpleDateFormat("hh:mm a");
+                           try {
+                               date = (Date)formatter.parse(tmp.split(" ")[2]+" "+tmp.split(" ")[3]);
+                               newAssignment.setDueTime(date.getTime());
+                           } catch (ParseException e) {
+                               e.printStackTrace();
+                           }
                        }
-                       System.out.println(tmp);
+                       i++;
+                       System.out.println("Time & Date: "+tmp);
+                   } else if (i == 2) {
+                       // Class:
+                       tmp = part.split(">")[1];
+                       tmp = tmp.substring(0, tmp.length() - 6);
+                       System.out.println("Class: " + tmp);
+                       System.out.println("ADD: " + newAssignment.getTitle());
+                       boolean found = false;
+                       for (int j = 0; j < classesList.size(); j++) {
+                           if (classesList.get(j).getClassName().equals(tmp)) {
+                               classesList.get(j).addAssignment(newAssignment);
+                               found = true;
+                           }
+                       }
+                       if (!found) {
+                           newClass = new Class(tmp, Color.GRAY);
+                           newClass.addAssignment(newAssignment);
+                           addToList(newClass);
+                       }
+                       i = 0;
+                   }
                    }
                }
            }
