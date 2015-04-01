@@ -281,15 +281,11 @@ public class Student extends ActionBarActivity {
                                e.printStackTrace();
                            }
                        }else{
-                           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                           Calendar assignmentDate = Calendar.getInstance();
                            tmp = tmp.replace("/","-");
-                           try {
-                               Integer year = Calendar.getInstance().get(Calendar.YEAR);
-                               newAssignment.setDueDate((Date)sdf.parse(year.toString() + "-" +
-                                       tmp.split(" ")[1]));
-                           } catch (ParseException e) {
-                               e.printStackTrace();
-                           }
+                           newAssignment.setDueDate(new Date(assignmentDate.get(Calendar.YEAR)-1900,
+                                   Integer.parseInt(tmp.split(" ")[1].split("-")[0])-1,
+                                   Integer.parseInt(tmp.split(" ")[1].split("-")[1])));
                            DateFormat formatter = new SimpleDateFormat("hh:mm a");
                            try {
                                date = (Date)formatter.parse(tmp.split(" ")[2]+" "+tmp.split(" ")[3]);

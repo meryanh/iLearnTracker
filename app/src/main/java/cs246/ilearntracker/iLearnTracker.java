@@ -65,8 +65,7 @@ public class iLearnTracker extends ActionBarActivity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-                // TODO Auto-generated method stub
-                // Do whatever is needed with the clicked info.
+                /*
                 Toast.makeText(
                         getApplicationContext(),
                         listDataHeader.get(groupPosition)
@@ -75,9 +74,11 @@ public class iLearnTracker extends ActionBarActivity {
                                 listDataHeader.get(groupPosition)).get(
                                 childPosition), Toast.LENGTH_SHORT)
                         .show();
+                */
                 return false;
             }
-        });
+
+            });
 
         loadClassButtons();
     }
@@ -103,8 +104,10 @@ public class iLearnTracker extends ActionBarActivity {
 
             @Override
             public int compareTo(Node another) {
-                if ((( this.assignment.getDueTime().toMillis(false)) <
-                                (another).assignment.getDueTime().toMillis(false))){
+                if ((( this.assignment.getDueTime().toMillis(false) +
+                        this.assignment.getDueDate().getTime()) <
+                        (another.assignment.getDueTime().toMillis(false) +
+                                another.assignment.getDueDate().getTime()))){
                     return -1;
 
                 }else{
@@ -125,13 +128,6 @@ public class iLearnTracker extends ActionBarActivity {
         }
 
         Collections.sort(nodeList);
-        /*Node least;
-        while (nodeList.size() > 0) {
-            least = nodeList.get(0);
-            for (int j = 1; j < nodeList.size(); j++ ) {
-                if ()
-            }
-        }*/
 
         class ListHolder{
             public String dataHeader = null;
@@ -196,7 +192,6 @@ public class iLearnTracker extends ActionBarActivity {
         List<String> later = new ArrayList<String>();
         later.add("More stuff");
    */
-
         for(int i = 0; i < listHolderList.size(); i++){
             listDataHeader.add(listHolderList.get(i).dataHeader);
             listDataChild.put(listHolderList.get(i).dataHeader, listHolderList.get(i).subList);
