@@ -233,7 +233,9 @@ public class Student extends ActionBarActivity {
      * Updates the content from iLearn with the content contained in the HTMLData
      */
     public void parseHTML(){
-
+        if(!(HTMLData.contains("<div due-soon-list="))){
+            return;
+        }
         // Remove all iLearn assignments before adding new ones:
        for(int i = 0; i < classesList.size(); i++){
            int size = classesList.get(i).getAssignmentList().size();
@@ -267,7 +269,6 @@ public class Student extends ActionBarActivity {
                        tmp = part.split(">")[1];
                        tmp = tmp.substring(0, tmp.length() - 6);
                        newAssignment.setTitle(tmp);
-                       System.out.println("Assignment title: "+tmp);
                        i++;
                    } else if (i == 1) {
                        // Time and date:
@@ -311,13 +312,10 @@ public class Student extends ActionBarActivity {
                            }
                        }
                        i++;
-                       System.out.println("Time & Date: "+tmp);
                    } else if (i == 2) {
                        // Class:
                        tmp = part.split(">")[1];
                        tmp = tmp.substring(0, tmp.length() - 6);
-                       System.out.println("Class: " + tmp);
-                       System.out.println("ADD: " + newAssignment.getTitle());
                        boolean found = false;
                        for (int j = 0; j < classesList.size(); j++) {
                            if (classesList.get(j).getClassName().equals(tmp)) {
@@ -367,5 +365,6 @@ public class Student extends ActionBarActivity {
                }
            }
        }
+        // SAVE
     }
 }

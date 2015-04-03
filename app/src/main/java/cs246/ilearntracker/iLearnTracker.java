@@ -244,7 +244,6 @@ public class iLearnTracker extends ActionBarActivity {
     public void classButtonClick(View view){
         TextView classButton = (TextView)view;
         String className = classButton.getText().toString();
-        System.out.println(className);
         for(int i = 0; i < Student.getInstance().getClassList().size(); i++){
             if(Student.getInstance().getClassList().get(i).getClassName().equals(className)){
                     Student.getInstance().toggleClassIsActive(i);

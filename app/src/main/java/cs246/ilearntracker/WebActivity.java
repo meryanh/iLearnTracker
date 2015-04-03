@@ -13,6 +13,7 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 
 public class WebActivity extends ActionBarActivity {
@@ -64,6 +65,17 @@ public class WebActivity extends ActionBarActivity {
      * @param view The place pressed to save the HTML
      */
     public void saveHTML(View view){
+        if(HTMLData == null){
+            Toast.makeText(getApplicationContext(),
+                    "Unable to locate assignments on current page.",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        } else if(!(HTMLData.contains("<div due-soon-list="))){
+            Toast.makeText(getApplicationContext(),
+                    "Unable to locate assignments on current page.",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
         Student.getInstance().setHTMLData(HTMLData);
         Student.getInstance().parseHTML();
         //super.onBackPressed();
