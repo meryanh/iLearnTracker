@@ -9,6 +9,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <service android:enabled="true" android:name=".NotifyService" />
         <activity
             android:name=".iLearnTracker"
             android:label="@string/app_name" >

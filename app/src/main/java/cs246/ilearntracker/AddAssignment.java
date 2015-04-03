@@ -1,8 +1,12 @@
 package cs246.ilearntracker;
 
+import android.app.AlarmManager;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -13,10 +17,12 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -24,10 +30,17 @@ import java.util.Date;
  */
 public class AddAssignment extends ActionBarActivity {
 
+    int notify;
+    AlarmManager alarmManager;
+    private PendingIntent pendingIntent;
+    private TimePicker alarmTimePicker;
+    private static AddAssignment inst;
+    private TextView alarmTextView;
     private Student student = Student.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        notify = 0;
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         setContentView(R.layout.activity_add_assignment);
@@ -107,6 +120,7 @@ public class AddAssignment extends ActionBarActivity {
         long time = convertTime(notifyTime.getCurrentHour(), notifyTime.getCurrentMinute());
 
         assignment.setDueTime(time);
+        System.out.println(assignment.getDueTime().toString() + "\n" + assignment.getDueDate().toString());
 
         Spinner classGetter = (Spinner) findViewById(R.id.classSelect);
         String assignClassName = classGetter.getSelectedItem().toString();
@@ -122,15 +136,52 @@ public class AddAssignment extends ActionBarActivity {
             Context context = getApplicationContext();
             CharSequence text = "Please select a valid class...";
             int duration = Toast.LENGTH_SHORT;
-
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
             return;
         }
         addToClass.assignmentList.add(assignment);
+
+        if (assignment.getDueTime().hour <= 12) {
+            if (assignment.getDueTime().minute < 10) {
+                String dueWhen = assignment.getDueTime().hour + ":0" + assignment.getDueTime().minute + " AM";
+                setNotify(titleStr, dueWhen);
+            }
+            else {
+                String dueWhen = assignment.getDueTime().hour + ":" + assignment.getDueTime().minute + " AM";
+                setNotify(titleStr, dueWhen);
+            }
+        }
+        else {
+            if (assignment.getDueTime().minute < 10) {
+                String dueWhen = (assignment.getDueTime().hour - 12) + ":0" + assignment.getDueTime().minute + " PM";
+                setNotify(titleStr, dueWhen);
+            }
+            else {
+                String dueWhen = (assignment.getDueTime().hour - 12) + ":" + assignment.getDueTime().minute + " PM";
+                setNotify(titleStr, dueWhen);
+            }
+        }
         Intent intent = new Intent(this, iLearnTracker.class);
         startActivity(intent);
 
+    }
+
+    public void setNotify(String notTitle, String when) {
+        System.out.println(notTitle);
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.byui)
+                        .setContentTitle("Due Date Approaching!")
+                        .setContentText("Due: " + when + "\t\t" + notTitle);
+
+        int mNotificationId = notify;
+
+        notify++;
+
+        NotificationManager mNotifyMgr =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        mNotifyMgr.notify(mNotificationId, mBuilder.build());
     }
 
     /**
