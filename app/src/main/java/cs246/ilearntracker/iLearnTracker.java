@@ -80,6 +80,10 @@ public class iLearnTracker extends ActionBarActivity {
             }
 
             });
+        ExpandableListView listView = (ExpandableListView) findViewById(R.id.lvExp);
+        int count = listView.getCount();
+        for (int position = 1; position <= count; position++)
+            listView.expandGroup(position - 1);
 
         loadClassButtons();
     }
@@ -280,7 +284,10 @@ public class iLearnTracker extends ActionBarActivity {
             }
 
         });
-
+        ExpandableListView listView = (ExpandableListView) findViewById(R.id.lvExp);
+        int count = listView.getCount();
+        for (int position = 1; position <= count; position++)
+            listView.expandGroup(position - 1);
     }
 
     /**
