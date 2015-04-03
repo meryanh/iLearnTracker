@@ -24,7 +24,7 @@ public class Class {
         className = null;
         classColor = 0xffffff;
         assignmentList = new ArrayList();
-        isActive = false;
+        isActive = true;
         Log.w(TAG_CLASS,"Class successfully constructed, but values are not correctly set.");
     }
 
@@ -42,6 +42,8 @@ public class Class {
     }
 
     public void addAssignment(Assignment assignment){ assignmentList.add(assignment); }
+
+    public void removeAssignment(int loc){ assignmentList.remove(loc); }
 
     public void setClassName(String name){ className = name; }
 

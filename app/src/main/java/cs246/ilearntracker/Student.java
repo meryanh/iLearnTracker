@@ -95,6 +95,8 @@ public class Student extends ActionBarActivity {
 
     public void setHTMLData(String html) {HTMLData = html; }
 
+    public void toggleClassIsActive(int loc) {classesList.get(loc).toggleIsActive();};
+
     /**
      * This function will save the local variables notification, refreshInterval,
      * and cleanUpInterval into its own xml file.
@@ -228,13 +230,27 @@ public class Student extends ActionBarActivity {
     }
 
     /**
-     *
+     * Updates the content from iLearn with the content contained in the HTMLData
      */
     public void parseHTML(){
+
+        // Remove all iLearn assignments before adding new ones:
+       for(int i = 0; i < classesList.size(); i++){
+           int size = classesList.get(i).getAssignmentList().size();
+           for(int j = 0; j < size; j++){
+                if(classesList.get(i).getAssignmentList().get(j).getIsFromILearn()){
+                    classesList.get(i).removeAssignment(j);
+                    size--;
+                    j--;
+                }
+           }
+       }
+
        String[] lines = HTMLData.split("\n");
         short i = 0;
         Class newClass;
         Assignment newAssignment = new Assignment();
+        newAssignment.setIsFromILearn();
         String tmp = null;
         java.util.Date date = null;
         boolean first = true;

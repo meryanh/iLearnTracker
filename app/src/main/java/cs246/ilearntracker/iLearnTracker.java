@@ -1,6 +1,7 @@
 package cs246.ilearntracker;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -237,17 +238,21 @@ public class iLearnTracker extends ActionBarActivity {
     }
 
     public void classButtonClick(View view){
-        if(view.getVisibility() != View.VISIBLE){
-            return; // Do nothing if hidden button was clicked
+        TextView classButton = (TextView)view;
+        String className = classButton.getText().toString();
+        System.out.println(className);
+        for(int i = 0; i < Student.getInstance().getClassList().size(); i++){
+            if(Student.getInstance().getClassList().get(i).getClassName().equals(className)){
+                    Student.getInstance().toggleClassIsActive(i);
+                if(Student.getInstance().getClassList().get(i).getIsActive()){
+                    view.setBackgroundColor(Color.rgb(232,232,232));
+                } else {
+                    view.setBackgroundColor(Color.GRAY);
+                }
+            }
         }
-        String tag = view.getTag().toString();
-        Integer i = Integer.parseInt(tag.substring(tag.length() - 1));
 
-        student.getClass(i).toggleIsActive();
-
-        expListView = (ExpandableListView) findViewById(R.id.lvExp);
-
-        // preparing list data
+        // Resetting list data:
         prepareListData();
 
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
@@ -261,8 +266,7 @@ public class iLearnTracker extends ActionBarActivity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-                // TODO Auto-generated method stub
-                // Do whatever is needed with the clicked info.
+                /*
                 Toast.makeText(
                         getApplicationContext(),
                         listDataHeader.get(groupPosition)
@@ -271,8 +275,10 @@ public class iLearnTracker extends ActionBarActivity {
                                 listDataHeader.get(groupPosition)).get(
                                 childPosition), Toast.LENGTH_SHORT)
                         .show();
+                */
                 return false;
             }
+
         });
 
     }

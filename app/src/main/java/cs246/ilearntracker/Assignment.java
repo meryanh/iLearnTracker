@@ -27,10 +27,9 @@ public class Assignment implements Comparable<Assignment>{
     public Assignment() {
         title = "New Assignment";
         comments = "";
-        //setDueDate(); //Figure out how to put in the current time plus 1 hour
         setDueTime(System.nanoTime());
         isComplete = false;
-        //isFromILearn = false;
+        isFromILearn = true;
     }
 
     /**
@@ -42,6 +41,7 @@ public class Assignment implements Comparable<Assignment>{
         title = newTitle;
         comments = comment;
         isComplete = false;
+        isFromILearn = false;
     }
 
     public String getTitle() {
@@ -64,11 +64,9 @@ public class Assignment implements Comparable<Assignment>{
         return isComplete;
     }
 
-
     public boolean getIsFromILearn() {
         return isFromILearn;
     }
-
 
     public void setTitle(String newTitle) {
         title = newTitle;
@@ -95,11 +93,9 @@ public class Assignment implements Comparable<Assignment>{
         }
     }
 
-
     public void setIsFromILearn(){
         isFromILearn = true;
     }
-
 
     /**
      * Makes an XML format for the assignment to be added information
