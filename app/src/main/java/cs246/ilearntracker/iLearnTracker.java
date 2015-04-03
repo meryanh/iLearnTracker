@@ -336,4 +336,12 @@ public class iLearnTracker extends ActionBarActivity {
         ListView lView = (ListView) findViewById(R.id.classList);
         lView.setAdapter(adapter);
     }
+
+    public void start (View view) {
+        startService(new Intent(this, NotifyService.class));
+    }
+
+    public void stop (View view) {
+        stopService(new Intent(this, NotifyService.class));
+    }
 }
