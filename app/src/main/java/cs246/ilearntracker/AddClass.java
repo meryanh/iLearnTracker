@@ -49,15 +49,15 @@ public class AddClass extends ActionBarActivity {
         colorPickerItem = (Button)findViewById(R.id.color4);
         colorPickerItem.setBackgroundColor(Color.rgb(0,255,255));      //Cyan
         colorPickerItem = (Button)findViewById(R.id.color5);
-        colorPickerItem.setBackgroundColor(Color.rgb(100,100,100));    //Gray
+        colorPickerItem.setBackgroundColor(Color.rgb(255,0,255));      //Purple
         colorPickerItem = (Button)findViewById(R.id.color6);
-        colorPickerItem.setBackgroundColor(Color.rgb(1,1,1));          //Black
+        colorPickerItem.setBackgroundColor(Color.rgb(255,100,0));      //Orange
         colorPickerItem = (Button)findViewById(R.id.color7);
         colorPickerItem.setBackgroundColor(Color.rgb(255,255,0));      //Yellow
         colorPickerItem = (Button)findViewById(R.id.color8);
-        colorPickerItem.setBackgroundColor(Color.rgb(255,0,255));      //Purple
+        colorPickerItem.setBackgroundColor(Color.rgb(100,100,100));    //Gray
         colorPickerItem = (Button)findViewById(R.id.color9);
-        colorPickerItem.setBackgroundColor(Color.rgb(255,100,0));      //Orange
+        colorPickerItem.setBackgroundColor(Color.rgb(1,1,1));          //Black
     }
 
     /**

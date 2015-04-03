@@ -327,6 +327,37 @@ public class Student extends ActionBarActivity {
                        }
                        if (!found) {
                            newClass = new Class(tmp, Color.GRAY);
+                           switch(Student.getInstance().getClassList().size()){
+                               case 0:
+                                   newClass.setClassColor(Color.rgb(0,255,0));
+                                   break;
+                               case 1:
+                                   newClass.setClassColor(Color.rgb(255,0,0));
+                                   break;
+                               case 2:
+                                   newClass.setClassColor(Color.rgb(0,0,255));
+                                   break;
+                               case 3:
+                                   newClass.setClassColor(Color.rgb(0,255,255));
+                                   break;
+                               case 4:
+                                   newClass.setClassColor(Color.rgb(255,0,255));
+                                   break;
+                               case 5:
+                                   newClass.setClassColor(Color.rgb(255,100,0));
+                                   break;
+                               case 6:
+                                   newClass.setClassColor(Color.rgb(255,255,0));
+                                   break;
+                               case 7:
+                                   newClass.setClassColor(Color.rgb(100,100,100));
+                                   break;
+                               case 8:
+                                   newClass.setClassColor(Color.rgb(1,1,1));
+                                   break;
+                               default:
+                                   // Leave as gray.
+                           }
                            newClass.addAssignment(newAssignment);
                            addToList(newClass);
                        }
