@@ -108,6 +108,7 @@ public class AddAssignment extends ActionBarActivity {
      */
     public void add(View view) {
         Assignment assignment = new Assignment();
+        assignment.setIsFromILearn(false);
         EditText titleGetter = (EditText) findViewById(R.id.titleEdit);
         String titleStr = titleGetter.getText().toString();
         assignment.setTitle(titleStr);
