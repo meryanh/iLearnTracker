@@ -34,12 +34,7 @@ public class AddClass extends ActionBarActivity {
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.drawable.byui);
         actionBar.setBackgroundDrawable(new ColorDrawable(0xff326ba9));
-        //Spinner dropdown = (Spinner)findViewById(R.id.colorSelect);
-        //String[] items = new String[]{"Red", "Yellow", "Blue", "Orange", "Purple", "Green", "Pink", "Brown"};
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
-        //dropdown.setAdapter(adapter);
 
-        // Set up color picker:
         Button colorPickerItem = (Button)findViewById(R.id.color1);
         colorPickerItem.setBackgroundColor(Color.rgb(0,255,0));        //Green
         colorPickerItem = (Button)findViewById(R.id.color2);
