@@ -185,6 +185,23 @@ public class Student extends ActionBarActivity{
     }
 
     /**
+     * Remove all past-due assignments from the Student's class list
+     */
+    public void clean(){
+        for(int i = 0; i < classesList.size(); i++)
+        {
+            for(int j = 0; j < classesList.get(i).getAssignmentList().size(); j++){
+                if(classesList.get(i).getAssignmentList().get(j).getDueDate().getTime()
+                        + classesList.get(i).getAssignmentList().get(j).getDueTime().toMillis(false)
+                        < System.currentTimeMillis()){
+
+                    classesList.get(i).removeAssignment(j);
+                }
+            }
+        }
+    }
+
+    /**
      * This function adds a class to the classesList
      */
     public void addToList(Class newClass) {

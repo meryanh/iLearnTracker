@@ -48,7 +48,8 @@ public class iLearnTracker extends ActionBarActivity {
 
         // Load classes and settings if the student object has not yet been initialized
         if(!Student.getInstance().init()){
-            //student.loadSettings();
+            student.loadSettings();
+            student.clean();
         }
 
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
