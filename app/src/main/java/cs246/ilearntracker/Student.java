@@ -185,7 +185,8 @@ public class Student extends ActionBarActivity{
     }
 
     /**
-     * Remove all past-due assignments from the Student's class list
+     * Remove all past-due assignments from the Student's class list and all empty
+     * classes from the class list.
      */
     public void clean(){
         for(int i = 0; i < classesList.size(); i++)
@@ -197,6 +198,9 @@ public class Student extends ActionBarActivity{
 
                     classesList.get(i).removeAssignment(j);
                 }
+            }
+            if(classesList.get(i).getAssignmentList().size() == 0){
+                classesList.remove(i);
             }
         }
     }
