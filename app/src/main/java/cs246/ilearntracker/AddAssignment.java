@@ -143,48 +143,12 @@ public class AddAssignment extends ActionBarActivity {
         }
         addToClass.assignmentList.add(assignment);
 
-        if (assignment.getDueTime().hour <= 12) {
-            if (assignment.getDueTime().minute < 10) {
-                String dueWhen = assignment.getDueTime().hour + ":0" + assignment.getDueTime().minute + " AM";
-                setNotify(titleStr, dueWhen);
-            }
-            else {
-                String dueWhen = assignment.getDueTime().hour + ":" + assignment.getDueTime().minute + " AM";
-                setNotify(titleStr, dueWhen);
-            }
-        }
-        else {
-            if (assignment.getDueTime().minute < 10) {
-                String dueWhen = (assignment.getDueTime().hour - 12) + ":0" + assignment.getDueTime().minute + " PM";
-                setNotify(titleStr, dueWhen);
-            }
-            else {
-                String dueWhen = (assignment.getDueTime().hour - 12) + ":" + assignment.getDueTime().minute + " PM";
-                setNotify(titleStr, dueWhen);
-            }
-        }
         student.setIsChanged(true);
         Intent intent = new Intent(this, iLearnTracker.class);
         startActivity(intent);
 
     }
 
-    public void setNotify(String notTitle, String when) {
-        System.out.println(notTitle);
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.byui)
-                        .setContentTitle("Due Date Approaching!")
-                        .setContentText("Due: " + when + "\t\t" + notTitle);
-
-        int mNotificationId = notify;
-
-        notify++;
-
-        NotificationManager mNotifyMgr =
-                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        mNotifyMgr.notify(mNotificationId, mBuilder.build());
-    }
 
     /**
      * Converts the time to miliseconds
