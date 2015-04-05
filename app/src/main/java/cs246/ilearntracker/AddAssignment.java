@@ -1,28 +1,28 @@
 package cs246.ilearntracker;
 
 import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TimePicker;
-
-import java.util.Calendar;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
+
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -31,22 +31,13 @@ import java.util.Date;
 public class AddAssignment extends ActionBarActivity {
 
     int notify;
-
     AlarmManager alarmManager;
     private PendingIntent pendingIntent;
+    private TimePicker alarmTimePicker;
     private static AddAssignment inst;
+    private TextView alarmTextView;
     private Student student = Student.getInstance();
-    public String alarmMessage;
 
-    public static AddAssignment instance() {
-        return inst;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        inst = this;
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         notify = 0;
@@ -57,6 +48,7 @@ public class AddAssignment extends ActionBarActivity {
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.drawable.byui);
         actionBar.setBackgroundDrawable(new ColorDrawable(0xff326ba9));
+        //Student nStudent = new Student();
         ArrayList<String> items = new ArrayList<String>();
         int sizeList = student.classesList.size();
         items.add("Select a Class...");
@@ -151,36 +143,47 @@ public class AddAssignment extends ActionBarActivity {
         }
         addToClass.assignmentList.add(assignment);
 
-
-        String dueWhen;
         if (assignment.getDueTime().hour <= 12) {
             if (assignment.getDueTime().minute < 10) {
-                dueWhen = assignment.getDueTime().hour + ":0" + assignment.getDueTime().minute + " AM";
-                //setNotify(titleStr, dueWhen);
-            } else {
-                dueWhen = assignment.getDueTime().hour + ":" + assignment.getDueTime().minute + " AM";
+                String dueWhen = assignment.getDueTime().hour + ":0" + assignment.getDueTime().minute + " AM";
+                setNotify(titleStr, dueWhen);
             }
-        } else {
+            else {
+                String dueWhen = assignment.getDueTime().hour + ":" + assignment.getDueTime().minute + " AM";
+                setNotify(titleStr, dueWhen);
+            }
+        }
+        else {
             if (assignment.getDueTime().minute < 10) {
-                dueWhen = (assignment.getDueTime().hour - 12) + ":0" + assignment.getDueTime().minute + " PM";
-            } else {
-                dueWhen = (assignment.getDueTime().hour - 12) + ":" + assignment.getDueTime().minute + " PM";
-                //setNotify(titleStr, dueWhen);
+                String dueWhen = (assignment.getDueTime().hour - 12) + ":0" + assignment.getDueTime().minute + " PM";
+                setNotify(titleStr, dueWhen);
             }
-        } student.setIsChanged(true);
-
-        alarmMessage = "Due: " + dueWhen + "\t\t" + assignment.getTitle();
-        Log.d("MyActivity", "Alarm On");
-        TimePicker alarmTimePicker = notifyTime;
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, alarmTimePicker.getCurrentHour());
-        calendar.set(Calendar.MINUTE, alarmTimePicker.getCurrentMinute());
-        Intent myIntent = new Intent(AddAssignment.this, AlarmReceiver.class);
-        pendingIntent = PendingIntent.getBroadcast(AddAssignment.this, 0, myIntent, 0);
-        alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
-
+            else {
+                String dueWhen = (assignment.getDueTime().hour - 12) + ":" + assignment.getDueTime().minute + " PM";
+                setNotify(titleStr, dueWhen);
+            }
+        }
+        student.setIsChanged(true);
         Intent intent = new Intent(this, iLearnTracker.class);
         startActivity(intent);
+
+    }
+
+    public void setNotify(String notTitle, String when) {
+        System.out.println(notTitle);
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.byui)
+                        .setContentTitle("Due Date Approaching!")
+                        .setContentText("Due: " + when + "\t\t" + notTitle);
+
+        int mNotificationId = notify;
+
+        notify++;
+
+        NotificationManager mNotifyMgr =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        mNotifyMgr.notify(mNotificationId, mBuilder.build());
     }
 
     /**
