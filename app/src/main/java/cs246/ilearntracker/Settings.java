@@ -21,7 +21,7 @@ import android.widget.TextView;
 public class Settings extends ActionBarActivity {
     //private static Student student;
     private static final String ACTIVITY_VARS = "Settings Activity";
-    public static final String PREFS_NAME = "myPrefsFile";
+    public static final String PREFS_NAME = "iTracker.conf";
     private int hoursNotBefore;
     private int refreshTime;
     private int cleanUp;

@@ -44,38 +44,31 @@ public class iLearnTracker extends ActionBarActivity {
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.drawable.byui);
         actionBar.setBackgroundDrawable(new ColorDrawable(0xff326ba9));
-        //student.loadSettings();
-        //student.loadClasses();
-        //setupClassButtons();
+        student.setContext(this);
 
-        // get the listview
+        // Load classes and settings if the student object has not yet been initialized
+        if(!Student.getInstance().init()){
+            //student.loadSettings();
+        }
+
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
-
-
-        // preparing list data
         prepareListData();
-
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
-
-        // setting list adapter
         expListView.setAdapter(listAdapter);
 
-        // Listview on child click listener
+        // Code for clicking on an assignment:
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-                /*
-                Toast.makeText(
-                        getApplicationContext(),
-                        listDataHeader.get(groupPosition)
-                                + " : "
-                                + listDataChild.get(
-                                listDataHeader.get(groupPosition)).get(
-                                childPosition), Toast.LENGTH_SHORT)
-                        .show();
-                */
+
+                /*_________________________________________________________
+                |                                                          |
+                |  Code for clicking on an assignment in the expandable    |
+                |  ListView goes here.                                     |
+                |________________________________________________________*/
+
                 return false;
             }
 
@@ -88,6 +81,12 @@ public class iLearnTracker extends ActionBarActivity {
         loadClassButtons();
     }
 
+    @Override
+    public void onBackPressed(){
+        // Do nothing if the active screen is the main activity.
+        return;
+    }
+
     /**
      * Prepare data list for printing.
      */
@@ -96,7 +95,8 @@ public class iLearnTracker extends ActionBarActivity {
         listDataChild = new HashMap<String, List<ListDataHolder>>();
 
         /**
-         *
+         * Temporary class for holding data to be sorted into the
+         * expandable list view
          */
         class Node implements Comparable<Node>{
             public Assignment assignment;
@@ -105,7 +105,6 @@ public class iLearnTracker extends ActionBarActivity {
                 assignment = newAssignment;
                 color = newColor;
             }
-
 
             @Override
             public int compareTo(Node another) {
@@ -134,6 +133,10 @@ public class iLearnTracker extends ActionBarActivity {
 
         Collections.sort(nodeList);
 
+        /**
+         * Class for holding the sorted header and text data for the
+         * expandable list view
+         */
         class ListHolder{
             public String dataHeader = null;
             public List<ListDataHolder> subList = new ArrayList<>();
@@ -146,7 +149,6 @@ public class iLearnTracker extends ActionBarActivity {
 
         List<ListHolder> listHolderList = new ArrayList<>();
         boolean isAdded;
-
 
         String tmp;
         for(Node node : nodeList){
@@ -180,33 +182,10 @@ public class iLearnTracker extends ActionBarActivity {
                 }
         }
 
- /*     listDataHeader.add("Today");
-        listDataHeader.add("Tomorrow");
-        listDataHeader.add("Even later...");
-
-        List<String> Today = new ArrayList<String>();
-        Today.add("Assignment 1");
-        Today.add("Assignment 2");
-        Today.add("Exam #1");
-
-        List<String> Tomorrow = new ArrayList<String>();
-        Tomorrow.add("Assignment 3");
-        Tomorrow.add("Reading 1");
-        Tomorrow.add("Study guide");
-
-        List<String> later = new ArrayList<String>();
-        later.add("More stuff");
-   */
         for(int i = 0; i < listHolderList.size(); i++){
             listDataHeader.add(listHolderList.get(i).dataHeader);
             listDataChild.put(listHolderList.get(i).dataHeader, listHolderList.get(i).subList);
         }
-
-/*
-        listDataChild.put(listDataHeader.get(0), Today); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), Tomorrow);
-        listDataChild.put(listDataHeader.get(2), later);
-        */
     }
 
     @Override
@@ -241,6 +220,11 @@ public class iLearnTracker extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Handler for enabling/disabling the display of classes on the
+     * assignment list
+     * @param view The Class button clicked
+     */
     public void classButtonClick(View view){
         TextView classButton = (TextView)view;
         String className = classButton.getText().toString();
@@ -257,28 +241,19 @@ public class iLearnTracker extends ActionBarActivity {
 
         // Resetting list data:
         prepareListData();
-
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
-
-        // setting list adapter
         expListView.setAdapter(listAdapter);
-
-        // Listview on child click listener
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-                /*
-                Toast.makeText(
-                        getApplicationContext(),
-                        listDataHeader.get(groupPosition)
-                                + " : "
-                                + listDataChild.get(
-                                listDataHeader.get(groupPosition)).get(
-                                childPosition), Toast.LENGTH_SHORT)
-                        .show();
-                */
+                /*_________________________________________________________
+                |                                                          |
+                |  Code for clicking on an assignment in the expandable    |
+                |  ListView goes here.                                     |
+                |________________________________________________________*/
+
                 return false;
             }
 

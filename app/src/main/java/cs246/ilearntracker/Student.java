@@ -1,9 +1,11 @@
 package cs246.ilearntracker;
 
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
+import android.text.format.Time;
 import android.util.Log;
 
 import org.w3c.dom.Document;
@@ -13,8 +15,13 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -36,11 +43,12 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 /**
- * Created by Braden on 2/23/2015.
+ * Shared class for containing all of the Class and Assignment data
+ * for this application.
  */
-public class Student extends ActionBarActivity {
+public class Student extends ActionBarActivity{
     private static Student instance = new Student();
-    public static final String PREFS_NAME = "myPrefsFile";
+    public static final String PREFS_NAME = "iTracker.conf";
 
     private String HTMLData = null;
     private boolean notification;
@@ -48,6 +56,8 @@ public class Student extends ActionBarActivity {
     private Integer refreshInterval;
     private Integer cleanUpInterval;
     public List<Class> classesList;
+    private Context context;
+    public boolean initialized;
     private static final String TAG_STUDENT = "Student Activity";
 
     /**
@@ -55,14 +65,27 @@ public class Student extends ActionBarActivity {
      */
 
     private Student() {
+        initialized = false;
         notification = true;
         refreshInterval = 86400;
         cleanUpInterval = 604800;
         classesList = new ArrayList<Class>();
+        context = null;
     }
+
     public static Student getInstance() {
         return instance;
     }
+
+    public boolean init() {
+        if(!initialized){
+            initialized = true;
+            loadClasses();
+            return false;
+        }
+        return true;
+    }
+
     public void setNotify(boolean notify) { notification = notify; }
 
     public void setRefresh(int refresh) {
@@ -83,6 +106,10 @@ public class Student extends ActionBarActivity {
         return refreshInterval;
     }
 
+    public Context getContext() { return context; }
+
+    public void setContext(Context newContext) { context = newContext; }
+
     public int getCleanUpInterval() {
         return cleanUpInterval;
     }
@@ -102,7 +129,7 @@ public class Student extends ActionBarActivity {
      * and cleanUpInterval into its own xml file.
      */
     public void saveSettings() {
-        String fileName = "mySettings.xml";
+        String fileName = "studentData.xml";
         String settings = "<settings>\n";
         settings += "\t<notification>" + notification + "</notification>\n";
         settings += "\t<notifyInterval>" + notifyInterval + "</notifyInterval>\n";
@@ -146,7 +173,11 @@ public class Student extends ActionBarActivity {
      * This function will load the previous saved variable values from the xml file.
      */
     public void loadSettings() {
-        SharedPreferences pref = getSharedPreferences(PREFS_NAME, 0);
+        if(null == null){
+            return;
+        }
+
+        SharedPreferences pref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         notifyInterval = pref.getInt("beforeDue", 1);
         refreshInterval = pref.getInt("refresh", 1);
         cleanUpInterval = pref.getInt("cleanUp", 1);
@@ -165,43 +196,72 @@ public class Student extends ActionBarActivity {
      * the classesList.
      */
     public void loadClasses() {
+        String data = null;
+
+        BufferedReader in = null;
         try {
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            Document doc = builder.parse(new File("mySemester.xml"));
-
-            NodeList classes = doc.getElementsByTagName("Class");
-
-            for (int i = 0; i < classes.getLength(); i++) {
-                Element thisClass = (Element) classes.item(i);
-                Class myClass = new Class(thisClass.getAttribute("className"), Integer.valueOf(thisClass.getAttribute("classColor")));
-                if (thisClass.getAttribute("isActive").equals("false"))
-                    myClass.toggleIsActive();
-
-                NodeList assignments = doc.getElementsByTagName("Assignment");
-                for (int j = 0; j < assignments.getLength(); j++) {
-                    Element thisAssignment = (Element) assignments.item(j);
-                    Assignment myAssignment = new Assignment(thisAssignment.getAttribute("title"),
-                            thisAssignment.getAttribute("comments"));
-                    //myAssignment.setDueDate(Long.valueOf(thisAssignment.getAttribute("dueDate"))); //This is not finished yet.
-                    myAssignment.setDueTime(Long.valueOf(thisAssignment.getAttribute("dueTime"))); //Same for this line.
-                    if (thisAssignment.getAttribute("isComplete").equals("true"))
-                        myAssignment.toggleIsComplete();
-                            /* Uncomment this block for connection to I-Learn
-                            if (thisAssignment.getAttribute("fromILearn").equals("true"))
-                                myAssignment.setIsFromILearn();
-                             */
-                    myClass.addAssignment(myAssignment);
-                }
-
-                classesList.add(myClass);
+            BufferedReader inputReader = new BufferedReader(new InputStreamReader(
+                    context.openFileInput("studentData.xml")));
+            String inputString;
+            StringBuffer stringBuffer = new StringBuffer();
+            while ((inputString = inputReader.readLine()) != null) {
+                stringBuffer.append(inputString + "\n");
             }
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
+            data = stringBuffer.toString();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        Class newClass = null;
+        Assignment newAssignment = null;
+        String tmp = null;
+        boolean firstClass = true;
+        for(String classString : data.split("<Class>")){
+            if(firstClass){
+                firstClass = false;
+                continue;
+            }
+
+            newClass = new Class();
+
+            tmp = classString.split("<className>")[1];
+            tmp = tmp.split("</className>")[0];
+            newClass.setClassName(tmp);
+
+            tmp = classString.split("<classColor>")[1];
+            tmp = tmp.split("</classColor>")[0];
+            newClass.setClassColor(Integer.parseInt(tmp));
+
+            boolean firstAssignment = true;
+            for(String assignmentString : classString.split("<Assignment>")){
+                if(firstAssignment){
+                    firstAssignment = false;
+                    continue;
+                }
+
+                tmp = assignmentString.split("<title>")[1];
+                tmp = tmp.split("</title>")[0];
+                newAssignment = new Assignment(tmp, null);
+
+                tmp = assignmentString.split("<comments>")[1];
+                tmp = tmp.split("</comments>")[0];
+                newAssignment.setComments(tmp);
+
+                tmp = assignmentString.split("<dueDate>")[1];
+                tmp = tmp.split("</dueDate>")[0];
+                newAssignment.setDueDate(new Date(Long.parseLong(tmp)));
+
+                tmp = assignmentString.split("<dueTime>")[1];
+                tmp = tmp.split("</dueTime>")[0];
+                newAssignment.setDueTime(Long.parseLong(tmp));
+
+                tmp = assignmentString.split("<fromILearn>")[1];
+                tmp = tmp.split("</fromILearn>")[0];
+                newAssignment.setIsFromILearn(Boolean.parseBoolean(tmp));
+
+                newClass.addAssignment(newAssignment);
+            }
+            classesList.add(newClass);
         }
     }
 
@@ -214,17 +274,13 @@ public class Student extends ActionBarActivity {
         for (Class thisClass: classesList) {
             info += thisClass.getXMLContent();
         }
-        info += "</Student>";
-
-        Document myClasses = convertStringToDocument(info);
+        info += "\n</Student>";
 
         try {
-            Transformer transformer = TransformerFactory.newInstance().newTransformer();
-            Result output = new StreamResult(new File("mySemester.xml"));
-            Source input = new DOMSource(myClasses);
-
-            transformer.transform(input, output);
-        } catch (TransformerException e) {
+            FileOutputStream fos = context.openFileOutput("studentData.xml", Context.MODE_PRIVATE);
+            fos.write(info.getBytes());
+            fos.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -354,7 +410,7 @@ public class Student extends ActionBarActivity {
                                    newClass.setClassColor(Color.rgb(1,1,1));
                                    break;
                                default:
-                                   // Leave as gray.
+                                   // Leave as-is.
                            }
                            newClass.addAssignment(newAssignment);
                            addToList(newClass);
@@ -365,6 +421,6 @@ public class Student extends ActionBarActivity {
                }
            }
        }
-        // SAVE
+        saveClasses();
     }
 }

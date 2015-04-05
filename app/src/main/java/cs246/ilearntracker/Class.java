@@ -80,20 +80,20 @@ public class Class {
 
         String XMLContent;
 
-        XMLContent = "<Class>\n";
-        XMLContent += "\n\t<className>" + className + "</className>";
-        XMLContent += "\n\t<classColor>" + classColor.toString() + "</classColor>";
-        XMLContent += "\n\t<isActive>" + isActive + "</isActive>";
+        XMLContent = "\n\t<Class>";
+        XMLContent += "\n\t\t<className>" + className + "</className>";
+        XMLContent += "\n\t\t<classColor>" + classColor.toString() + "</classColor>";
+        XMLContent += "\n\t\t<isActive>" + isActive + "</isActive>";
 
         for(Assignment assignment : assignmentList){
             if(assignment == null){
                 Log.e(TAG_CLASS,"Assignment does not exist in class.");
             } else {
-                assignment.getAssignXML();
+                XMLContent += assignment.getAssignXML();
             }
         }
 
-        XMLContent += "\n</Class>";
+        XMLContent += "\n\t</Class>";
         Log.i(TAG_CLASS,"Class XML content successfully created.");
         return XMLContent;
     }

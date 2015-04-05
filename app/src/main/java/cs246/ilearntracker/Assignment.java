@@ -44,6 +44,25 @@ public class Assignment implements Comparable<Assignment>{
         isFromILearn = false;
     }
 
+    /**
+     * Complete constructor for Assignment
+     * @param newTitle The name of the assignment
+     * @param comment The comments made to give more detail of the assignment
+     * @param fromIlearn Whether or not the assignment was synced from iLearn
+     */
+    public Assignment(String newTitle,
+                      String comment,
+                      boolean fromIlearn,
+                      Date date,
+                      Time time) {
+        title = newTitle;
+        comments = comment;
+        isComplete = false;
+        isFromILearn = fromIlearn;
+        dueTime = time;
+        dueDate = date;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -97,6 +116,8 @@ public class Assignment implements Comparable<Assignment>{
         isFromILearn = true;
     }
 
+    public void setIsFromILearn(boolean value){ isFromILearn = value; }
+
     /**
      * Makes an XML format for the assignment to be added information
      * @return
@@ -104,14 +125,14 @@ public class Assignment implements Comparable<Assignment>{
     public String getAssignXML() {
         String xml = "";
 
-        xml += "\n\t<Assignment>";
-        xml += "\n\t\t<title>" + getTitle() + "</title>";
-        xml += "\n\t\t<comments>" + getComments() + "</comments>";
-        xml += "\n\t\t<dueDate>" + getDueDate() + "</dueDate>";
-        xml += "\n\t\t<dueTime>" + getDueTime() + "</dueTime>";
-        xml += "\n\t\t<isComplete>" + getIsComplete() + "</isComplete>";
-        //xml += "\n\t\t<fromILearn>" + getIsFromILearn() + "</fromILearn>";
-        xml += "\n\t</Assignment>";
+        xml += "\n\t\t<Assignment>";
+        xml += "\n\t\t\t<title>" + getTitle() + "</title>";
+        xml += "\n\t\t\t<comments>" + getComments() + "</comments>";
+        xml += "\n\t\t\t<dueDate>" + getDueDate().getTime() + "</dueDate>";
+        xml += "\n\t\t\t<dueTime>" + getDueTime().toMillis(false) + "</dueTime>";
+        xml += "\n\t\t\t<isComplete>" + getIsComplete() + "</isComplete>";
+        xml += "\n\t\t<fromILearn>" + getIsFromILearn() + "</fromILearn>";
+        xml += "\n\t\t</Assignment>";
 
         return xml;
     }
