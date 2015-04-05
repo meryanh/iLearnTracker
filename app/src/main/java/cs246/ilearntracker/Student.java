@@ -57,6 +57,7 @@ public class Student extends ActionBarActivity{
     private Integer cleanUpInterval;
     public List<Class> classesList;
     private Context context;
+    private boolean changed;
     public boolean initialized;
     private static final String TAG_STUDENT = "Student Activity";
 
@@ -71,6 +72,7 @@ public class Student extends ActionBarActivity{
         cleanUpInterval = 604800;
         classesList = new ArrayList<Class>();
         context = null;
+        changed = false;
     }
 
     public static Student getInstance() {
@@ -85,6 +87,10 @@ public class Student extends ActionBarActivity{
         }
         return true;
     }
+
+    public boolean getIsChanged() { return changed; }
+
+    public void setIsChanged(boolean value) { changed = value; }
 
     public void setNotify(boolean notify) { notification = notify; }
 
@@ -434,7 +440,7 @@ public class Student extends ActionBarActivity{
                                    // Leave as-is.
                            }
                            newClass.addAssignment(newAssignment);
-                           addToList(newClass);
+                           classesList.add(newClass);
                        }
                        i = 0;
                    }

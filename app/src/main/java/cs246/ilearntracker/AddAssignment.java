@@ -162,6 +162,7 @@ public class AddAssignment extends ActionBarActivity {
                 setNotify(titleStr, dueWhen);
             }
         }
+        student.setIsChanged(true);
         Intent intent = new Intent(this, iLearnTracker.class);
         startActivity(intent);
 

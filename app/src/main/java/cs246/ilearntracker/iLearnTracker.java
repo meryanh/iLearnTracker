@@ -50,6 +50,12 @@ public class iLearnTracker extends ActionBarActivity {
         if(!Student.getInstance().init()){
             student.loadSettings();
             student.clean();
+        } else {
+            // Save changes if the assignment list has been manually edited
+            if(student.getIsChanged()) {
+                student.saveClasses();
+                student.setIsChanged(false);
+            }
         }
 
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
