@@ -243,52 +243,58 @@ public class Student extends ActionBarActivity{
         Assignment newAssignment = null;
         String tmp = null;
         boolean firstClass = true;
-        for(String classString : data.split("<Class>")){
-            if(firstClass){
-                firstClass = false;
-                continue;
-            }
-
-            newClass = new Class();
-
-            tmp = classString.split("<className>")[1];
-            tmp = tmp.split("</className>")[0];
-            newClass.setClassName(tmp);
-
-            tmp = classString.split("<classColor>")[1];
-            tmp = tmp.split("</classColor>")[0];
-            newClass.setClassColor(Integer.parseInt(tmp));
-
-            boolean firstAssignment = true;
-            for(String assignmentString : classString.split("<Assignment>")){
-                if(firstAssignment){
-                    firstAssignment = false;
+        if (data == null) {
+            return;
+        }
+        else {
+            for(String classString : data.split("<Class>")){
+                if(firstClass){
+                    firstClass = false;
                     continue;
                 }
 
-                tmp = assignmentString.split("<title>")[1];
-                tmp = tmp.split("</title>")[0];
-                newAssignment = new Assignment(tmp, null);
+                newClass = new Class();
 
-                tmp = assignmentString.split("<comments>")[1];
-                tmp = tmp.split("</comments>")[0];
-                newAssignment.setComments(tmp);
+                tmp = classString.split("<className>")[1];
+                tmp = tmp.split("</className>")[0];
+                newClass.setClassName(tmp);
 
-                tmp = assignmentString.split("<dueDate>")[1];
-                tmp = tmp.split("</dueDate>")[0];
-                newAssignment.setDueDate(new Date(Long.parseLong(tmp)));
+                tmp = classString.split("<classColor>")[1];
+                tmp = tmp.split("</classColor>")[0];
+                newClass.setClassColor(Integer.parseInt(tmp));
 
-                tmp = assignmentString.split("<dueTime>")[1];
-                tmp = tmp.split("</dueTime>")[0];
-                newAssignment.setDueTime(Long.parseLong(tmp));
+                boolean firstAssignment = true;
+                for(String assignmentString : classString.split("<Assignment>")){
+                    if(firstAssignment){
+                        firstAssignment = false;
+                        continue;
+                    }
 
-                tmp = assignmentString.split("<fromILearn>")[1];
-                tmp = tmp.split("</fromILearn>")[0];
-                newAssignment.setIsFromILearn(Boolean.parseBoolean(tmp));
+                    tmp = assignmentString.split("<title>")[1];
+                    tmp = tmp.split("</title>")[0];
+                    newAssignment = new Assignment(tmp, null);
 
-                newClass.addAssignment(newAssignment);
+                    tmp = assignmentString.split("<comments>")[1];
+                    tmp = tmp.split("</comments>")[0];
+                    newAssignment.setComments(tmp);
+
+                    tmp = assignmentString.split("<dueDate>")[1];
+                    tmp = tmp.split("</dueDate>")[0];
+                    newAssignment.setDueDate(new Date(Long.parseLong(tmp)));
+
+                    tmp = assignmentString.split("<dueTime>")[1];
+                    tmp = tmp.split("</dueTime>")[0];
+                    newAssignment.setDueTime(Long.parseLong(tmp));
+
+                    tmp = assignmentString.split("<fromILearn>")[1];
+                    tmp = tmp.split("</fromILearn>")[0];
+                    newAssignment.setIsFromILearn(Boolean.parseBoolean(tmp));
+
+                    newClass.addAssignment(newAssignment);
+                }
+                classesList.add(newClass);
+
             }
-            classesList.add(newClass);
         }
     }
 
