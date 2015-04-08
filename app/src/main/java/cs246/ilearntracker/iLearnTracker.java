@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ExpandableListView;
@@ -233,7 +234,7 @@ public class iLearnTracker extends ActionBarActivity {
      * @param view The Class button clicked
      */
     public void classButtonClick(View view){
-        TextView classButton = (TextView)view;
+        Button classButton = (Button)view;
         String className = classButton.getText().toString();
         for(int i = 0; i < Student.getInstance().getClassList().size(); i++){
             if(Student.getInstance().getClassList().get(i).getClassName().equals(className)){
